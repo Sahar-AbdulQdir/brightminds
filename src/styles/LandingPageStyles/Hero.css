@@ -1,0 +1,84 @@
+
+.hero-section {
+  background: #953D9F;
+background: linear-gradient(1deg,rgba(149, 61, 159, 1) 0%, rgba(255, 255, 255, 1) 100%);
+  text-align: center;
+  /* padding: 5rem 0; */
+  color: white;
+}
+
+.hero-section h1 {
+  font-size: 1.875rem; /* text-3xl */
+  font-weight: 900;
+  margin-bottom: 2rem; /* mb-4 */
+  color: black;
+}
+
+@media (min-width: 768px) {
+  .hero-section h1 {
+    font-size: 3rem; /* md:text-5xl */
+  }
+}
+
+.hero-section p {
+  font-size: 1.125rem; /* text-lg */
+  margin-bottom: 2rem; /* mb-6 */
+  color: #000000;
+  font-weight: 500;
+}
+
+.hero-buttons {
+  margin-bottom: -1rem; 
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 15rem;
+}
+
+.hero-buttons button {
+  padding: 0.5rem 1.5rem; /* py-2 px-6 */
+  border-radius: 9999px; /* rounded-full */
+  font-weight: 600; /* font-semibold */
+  margin-right: 1rem; /* space-x-4 */
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.hero-buttons button.login-btn {
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+}
+
+.hero-buttons button.login-btn:hover {
+  opacity: 0.9;
+}
+
+.hero-buttons button.signin-btn {
+  background-color: black;
+  color: white;
+}
+
+.hero-buttons button.signin-btn:hover {
+  background-color: #1a1a1a; /* dark gray */
+}
+
+.hero-image {
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image img {
+  max-width: 80%; /* w-4/5 */
+  border-radius: 0.75rem; /* rounded-xl */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* shadow-lg */
+}
+
+@media (min-width: 768px) {
+  .hero-image img {
+    max-width: 80.0%; /* md:w-2/3 */
+    margin-top: 2.5rem;
+  }
+}
+
+

@@ -1,0 +1,25 @@
+
+/* Full-page gradient background */
+.podcast-page {
+  min-height: 100vh;
+  /* background: linear-gradient(270deg, #fad8f9 0%, #fcfcd5 48%, #c2e2fc 100%); */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* padding: 24px; */
+}
+
+/* Blurry white container (foreground layer) */
+.podcast-foreground {
+  background-color: #ffffffd9; /* semi-transparent white */
+  backdrop-filter: blur(12px); /* blur effect */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 24px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 1200px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px; /* spacing between sections */
+}

@@ -1,0 +1,47 @@
+/* Section styles */
+.impact-section {
+  padding: 4rem 0;
+  /* background-color: #ffffff; gray-50 */
+  text-align: center;
+}
+
+.impact-section h2 {
+  font-size: 6em;
+  font-weight: 700;
+  color: #000000; /* indigo-700 */
+  margin-bottom: 3rem;
+}
+
+/* Grid layout */
+.impact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  width: 83%;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .impact-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Individual card */
+.impact-card {
+  text-align: center;
+}
+
+/* Image inside card */
+.impact-card img {
+  width: 12rem;  /* 24 in Tailwind is 6rem */
+  height: 12rem;
+  margin: 0 auto 1rem auto;
+  object-fit: cover;
+}
+
+/* Text inside card */
+.impact-card p {
+  color: #000000; /* gray-700 */
+  font-size: 1rem;
+}

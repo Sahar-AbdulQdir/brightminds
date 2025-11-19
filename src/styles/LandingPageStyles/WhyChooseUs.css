@@ -1,0 +1,105 @@
+/* Section styles */
+.why-choose-us {
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.why-choose-us h2 {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 3rem;
+}
+
+/* Layout container */
+.features-grid {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Feature card */
+.feature-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 4rem 6rem;
+  min-height: 45rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card.reverse {
+  flex-direction: row-reverse;
+}
+
+/* Gradient backgrounds */
+.blue-gradient {
+  background: #F1E2FF;
+background: linear-gradient(90deg,rgb(222, 205, 239) 0%, rgb(248, 230, 252) 48%, rgba(255, 255, 255, 1) 100%);
+}
+
+.purple-gradient {
+  background: #f5f7c8;
+background: linear-gradient(270deg, rgba(245, 247, 200, 1) 0%, rgba(253, 255, 245, 1) 48%, rgba(255, 255, 255, 1) 100%);
+}
+
+.yellow-gradient {
+background: #D5FFDB;
+background: linear-gradient(90deg, rgba(213, 255, 219, 1) 0%, rgba(240, 255, 240, 1) 48%, rgba(255, 255, 255, 1) 100%);}
+
+.green-gradient {
+background: #FEE0FE;
+background: linear-gradient(270deg, rgba(254, 224, 254, 1) 0%, rgba(255, 245, 255, 1) 48%, rgba(255, 255, 255, 1) 100%);}
+
+/* Text content */
+.feature-text {
+  flex: 1;
+  padding: 2rem;
+  text-align: left;
+}
+
+.feature-text h3 {
+  font-size: 3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.feature-text p {
+  color: #374151;
+  font-size: 2rem;
+  line-height: 1.6;
+}
+
+/* Image section */
+.feature-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.feature-image img {
+  width: 90%;
+  height: 100%;
+  object-fit: cover;
+  /* border-radius: 1rem; */
+  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); */
+}
+
+/* Responsive layout */
+@media (max-width: 900px) {
+  .feature-card,
+  .feature-card.reverse {
+    flex-direction: column;
+    padding: 2rem;
+  }
+
+  .feature-image img {
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  .feature-text {
+    text-align: center;
+  }
+}

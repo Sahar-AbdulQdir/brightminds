@@ -1,0 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;700&display=swap");
+
+/* ---------------- Global Styles ---------------- */
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Titillium Web", sans-serif;
+  
+}
+
+
+:root {
+  --mainColor: #656f9900;
+  --mainColorLight: #5767aa;
+  --secondaryColor: #db2b39;
+  --textColor: #000000;
+}

@@ -1,0 +1,31 @@
+.navbar-section {
+  width: 100%;
+  background: transparent;
+  margin-top: -2rem;
+}
+
+.blogs-content-section {
+
+  align-items: center;
+ 
+  padding: 4px;
+  /* background-color: #d7b5f7; */
+}
+
+.blogs-container {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  padding: 2rem;
+  padding-top: 1rem;
+  /* padding-bottom: 0px; */
+  /* From https://css.glass */
+/* From https://css.glass */
+background: #fffeedc2;
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(18.4px);
+-webkit-backdrop-filter: blur(18.4px);
+border: 1px solid rgba(255, 255, 255, 0.91);
+  /* margin-top: 2rem; */
+}

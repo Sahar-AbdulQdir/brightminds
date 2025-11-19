@@ -1,0 +1,182 @@
+/* Apply styles to the root element */
+#root {
+  min-height: 100vh;
+  /* padding: 2rem; */
+  /* background: linear-gradient(
+    318deg,
+    rgba(121, 130, 224, 1) 0%,
+    rgba(158, 174, 218, 1) 50%,
+    rgba(211, 147, 189, 1) 100%
+  ); */
+  box-sizing: border-box; /* ensures padding doesn't break layout */
+}
+
+.navbar-section {
+  width: 100%;
+  background: transparent;
+  margin-bottom: 1rem;
+}
+
+.content-section {
+  display: flex;
+  gap: 2rem;
+  /* background-color: #d7b5f7; */
+  margin-top: -3rem;
+}
+
+.home-container {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  padding: 2rem;
+  padding-top: 1rem;
+  /* padding-bottom: 0px; */
+  /* From https://css.glass */
+/* From https://css.glass */
+background: #fffeedc2;
+border-radius: 16px;
+
+  margin-top: -1.2rem;
+}
+
+/* Left Section */
+.left-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.welcome-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 16px;
+  text-align: left;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-card h2 {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.welcome-card p {
+  color: #555;
+  line-height: 1.4;
+}
+
+.read-more-btn {
+  margin-top: 1rem;
+  background: black;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.read-more-btn:hover {
+  background: #333;
+}
+
+.podcast-card {
+  display: flex;
+  /* align-items: center; */
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: .5rem;
+}
+
+.podcast-left {
+  flex: 0.6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background: #d7b5f7; */
+  /* padding: 1rem; */
+  /* border-top-left-radius: 16px; */
+  /* border-bottom-left-radius: 16px; */
+}
+
+.podcast-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.podcast-right {
+  padding: 1.5rem;
+  flex: 1.4;
+  text-align: left;
+}
+
+.podcast-right p {
+  color: #444;
+  margin-bottom: 0.5rem;
+}
+
+/* Right Section */
+/* Right Section */
+.right-section {
+  display: flex;
+  position: relative;
+}
+
+.video-card {
+  position: relative;
+  width: 555px;
+  height: 470px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.video-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Full-width overlay at bottom */
+.video-overlay.bottom-left {
+  position: relative;
+  bottom: 38%;
+  left: 1.5%;
+  width: 97%;             
+  color: #ffffff;
+  z-index: 2;
+  background: #4c4b4b5e; 
+  padding: 20px 30px;       
+  border-radius: 25px;
+  /* box-sizing: border-box;    */
+}
+
+.video-overlay h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.video-overlay p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  line-height: 1.4;
+}
+
+.video-btn {
+  background: rgba(255, 255, 255, 0.868);
+  border: 2px solid #fff;
+  padding: 10px 25px;
+  border-radius: 15px;
+  color: #000000;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-weight: 500;
+}
+
+.video-btn:hover {
+  background: #fff;
+  color: #000;
+}

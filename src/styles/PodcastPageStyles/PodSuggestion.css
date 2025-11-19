@@ -1,0 +1,68 @@
+.suggestion-section {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.suggestion-section h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.suggestion-section p {
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.suggestion-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .suggestion-content {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+/* Card styles */
+.suggestion-card {
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  max-width: 18rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  transform: rotate(-3deg); /* slight rotation one way */
+  background: radial-gradient(circle at 100% 100%, #ffffff 0, #ffffff 3px, transparent 3px) 0% 0%/8px 8px no-repeat,
+              radial-gradient(circle at 0 100%, #ffffff 0, #ffffff 3px, transparent 3px) 100% 0%/8px 8px no-repeat,
+              radial-gradient(circle at 100% 0, #ffffff 0, #ffffff 3px, transparent 3px) 0% 100%/8px 8px no-repeat,
+              radial-gradient(circle at 0 0, #ffffff 0, #ffffff 3px, transparent 3px) 100% 100%/8px 8px no-repeat,
+              linear-gradient(#ffffff, #ffffff) 50% 50%/calc(100% - 10px) calc(100% - 16px) no-repeat,
+              linear-gradient(#ffffff, #ffffff) 50% 50%/calc(100% - 16px) calc(100% - 10px) no-repeat,
+              linear-gradient(133deg, transparent 0%, #d6abfe 100%);
+  box-sizing: border-box;
+}
+
+/* Text pieces with lines */
+.card-text p {
+  margin: 0.3rem 0 0;
+  font-size: 0.875rem;
+  color: #333;
+}
+
+.card-text hr {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  margin: 0.3rem 0;
+}
+
+/* Image styles */
+.suggestion-img {
+  width: 16rem; /* bigger image */
+  height: auto;
+  border-radius: 0.75rem;
+  object-fit: cover;
+  transform: rotate(3deg); /* rotate opposite direction */
+}
