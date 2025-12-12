@@ -1,9 +1,9 @@
 import React from "react";
-import "../styles/games.css";
+import "../components/GamesPage/GamesPageStyles/games.css";
 import "../styles/home.css";
 import MyNavbar from "../components/Navbar.jsx";
-import g1 from "../assets/g1.png";
-import g2 from "../assets/g2.png";
+import g1 from "../assets/images/g1.png";
+import g2 from "../assets/images/g2.png";
 import { useEffect } from 'react';
 // import GameHub from "../components/GamesPage/Gameswx.jsx";
 

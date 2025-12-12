@@ -1,7 +1,7 @@
 import React from "react";
-import "../../styles/LandingPageStyles/Impact.css";
-import Ch1 from "../../assets/L-Ch1.png";
-import Ch2 from "../../assets/L-Ch2.png";
+import "../../components/LandingPage/LandingPageStyles/Impact.css";
+import Ch1 from "../../assets/images/L-Ch1.png";
+import Ch2 from "../../assets/images/L-Ch2.png";
 const impacts = [
   {
     img: Ch1,

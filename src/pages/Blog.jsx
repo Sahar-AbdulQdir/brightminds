@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "../styles/blogpage.css";
+import "../components/BlogPage/BlogsPage/blogpage.css";
 
 
 export default function BlogPage() {

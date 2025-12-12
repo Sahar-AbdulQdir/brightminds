@@ -1,6 +1,6 @@
 import React from "react";
-import HeroPodImg from "../../assets/pod5.png";
-import "../../styles/PodcastPageStyles/PodcastHero.css";
+import HeroPodImg from "../../assets/images/pod5.png";
+import "../../components/PodcastPage/PodcastPageStyles/PodcastHero.css";
 
 const PodcastHero = () => (
   <section className="podcast-hero">

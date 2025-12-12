@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "../../styles/LandingPageStyles/faq.css";
-import faqImg from "../../assets/L-faq.png";
+import "../../components/LandingPage/LandingPageStyles/faq.css";
+import faqImg from "../../assets/images/L-faq.png";
 const faqs = [
   {
     q: "How can I save my favourite podcast or article?",

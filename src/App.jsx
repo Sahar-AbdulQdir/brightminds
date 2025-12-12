@@ -12,12 +12,12 @@ function App() {
   return (
     <Router>
   <Routes>
-  <Route path="/home" element={<Layout><Home /></Layout>} />
+  <Route path="/" element={<Layout><Home /></Layout>} />
   <Route path="/games" element={<Layout><Games /></Layout>} />
   <Route path="/podcasts" element={<Layout><Podcasts /></Layout>} />
   <Route path="/Bloggy" element={<Layout><Bloggy /></Layout>} />
   <Route path="/Landing" element={<LandingPage />} /> 
-  <Route path="/" element={<Layout><ToolsResources /></Layout>} />
+  <Route path="/tools" element={<Layout><ToolsResources /></Layout>} />
   </Routes>
     </Router>
   );

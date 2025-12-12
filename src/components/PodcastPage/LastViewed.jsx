@@ -1,5 +1,5 @@
 import React from "react";
-import "../../styles/PodcastPageStyles/LastViewed.css";
+import "../../components/PodcastPage/PodcastPageStyles/LastViewed.css";
 
 const sampleViewed = [
   { id: 1, title: "Episode 62: Things I did well", author: "Lindsey", img: "https://randomuser.me/api/portraits/women/44.jpg" },

@@ -1,11 +1,11 @@
 import React from "react";
-import "../../styles/LandingPageStyles/WhyChooseUs.css";
+import "../../components/LandingPage/LandingPageStyles/WhyChooseUs.css";
 
 // Images
-import PuzzleImg from "../../assets/L-Puzz.png";
-import BlogsImg from "../../assets/L-blog.png";
-import PodcastsImg from "../../assets/L-pod.png";
-import SaveImg from "../../assets/L-interact.png";
+import PuzzleImg from "../../assets/images/L-Puzz.png";
+import BlogsImg from "../../assets/images/L-blog.png";
+import PodcastsImg from "../../assets/images/L-pod.png";
+import SaveImg from "../../assets/images/L-interact.png";
 
 const features = [
   {

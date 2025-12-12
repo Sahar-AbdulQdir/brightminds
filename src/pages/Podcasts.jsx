@@ -5,7 +5,7 @@ import PodcastGrid from "../components/PodcastPage/PodcastGrid";
 import SearchBar from "../components/PodcastPage/SearchBar";
 import LastViewed from "../components/PodcastPage/LastViewed";
 import Suggestion from "../components/PodcastPage/Suggestion";
-import "../styles//PodcastPageStyles/PodcastPage.css";
+import "../components/PodcastPage/PodcastPageStyles/PodcastPage.css";
 import ScrollVelocity from '../components/PodcastPage/marquee.jsx';
   
 

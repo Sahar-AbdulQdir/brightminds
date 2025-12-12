@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import "../../styles/BlogsPage/Articles.css"
+import "../../components/BlogPage/BlogsPage/Articles.css"
 import { Heart, BookOpen, X } from "lucide-react";
 
 export default function Articles() {

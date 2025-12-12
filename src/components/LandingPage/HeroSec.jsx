@@ -1,6 +1,6 @@
 import React from "react";
-import HeroImg from "../../assets/Hero.png";
-import "../../styles/LandingPageStyles/Hero.css";
+import HeroImg from "../../assets/images/Hero.png";
+import "../../components/LandingPage/LandingPageStyles/Hero.css";
 
 const HeroSec = () => {
   return (

@@ -1,77 +1,10 @@
-// // src/pages/Home.jsx
-// import React from "react";
-// import "../styles/home.css";
-
-// const Home = () => {
-//   return (
-//     <div className="home-container">
-//       {/* Left section */}
-//       <div className="left-section">
-//         <div className="welcome-card">
-//           <h2>Hello, User</h2>
-//           <p>
-//             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-//             eiusmod tempor incididunt ut labore et dolore magna aliqua.
-//           </p>
-//           <p>
-//             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-//             eiusmod tempor incididunt ut labore et dolore magna aliqua.
-//           </p>
-//           <button className="read-more-btn">Read More</button>
-//         </div>
-
-//         <div className="podcast-card">
-//           <div className="podcast-left">
-//             <h3>Podcast Suggestion</h3>
-//           </div>
-//           <div className="podcast-right">
-//             <p>
-//               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-//               eiusmod tempor
-//             </p>
-//             <button className="read-more-btn">Listen Now!</button>
-//           </div>
-//         </div>
-//       </div>
-
-//       {/* Right section */}
-//       <div className="right-section">
-//         <div className="progress-cards">
-//           <div className="progress-card">
-//             <div className="img-placeholder"></div>
-//             <h4>Game 1 Progress</h4>
-//           </div>
-//           <div className="progress-card">
-//             <div className="img-placeholder"></div>
-//             <h4>Game 2 Progress</h4>
-//           </div>
-//         </div>
-
-//         <div className="continue-card">
-//           <p>
-//             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-//             eiusmod tempor
-//           </p>
-//           <div className="play-Btns">
-//           <button className="play-btn ">Continue Playing</button>
-//           <button className="play-btn">Continue Playing</button>
-//           </div>
-//           <div className="toggle-placeholder"></div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Home;
-
 // src/pages/Home.jsx
 import React from "react";
 import MyNavbar from "../components/Navbar.jsx";
 import "../styles/home.css";
-import podcastImg from "../assets/pod.jpeg";
-import sudImg from "../assets/sud.png";
-import puzzImg from "../assets/puzz.png";
+import podcastImg from "../assets/images/pod.jpeg";
+import sudImg from "../assets/images/sud.png";
+import puzzImg from "../assets/images/puzz.png";
 import { useEffect } from 'react';
 
 const Home = () => {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { fetchHotPodcasts } from "../../api/podcastAPI";
-import "../../styles/PodcastPageStyles/PodcastGrid.css";
+import "../../components/PodcastPage/PodcastPageStyles/PodcastGrid.css";
 
 const PodcastGrid = () => {
   const [podcasts, setPodcasts] = useState([]);

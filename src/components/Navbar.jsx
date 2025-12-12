@@ -7,8 +7,10 @@ import { MdEditSquare } from "react-icons/md";
 import "../styles/nav.css";
 import "../styles/GeneralFixesStyles/accessibilityPanel.css";
 
+
+
 // ⬅️ Import your SVG logo
-import Logo from "../assets/Logo.svg";
+import Logo from "../assets/icons/Logo.svg";
 
 function AccessibilityPanel() {
   const [font, setFont] = useState("Verdana");
@@ -106,6 +108,7 @@ function AccessibilityPanel() {
 function MyNavbar() {
   const navRef = useRef();
   const [showAccessibility, setShowAccessibility] = useState(false);
+  
 
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
@@ -129,17 +132,23 @@ function MyNavbar() {
           </button>
         </nav>
 
-        <div className="nav-icons">
-          <button className="icon-btn"><FaWandMagicSparkles /></button>
-          <button
-            className="icon-btn accessabilitySettings"
-            onClick={() => setShowAccessibility(!showAccessibility)}
-          >
-            <MdEditSquare />
-          </button>
-          {/* <button className="icon-btn"><FaUserCircle /></button> */}
-          <button className="icon-btn"><FaSearch /></button>
-        </div>
+<div className="nav-icons">
+  <Link to="/tools" className="icon-btn">
+    <FaWandMagicSparkles />
+  </Link>
+
+  <button
+    className="icon-btn accessabilitySettings"
+    onClick={() => setShowAccessibility(!showAccessibility)}
+  >
+    <MdEditSquare />
+  </button>
+
+  <button className="icon-btn">
+    <FaSearch />
+  </button>
+</div>
+
 
         <button className="nav-btn" onClick={showNavbar}>
           <FaBars />

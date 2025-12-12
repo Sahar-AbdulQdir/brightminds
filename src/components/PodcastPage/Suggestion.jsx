@@ -1,6 +1,6 @@
 import React from "react";
-import sugPodImg from "../../assets/Pod2.png";
-import "../../styles/PodcastPageStyles/PodSuggestion.css";
+import sugPodImg from "../../assets/images/Pod2.png";
+import "../../components/PodcastPage/PodcastPageStyles/PodSuggestion.css";
 
 
 const Suggestion = () => (

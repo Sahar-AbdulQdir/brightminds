@@ -1,6 +1,6 @@
 import React from "react";
 import BHeroSection from "../components/BlogPage/Hero.jsx";
-import "../styles/blogs.css";
+import "../components/BlogPage/BlogsPage/blogs.css";
 import MyNavbar from "../components/Navbar.jsx";
 import Topics from "../components/BlogPage/topics.jsx";
 import Articles from "../components/BlogPage/articles.jsx";
@@ -27,8 +27,9 @@ const Bloggy = () => {
       <div className="blogs-content-section">
         <BHeroSection/>
         <Topics/>
-        <Articles/>
+        {/* <Articles/> */}
         <Books/>
+      
 
 {/* 
         <iframe

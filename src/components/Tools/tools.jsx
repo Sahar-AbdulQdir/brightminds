@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaBookOpen, FaPenFancy, FaBrain } from "react-icons/fa";
-import "../../styles/ToolsStyles/tools.css";
+import "../../components/Tools/ToolsStyles/tools.css";
 import MyNavbar from "../Navbar.jsx";
 
 const readingTools = [
