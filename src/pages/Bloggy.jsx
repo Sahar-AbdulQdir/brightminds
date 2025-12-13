@@ -26,7 +26,7 @@ const Bloggy = () => {
       {/* Main Content */}
       <div className="blogs-content-section">
         <BHeroSection/>
-        <Topics/>
+        {/* <Topics/> */}
         {/* <Articles/> */}
         <Books/>
       
