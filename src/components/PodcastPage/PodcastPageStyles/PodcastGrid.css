@@ -61,3 +61,50 @@ border-radius: 0px 0px 0px 0px;
 .card-5 { grid-column: 2; grid-row: 2; }
 .card-6 { grid-column: 3; grid-row: 2; }
 .card-7 { grid-column: 2 / span 2; grid-row: 3; } 
+
+.episode-list {
+  list-style: none;
+  padding: 0;
+}
+
+.episode-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+.episode-controls {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.control-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background-color: #000000; /* Blue theme */
+  color: #fff;
+  border: none;
+  border-radius: 999px; /* Pill shape */
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.control-btn:hover {
+  background-color: #e88eff; /* Slightly lighter on hover */
+  transform: translateY(-2px);
+}
+
+.control-btn:active {
+  transform: translateY(0px) scale(0.95);
+}
+
+.control-btn svg {
+  vertical-align: middle;
+}
