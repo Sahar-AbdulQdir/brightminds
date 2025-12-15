@@ -3,7 +3,7 @@ import MyNavbar from "../components/Navbar.jsx";
 import PodcastHero from "../components/PodcastPage/PodcastHero.jsx";
 import PodcastGrid from "../components/PodcastPage/PodcastGrid";
 import SearchBar from "../components/PodcastPage/SearchBar";
-import LastViewed from "../components/PodcastPage/LastViewed";
+import PodcastHighlights from "../components/PodcastPage/LastViewed";
 import Suggestion from "../components/PodcastPage/Suggestion";
 import "../components/PodcastPage/PodcastPageStyles/PodcastPage.css";
 import ScrollVelocity from '../components/PodcastPage/marquee.jsx';
@@ -34,7 +34,7 @@ const PodcastPage = () => {
 
         <PodcastGrid />
         {/* <SearchBar /> */}
-        <LastViewed />
+        <PodcastHighlights />
         <Suggestion />
 
         {/* Footer */}
