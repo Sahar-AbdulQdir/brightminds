@@ -6,7 +6,7 @@ import { FaWandMagicSparkles } from "react-icons/fa6";
 import { MdEditSquare } from "react-icons/md";
 import "../styles/nav.css";
 import "../styles/GeneralFixesStyles/accessibilityPanel.css";
-
+import { RiSave3Line } from "react-icons/ri";
 
 
 // ⬅️ Import your SVG logo
@@ -144,9 +144,11 @@ function MyNavbar() {
     <MdEditSquare />
   </button>
 
-  <button className="icon-btn">
-    <FaSearch />
-  </button>
+<Link to="/SavedPage" className="icon-btn">
+  <RiSave3Line />
+</Link>
+
+
 </div>
 
 
