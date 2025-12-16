@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import MyNavbar from "../components/Navbar.jsx";
 import "../styles/home.css";
 import podcastImg from "../assets/images/pod.jpeg";
-import sudImg from "../assets/images/sud.png";
-import puzzImg from "../assets/images/puzz.png";
+
 
 const Home = () => {
   // useEffect(() => {
@@ -18,6 +17,17 @@ const Home = () => {
    useEffect(() => {
     const storedName = localStorage.getItem("userName");
     if (storedName) setUserName(storedName);
+  }, []);
+
+
+    // Disable scroll when Home is mounted, enable scroll when unmounted
+  useEffect(() => {
+    const originalStyle = window.getComputedStyle(document.body).overflow;
+    document.body.style.overflow = "hidden"; // disable scroll
+
+    return () => {
+      document.body.style.overflow = originalStyle; // restore scroll
+    };
   }, []);
 
   return (
@@ -65,9 +75,11 @@ const Home = () => {
               <source src="/Hvid.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
-            <div className="video-overlay bottom-left">
-              <h2>Boost Your Focus</h2>
+            <div className="video-overlay-home bottom-left">
+              <div>
+                <h2>Boost Your Focus</h2>
               <p>Discover how to stay productive and mindful every day.</p>
+              </div>
               <button className="video-btn">Explore Now</button>
             </div>
           </div>

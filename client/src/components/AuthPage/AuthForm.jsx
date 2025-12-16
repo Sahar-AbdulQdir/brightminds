@@ -70,17 +70,23 @@ const AuthForm = () => {
   };
 
   return (
+ <div className="auth-page">
+    <div className="floating-element"></div>
+    <div className="floating-element"></div>
+    <div className="floating-element"></div>
+
     <div className={`container ${isRightPanelActive ? "right-panel-active" : ""}`}>
+
       {/* Sign Up Form */}
       <div className="form-container sign-up-container">
         <form onSubmit={handleSignUp}>
           <h1>Create Account</h1>
-          <div className="social-container">
+          {/* <div className="social-container">
             <a href="#" className="social"><FaFacebookF /></a>
             <a href="#" className="social"><FaGooglePlusG /></a>
             <a href="#" className="social"><FaLinkedinIn /></a>
-          </div>
-          <span>or use your email for registration</span>
+          </div> */}
+          {/* <span>use your email for registration</span> */}
           <input type="text" placeholder="Name" name="name" required />
           <input type="email" placeholder="Email" name="email" required />
           <input type="password" placeholder="Password" name="password" required />
@@ -92,15 +98,15 @@ const AuthForm = () => {
       <div className="form-container sign-in-container">
         <form onSubmit={handleSignIn}>
           <h1>Sign in</h1>
-          <div className="social-container">
+          {/* <div className="social-container">
             <a href="#" className="social"><FaFacebookF /></a>
             <a href="#" className="social"><FaGooglePlusG /></a>
             <a href="#" className="social"><FaLinkedinIn /></a>
-          </div>
-          <span>or use your account</span>
+          </div> */}
+          {/* <span>use your account</span> */}
           <input type="email" placeholder="Email" name="email" required />
           <input type="password" placeholder="Password" name="password" required />
-          <a href="#">Forgot your password?</a>
+          {/* <a href="#">Forgot your password?</a> */}
           <button type="submit">Sign In</button>
         </form>
       </div>
@@ -123,10 +129,11 @@ const AuthForm = () => {
       </div>
 
       {/* Footer */}
-      <footer>
-        <p>Created with <FaHeart color="red" /> by sahaxar</p>
-      </footer>
+      {/* <footer>
+        <p>Created with  <FaHeart color="black" />  by sahaxar</p>
+      </footer> */}
     </div>
+     </div>
   );
 };
 

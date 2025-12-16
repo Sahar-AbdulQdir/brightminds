@@ -1,5 +1,7 @@
 .auth-page {
-    background: linear-gradient(135deg, #ffffff 0%, #ffc0cb 25%, #9370db 50%, #0abab5 100%);
+    position: relative;
+    background: linear-gradient(135deg, #ffffff 0%, #ffc0cb 25%, #a183de 50%, #0fe3dc 100%);
+	 /* background: linear-gradient(135deg, #ffffff, #ffc0cb, #e0c0ff, #aeeeee); */
     background-size: 400% 400%;
     display: flex;
     justify-content: center;
@@ -11,12 +13,50 @@
     overflow: hidden;
 }
 
+
 @keyframes gradientBG {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
+        /* Floating animation for background elements */
+        .floating-element {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
 /* All other styles stay the same */
 /* @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800'); */
 
@@ -42,18 +82,18 @@
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         } */
-h1, h2 {
+.form-container h1, h2 {
   font-weight: 800;
-  color: #4b0082;
+  color: #4ac3c3;
   text-align: center;
 }
 
 p {
 	font-size: 14px;
-	font-weight: 100;
+	/* font-weight: 100; */
 	line-height: 20px;
 	letter-spacing: 0.5px;
-	margin: 20px 0 30px;
+	/* margin: 20px 0 30px; */
 }
 
 span {
@@ -61,17 +101,17 @@ span {
 }
 
 a {
-  color: #4b0082;
+  color: #000000;
 	font-size: 14px;
 	text-decoration: none;
 	margin: 15px 0;
 }
 
-button {
-  border-radius: 30px;
+.auth-page button {
+  border-radius: 15px;
   border: none;
   padding: 12px 50px;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
   cursor: pointer;
   background: linear-gradient(45deg, #ffffff, #ffb6c1, #dda0dd, #40e0d0);
@@ -79,19 +119,20 @@ button {
   text-transform: uppercase;
   box-shadow: 6px 6px 16px rgba(0,0,0,0.15), -6px -6px 16px rgba(255,255,255,0.7);
   transition: transform 0.2s ease, box-shadow 0.3s ease, background 0.5s ease;
+  margin-top: 5%;
 }
 
-button:hover {
+.auth-page button:hover {
   transform: translateY(-3px);
   box-shadow: 8px 8px 20px rgba(0,0,0,0.2), -8px -8px 20px rgba(255,255,255,0.8);
   background: linear-gradient(45deg, #ffffff, #ff99b0, #c288ff, #30dcdc);
 }
 
-button:focus {
+.auth-page button:focus {
 	outline: none;
 }
 
-button.ghost {
+.auth-page button.ghost {
   background: rgba(255,255,255,0.2);
   border: 1px solid #fff;
   color: #fff;
@@ -108,6 +149,7 @@ form {
 	text-align: center;
       /* border-radius: 20px; */
   box-shadow: 10px 10px 30px rgba(0,0,0,0.1), -10px -10px 30px rgba(255,255,255,0.7);
+  gap: 10px;
 }
 
 input {
@@ -120,7 +162,7 @@ input {
 }
 
 .container {
-  background: linear-gradient(135deg, #ffffff, #ffe6f0, #e0c0ff, #aeeeee);
+  /* background: linear-gradient(135deg, #ffffff, #ffe6f0, #e0c0ff, #aeeeee); */
   border-radius: 30px;
   box-shadow: 20px 20px 60px rgba(0,0,0,0.1), -20px -20px 60px rgba(255,255,255,0.7);
 	border-radius: 30px;
@@ -130,6 +172,7 @@ input {
 	max-width: 100%;
 	min-height: 480px;
       transition: all 0.6s ease-in-out;
+	  margin-top: -4%;
 }
 
 .form-container {
@@ -192,11 +235,12 @@ input {
 
 .overlay {
 	/* background: #FF416C;
-	background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-	background: linear-gradient(to right, #FF4B2B, #FF416C);
+	background: -webkit-linear-gradient(to right, #ffffff, #ffc0cb);
+	background: linear-gradient(to right, #a183de, #0fe3dc);
 	background-repeat: no-repeat;
 	background-size: cover; */
-      background: linear-gradient(120deg, #ffb6c1, #dda0dd, #40e0d0, #ffffff);
+	background: linear-gradient(135deg, #0fe3dc 0%, #a183de 25%, #ebbcc4 50%, #ffffff 100%);
+      /* background: linear-gradient(120deg, #ffb6c1, #dda0dd, #dda0dd, #ffffff); */
   color: #fff;
 	/* background-position: 0 0; */
 	position: relative;
@@ -224,6 +268,10 @@ input {
 	width: 50%;
 	transform: translateX(0);
 	transition: transform 0.6s ease-in-out;
+	h1{
+		color: #ffffff;
+		font-weight: 800;
+	}
 }
 
 .overlay-left {
@@ -259,31 +307,28 @@ input {
 }
 
 footer {
-  background-color: rgba(159, 156, 156, 0.2);
+  background-color: rgba(255, 255, 255, 0.139);
   backdrop-filter: blur(5px);
-  color: #770888;
-  font-size: 9px;
+  color: #000000;
+  font-size: 12px;
+  font-weight: 500;
   bottom: 0;
   position: fixed;
   left: 0;
   right: 0;
-  text-align: center;
-  padding: 8px 0;
-  z-index: 999;
-  font-family: 'Open Dyslexic', sans-serif;
+  /* text-align: center; */
+  padding: 5px 0;
+  /* z-index: 999; */
 }
 
 footer p {
-    margin: 10px 0;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	margin-top: .5%;
 }
 
 footer i {
-  color: red;
+  color: rgb(255, 255, 255);
 }
 
-footer a {
-  color: #40e0d0;
-  text-decoration: none;
-  font-weight: bold;
-}
- 
