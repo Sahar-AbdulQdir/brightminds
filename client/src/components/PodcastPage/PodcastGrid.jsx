@@ -50,14 +50,39 @@ const PodcastGrid = () => {
     }
   };
 
-  const handleSaveEpisode = (episode) => {
-    const saved = JSON.parse(localStorage.getItem("savedEpisodes")) || [];
-    if (!saved.find((e) => e.id === episode.id)) {
-      saved.push(episode);
-      localStorage.setItem("savedEpisodes", JSON.stringify(saved));
-      alert(`Saved: ${episode.title}`);
-    }
-  };
+const handleSaveEpisode = async (episode) => {
+  const email = localStorage.getItem("userEmail");
+  if (!email) {
+    alert("Please sign in to save items");
+    return;
+  }
+
+  try {
+    const itemToSave = {
+      type: "podcast",
+      title: episode.title,
+      identifier: episode.id,
+      audio: episode.audio,
+      image: episode.image,
+      description: episode.publisher || "No description",
+      duration: episode.duration || "N/A",
+    };
+
+    const res = await fetch("http://localhost:5000/api/save-item", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, item: itemToSave }),
+    });
+
+    if (!res.ok) throw new Error("Failed to save item");
+
+    alert(`Saved podcast: ${episode.title}`);
+  } catch (err) {
+    console.error(err);
+    alert("Could not save the podcast");
+  }
+};
+
 
   return (
     <section className="podcast-section">

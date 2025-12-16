@@ -1,50 +1,73 @@
-.tools-resources {
-  padding: 2rem;
-  background-color: #f5f5f5bd;
-  border-radius: 20px;
+.tools-page {
+  min-height: 100vh;
+  padding: 120px 40px 60px;
+  background: linear-gradient(135deg, #0b1020, #1a1f3c);
+  color: #ffffff;
+  font-family: "Poppins", system-ui, sans-serif;
 }
 
-.main-title {
+.tools-title {
   text-align: center;
-  margin-bottom: 2rem;
-  font-size: 2rem;
-  color: #000;
+  font-size: 3.2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
 }
 
-.category {
-  margin-bottom: 2rem;
-  padding: 1rem;
-  border-radius: 15px;
-  background-color: #f5c8efe1;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+.tools-subtitle {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 60px;
+  font-size: 1.6rem;
+  opacity: 0.85;
+  line-height: 1.6;
 }
 
-.category-title {
-  display: flex;
-  align-items: center;
-  color: #000;
-  gap: 0.5rem;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-}
-
+/* Grid that holds both tools */
 .tools-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 50px;
+  align-items: start;
 }
 
-.tool-btn {
-  padding: 0.75rem 1rem;
-  border: 2px solid #7982e0;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  background-color: white;
-  transition: 0.2s;
+/* Make sure inner tool cards don’t stretch weirdly */
+.tools-grid > * {
+  width: 100%;
 }
 
-.tool-btn:hover {
-  background-color: #7982e0;
-  color: white;
+/* Optional subtle entrance animation */
+.tools-grid > * {
+  animation: fadeUp 0.6s ease both;
+}
+
+.tools-grid > *:nth-child(2) {
+  animation-delay: 0.15s;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile optimization */
+@media (max-width: 600px) {
+  .tools-page {
+    padding: 100px 20px 40px;
+  }
+
+  .tools-title {
+    font-size: 2.6rem;
+  }
+
+  .tools-subtitle {
+    font-size: 1.4rem;
+    margin-bottom: 40px;
+  }
 }

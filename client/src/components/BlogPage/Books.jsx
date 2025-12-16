@@ -66,12 +66,39 @@ const Books = () => {
     audioRef.current.currentTime += seconds;
   };
 
-  const saveBook = (book) => {
-    const saved = JSON.parse(localStorage.getItem("savedBooks")) || [];
-    if (!saved.find((b) => b.identifier === book.identifier)) {
-      localStorage.setItem("savedBooks", JSON.stringify([...saved, book]));
-    }
-  };
+const saveBook = async (book) => {
+  const email = localStorage.getItem("userEmail");
+  if (!email) {
+    alert("Please sign in to save items");
+    return;
+  }
+
+  try {
+    const itemToSave = {
+      type: "book",
+      title: book.title,
+      identifier: book.identifier,
+      image: `https://archive.org/services/img/${book.identifier}`,
+      description: book.subject?.[0] || "No description",
+      duration: "N/A",
+    };
+
+    const res = await fetch("http://localhost:5000/api/save-item", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, item: itemToSave }),
+    });
+
+    if (!res.ok) throw new Error("Failed to save item");
+
+    alert("Book saved!");
+  } catch (err) {
+    console.error(err);
+    alert("Could not save the book");
+  }
+};
+
+
 
   const filterByGenre = (genre) => {
     setSelectedGenre(genre);

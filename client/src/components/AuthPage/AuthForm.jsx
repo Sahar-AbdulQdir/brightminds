@@ -29,12 +29,13 @@ const AuthForm = () => {
       if (res.ok) {
         alert(data.message);
         localStorage.setItem("userName", name);
+        localStorage.setItem("userEmail", email);
         navigate("/home"); // Redirect to home
       } else {
         alert(data.message);
       }
     } catch (err) {
-      console.error(err);
+      console.error(err); 
       alert("Something went wrong during sign up");
     }
   };
@@ -57,6 +58,7 @@ const AuthForm = () => {
       if (res.ok) {
         alert(`Welcome back, ${data.user.name}!`);
         localStorage.setItem("userName", data.user.name);
+        localStorage.setItem("userEmail", data.user.email);
         navigate("/home"); // Redirect to home
       } else {
         alert(data.message);
