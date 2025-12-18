@@ -21,6 +21,7 @@ const Books = () => {
 
   const mainGenres = ["All", "Fiction", "Science", "History", "Poetry", "Philosophy", "Adventure"];
 
+  // Fetch books from archive.org
   useEffect(() => {
     fetch(
       "https://archive.org/advancedsearch.php?q=collection:(librivoxaudio)&fl[]=identifier&fl[]=title&fl[]=subject&rows=200&page=1&output=json"
@@ -32,11 +33,16 @@ const Books = () => {
       });
   }, []);
 
+  // Filter and paginate books
   useEffect(() => {
     let filtered = books;
     if (selectedGenre !== "All") {
       filtered = books.filter((b) =>
-        b.subject?.some((s) => s.toLowerCase().includes(selectedGenre.toLowerCase()))
+        Array.isArray(b.subject)
+          ? b.subject.some((s) => s.toLowerCase().includes(selectedGenre.toLowerCase()))
+          : typeof b.subject === "string"
+          ? b.subject.toLowerCase().includes(selectedGenre.toLowerCase())
+          : false
       );
     }
 
@@ -45,6 +51,7 @@ const Books = () => {
     setDisplayedBooks(filtered.slice(start, end));
   }, [books, selectedGenre, currentPage]);
 
+  // Audio functions
   const loadAndPlay = async (id) => {
     const res = await fetch(`https://archive.org/metadata/${id}`);
     const data = await res.json();
@@ -66,39 +73,37 @@ const Books = () => {
     audioRef.current.currentTime += seconds;
   };
 
-const saveBook = async (book) => {
-  const email = localStorage.getItem("userEmail");
-  if (!email) {
-    alert("Please sign in to save items");
-    return;
-  }
+  const saveBook = async (book) => {
+    const email = localStorage.getItem("userEmail");
+    if (!email) {
+      alert("Please sign in to save items");
+      return;
+    }
 
-  try {
-    const itemToSave = {
-      type: "book",
-      title: book.title,
-      identifier: book.identifier,
-      image: `https://archive.org/services/img/${book.identifier}`,
-      description: book.subject?.[0] || "No description",
-      duration: "N/A",
-    };
+    try {
+      const itemToSave = {
+        type: "book",
+        title: book.title,
+        identifier: book.identifier,
+        image: `https://archive.org/services/img/${book.identifier}`,
+        description: book.subject?.[0] || "No description",
+        duration: "N/A",
+      };
 
-    const res = await fetch("http://localhost:5000/api/save-item", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, item: itemToSave }),
-    });
+      const res = await fetch("http://localhost:5000/api/save-item", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, item: itemToSave }),
+      });
 
-    if (!res.ok) throw new Error("Failed to save item");
+      if (!res.ok) throw new Error("Failed to save item");
 
-    alert("Book saved!");
-  } catch (err) {
-    console.error(err);
-    alert("Could not save the book");
-  }
-};
-
-
+      alert("Book saved!");
+    } catch (err) {
+      console.error(err);
+      alert("Could not save the book");
+    }
+  };
 
   const filterByGenre = (genre) => {
     setSelectedGenre(genre);
@@ -109,13 +114,23 @@ const saveBook = async (book) => {
     (selectedGenre === "All"
       ? books.length
       : books.filter((b) =>
-          b.subject?.some((s) => s.toLowerCase().includes(selectedGenre.toLowerCase()))
+          Array.isArray(b.subject)
+            ? b.subject.some((s) => s.toLowerCase().includes(selectedGenre.toLowerCase()))
+            : typeof b.subject === "string"
+            ? b.subject.toLowerCase().includes(selectedGenre.toLowerCase())
+            : false
         ).length) / booksPerPage
   );
 
   return (
-    <div>
-      {/* Genre buttons (styled like topics) */}
+    <div className="library-container">
+      {/* Top Border */}
+      <div className="library-border-top">
+        <div className="library-nameplate">Knowledge Repository</div>
+      </div>
+
+      {/* Left Shelf: Genre Buttons */}
+      <div className="library-border-left">
       <div className="genre-buttons">
         {mainGenres.map((genre) => (
           <div
@@ -130,57 +145,60 @@ const saveBook = async (book) => {
           </div>
         ))}
       </div>
-
-      {/* Books grid */}
-      <div className="shelf-grid">
-        {displayedBooks.map((book) => (
-          <div className="book-wrapper" key={book.identifier}>
-            <div className="book-container">
-              <div className="book">
-                <img
-                  src={`https://archive.org/services/img/${book.identifier}`}
-                  alt={book.title}
-                />
-              </div>
-            </div>
-
-            <div className="controls">
-              <FaBackward onClick={() => seek(-10)} />
-              <FaPlay onClick={() => loadAndPlay(book.identifier)} />
-              <FaPause onClick={() => audioRef.current.pause()} />
-              <FaForward onClick={() => seek(10)} />
-              <FaBookmark onClick={() => saveBook(book)} />
-            </div>
-          </div>
-        ))}
       </div>
 
-      {/* Pagination arrows (styled like topics) */}
-      <div className="genre-buttons">
+      {/* Right Shelf: Pagination */}
+      <div className="library-border-right">
         <button
-          className="genre-btn"
+          className="book-spine"
           onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
           disabled={currentPage === 1}
         >
-          <div className="genre-btn-icon">
-            <FaChevronLeft />
-          </div>
-          <div className="genre-btn-label">Prev</div>
+          Prev
         </button>
-        <span className="page-info">
-          Page {currentPage} / {totalPages}
+        <span style={{ margin: "15px 0", color: "#e6dcc9" }}>
+          {currentPage} / {totalPages}
         </span>
         <button
-          className="genre-btn"
+          className="book-spine"
           onClick={() => setCurrentPage((p) => Math.min(totalPages, p + 1))}
           disabled={currentPage === totalPages}
         >
-          <div className="genre-btn-icon">
-            <FaChevronRight />
-          </div>
-          <div className="genre-btn-label">Next</div>
+          Next
         </button>
       </div>
+
+      {/* Center Content: Books Grid */}
+      <div className="library-content">
+        <div className="shelf-grid">
+          {displayedBooks.map((book) => (
+            <div className="book-wrapper" key={book.identifier}>
+              <div className="book-container">
+                <div className="book">
+                  <img
+                    src={`https://archive.org/services/img/${book.identifier}`}
+                    alt={book.title}
+                  />
+                </div>
+              </div>
+              <div className="controls">
+                <FaBackward onClick={() => seek(-10)} />
+                <FaPlay onClick={() => loadAndPlay(book.identifier)} />
+                <FaPause onClick={() => audioRef.current.pause()} />
+                <FaForward onClick={() => seek(10)} />
+                <FaBookmark onClick={() => saveBook(book)} />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Bottom Border */}
+      {/* <div className="library-border-bottom">
+        <div className="library-stamp">Established 1847</div>
+        <div>Reference Section - Non-circulating</div>
+        <div className="library-stamp">Library Seal</div>
+      </div> */}
     </div>
   );
 };

@@ -1,0 +1,103 @@
+.books-slider-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 40px 0 80px; /* extra bottom space for image overflow */
+}
+
+.books-slider {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px;
+  overflow-y: hidden;
+  padding-bottom: 70px;
+}
+
+.books-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.book-card {
+ width: 40%;
+ height: 250px;
+  display: flex;
+  gap: 20px;
+  padding: 24px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* 🔥 IMAGE OVERFLOW MAGIC */
+.book-cover {
+  width: 170px;
+  height: 270px;
+  object-fit: cover;
+  position: absolute;
+  bottom: -60px; /* half outside */
+  left: 24px;
+   border-radius: 2px;
+ box-shadow: -1px 2px 9px 1px #4e4d4d;
+ transition: .3s ease;
+ flex-shrink: 0;
+}
+
+/* push text right to avoid overlap */
+.book-info {
+  margin-left: 220px;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.book-author {
+  font-size: 0.85rem;
+  color: #fff;
+  opacity: 0.9;
+}
+
+.book-rating {
+  display: flex;
+  margin: 6px 0;
+}
+
+.book-description {
+  font-size: 0.6rem;
+  color: #fff;
+  opacity: 0.95;
+  line-height: 1.4;
+}
+
+
+/* Arrows OUTSIDE cards */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #ffffff;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #8a1d98;
+  width: 5px;
+  height: 5px;
+  border-radius: 30%;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow.left {
+  left: 10px;
+}
+
+.arrow.right {
+  right: 10px;
+}

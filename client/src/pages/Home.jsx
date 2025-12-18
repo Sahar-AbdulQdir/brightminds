@@ -54,7 +54,7 @@ const Home = () => {
             <button className="read-more-btn">Read More</button>
           </div>
 
-          <div className="podcast-card">
+          <div className="home-podcast-card">
             <div className="podcast-left">
               <img src={podcastImg} alt="Podcast" className="podcast-img" />
             </div>

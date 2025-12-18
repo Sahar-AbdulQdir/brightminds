@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:wght@300;400&display=swap");
+
+:root {
+  --c1: #f0f8ff;
+  --c2: #000000;
+}
+
+.article {
+  font-family: "Roboto Flex", Arial, Helvetica, serif;
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 1.2rem;
+  padding: 1.5rem;
+}
+
+.article blockquote {
+  position: relative;
+  padding: 2.5rem 3rem 2.5rem 3rem;
+  min-width: 800px;
+  margin: 3rem -4rem;
+  font-size: 1.6rem;
+  color:black;
+  border-radius: 12px;
+  /* background-color: #fdfdfd; */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    background: conic-gradient(from 180deg at 100% calc(100% - 1rem), var(--c2) 0 25%, #fff0 0 100%),
+              conic-gradient(from 180deg at 1rem 50%, var(--c2) 0 25%, #fff0 0 100%),
+              conic-gradient(from 0deg at calc(100% - 1rem) 50%, var(--c2) 0 25%, #fff0 0 100%),
+              conic-gradient(from 0deg at 0rem 1rem, var(--c2) 0 25%, #fff0 0 100%);
+}
+
+.article blockquote p {
+  font-weight: bold;
+  line-height: 1.5;
+  margin: 0;
+  font-size: 1.5rem;
+  text-align: justify;
+  color: black;
+}
+.article blockquote p::first-letter {
+  font-size: 2rem;          /* Make the first letter bigger */
+  font-weight: bold;
+  background-color: var(--c2); /* white background */
+  color: white;            /* Text color inside the black background */
+  padding: 0.2rem 0.4rem;   
+  margin-right: 0.2rem; 
+  margin-top: 2%;
+  border-radius: 4px;          /* Rounded corners for style */
+  float: left;                 /* Float to the left like a drop cap */
+}
+
+.article blockquote cite {
+  display: block;
+  margin-left: 37rem;
+  margin-top: 1.2rem;
+  font-weight: bold;
+  color: white;
+  background-color: var(--c2);
+  text-align:center;
+  font-size: 1rem;
+  width: 110px;
+}
+
+.quote-icon {
+  font-size: 2.5rem;
+  color: var(--c2);
+  position: absolute;
+}
+
+.quote-icon.left {
+  top: 2rem;
+  left: -0.5rem;
+}
+
+.quote-icon.right {
+  bottom: 2rem;
+  right: -0.5rem;
+}
+
+/* MOBILE */
+@media (max-width: 767px) {
+  .article {
+    max-width: 95%;
+    padding: 1rem;
+  }
+
+  .article blockquote {
+    font-size: 1.3rem;
+    padding: 2rem;
+  }
+
+  .quote-icon {
+    font-size: 2rem;
+  }
+}

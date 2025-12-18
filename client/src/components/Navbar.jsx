@@ -123,7 +123,7 @@ function MyNavbar() {
 
         <nav ref={navRef}>
           <Link to="/">Home</Link>
-          <Link to="/bloggy">Blog</Link>
+          <Link to="/AudioBooks">Blog</Link>
           <Link to="/games">Games</Link>
           <Link to="/podcasts">Podcasts</Link>
 

@@ -45,7 +45,7 @@ const BHeroSection = () => {
         alignItems: "center",
         overflow: "hidden",
         fontFamily: "Helvetica Neue, sans-serif",
-        marginTop: "-2rem",
+        marginTop: "-3rem",
       }}
     >
       <div
@@ -123,12 +123,13 @@ const BHeroSection = () => {
           </div>
         </FloatingCard>
 
-        <FloatingCard
+        {/* <FloatingCard
           style={{
-            top: "140px",
+            top: "200px",
             left: "calc(50% - 100px)",
             width: "220px",
             background: "#8869FF",
+            
           }}
         >
           <div
@@ -140,12 +141,13 @@ const BHeroSection = () => {
               boxShadow: "0 6px 12px rgba(136, 105, 255, 0.2)",
               fontSize: 14,
               lineHeight: 1.3,
+              
             }}
           >
             <div style={{ fontWeight: "700", marginBottom: 8 }}>
               Appointment with
             </div>
-            <div style={{ fontWeight: "700", fontSize: 16, marginBottom: 6 }}>
+            <div style={{ fontWeight: "700", fontSize: 16, marginBottom: 20 }}>
               Dr. Gary Elkins
             </div>
 
@@ -193,7 +195,7 @@ const BHeroSection = () => {
               12:00 PM, 7 Oct
             </div>
           </div>
-        </FloatingCard>
+        </FloatingCard> */}
 
         <FloatingCard
           style={{
@@ -201,7 +203,7 @@ const BHeroSection = () => {
             left: "20px",
             width: "180px",
             background: "#111",
-            color: "white",
+            color: "Black",
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -224,8 +226,9 @@ const BHeroSection = () => {
               bottom: 4,
               right: 12,
               fontWeight: "900",
-              fontSize: 24,
-              opacity: 0.07,
+              fontSize: 15,
+              // opacity: 0.07,
+              color: "Black",
             }}
           >
             ▶
@@ -238,7 +241,7 @@ const BHeroSection = () => {
             right: "20px",
             width: "180px",
             background: "#8869FF",
-            color: "white",
+            color: "Black",
           }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -263,6 +266,7 @@ const BHeroSection = () => {
               fontWeight: "900",
               fontSize: 24,
               opacity: 0.07,
+              top: 120,
             }}
           >
             ❯
@@ -324,7 +328,7 @@ const BHeroSection = () => {
 
         {/* BUTTONS */}
         <div style={{ display: "flex", justifyContent: "center", gap: "16px" }}>
-          <button
+          {/* <button
             style={{
               background: "white",
               borderRadius: "32px",
@@ -337,7 +341,7 @@ const BHeroSection = () => {
             }}
           >
             Learn More
-          </button>
+          </button> */}
 
           <button
             style={{
@@ -355,7 +359,7 @@ const BHeroSection = () => {
               boxShadow: "0 0 12px rgb(136 105 255 / 0.6)",
             }}
           >
-            Get Started <span>→</span>
+            Start Exploring <span>→</span>
           </button>
         </div>
       </div>

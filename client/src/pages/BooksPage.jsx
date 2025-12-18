@@ -2,10 +2,15 @@ import React from "react";
 import BHeroSection from "../components/BlogPage/Hero.jsx";
 import "../components/BlogPage/BlogsPage/blogs.css";
 import MyNavbar from "../components/Navbar.jsx";
-import Topics from "../components/BlogPage/topics.jsx";
+import Topics from "../components/BlogPage/topicsButtons.jsx";
 import Articles from "../components/BlogPage/articles.jsx";
 import Books from "../components/BlogPage/Books.jsx";
+import BooksSlider from "../components/BlogPage/BooksSlider.jsx";
+import QuoteCard from "../components/BlogPage/QuoteCard.jsx";
+import Notebook  from "../components/BlogPage/Nootbook.jsx";
 import { useEffect } from 'react';
+
+
 
 const Bloggy = () => {
 // useEffect(() => {
@@ -26,8 +31,11 @@ const Bloggy = () => {
       {/* Main Content */}
       <div className="blogs-content-section">
         <BHeroSection/>
+        <QuoteCard/>
+        
         {/* <Topics/> */}
         {/* <Articles/> */}
+        <BooksSlider/>
         <Books/>
       
 

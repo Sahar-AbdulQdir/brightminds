@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+
+.notebook-card {
+  width: 300px;
+  background: #fff8e7;
+  border: 2px solid #f0e4d7;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 15px;
+  font-family: 'Patrick Hand', cursive;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  position: relative;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.notebook-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.notebook-header h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.notebook-header .author {
+  display: block;
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 3px;
+}
+
+.description {
+  margin: 15px 0;
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.notebook-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.play-btn, .like-btn {
+  background: #f6d365;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.play-btn:hover, .like-btn:hover {
+  background: #f9c74f;
+  transform: scale(1.05);
+}
+
+.play-btn.playing {
+  background: #90be6d;
+  color: white;
+}
+
+.like-btn.liked {
+  color: white;
+  background: #f94144;
+}

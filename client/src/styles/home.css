@@ -64,6 +64,7 @@ border-radius: 16px;
 
 .welcome-card p {
   color: #555;
+  font-size: 1rem;
   line-height: 1.4;
 }
 
@@ -82,18 +83,19 @@ border-radius: 16px;
   background: #333;
 }
 
-.podcast-card {
+.home-podcast-card{
   display: flex;
   /* align-items: center; */
   background: white;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  padding: .5rem;
+  /* padding: .5rem; */
+  margin-top: 5%;
 }
 
 .podcast-left {
-  flex: 1.1;
+  flex: .8;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -123,6 +125,7 @@ border-bottom-left-radius: 15px;
 
 .podcast-right p {
   color: #444;
+  font-size: 1rem;
   margin-bottom: 0.5rem;
 }
 
