@@ -52,7 +52,7 @@ const BooksSlider = () => {
           sliderRef.current.scrollTo({ left: 0, behavior: "smooth" });
         }
       }
-    }, 4000);
+    }, 3500);
 
     return () => clearInterval(interval);
   }, []);
@@ -99,7 +99,7 @@ const BooksSlider = () => {
           </div>
         ))}
       </div>
-
+<div/>
       <button className="arrow right" onClick={() => scroll("right")}>
         &#8250;
       </button>

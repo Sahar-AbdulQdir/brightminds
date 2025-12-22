@@ -37,7 +37,7 @@ const BHeroSection = () => {
     <section
       style={{
         position: "relative",
-        background: "linear-gradient(45deg, #bf96d7ff 0%, #ffffff 50%, #f0c6f0ff 100%)",
+        background: "linear-gradient(45deg, #bf96d7ff 0%, #ffffff 50%, #f3bef3ff 100%)",
         borderRadius: "16px",
         padding: "60px 20px",
         display: "flex",
@@ -359,7 +359,10 @@ const BHeroSection = () => {
               boxShadow: "0 0 12px rgb(136 105 255 / 0.6)",
             }}
           >
-            Start Exploring <span>→</span>
+            Start Exploring <span style={{ transform: "rotate(90deg)",
+              fontSize: "1rem",
+              fontWeight: 900
+            }}>➺</span>
           </button>
         </div>
       </div>

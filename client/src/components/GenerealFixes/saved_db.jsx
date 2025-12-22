@@ -138,7 +138,7 @@ const SavedPage = () => {
         {/* CONTENT */}
         {filteredItems.length === 0 ? (
           <div className="empty-state">
-            <div className="empty-icon">📚🎧</div>
+            <div className="empty-icon">📖🎧</div>
             <h3>No saved items yet</h3>
             <p>Save podcasts and audiobooks to see them here</p>
           </div>

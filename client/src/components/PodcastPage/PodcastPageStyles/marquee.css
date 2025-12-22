@@ -1,0 +1,35 @@
+/* Wrapper */
+.scroll-parallax {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Scrolling container */
+.scroll-scroller {
+  display: flex;
+  white-space: nowrap;
+  text-align: center;
+  font-family: sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  gap: 2rem;
+  font-size: 2.5rem; /* text-4xl */
+}
+
+/* Medium screens */
+@media (min-width: 768px) {
+  .scroll-scroller {
+    font-size: 5rem;
+    line-height: 5rem;
+  }
+}
+
+/* Individual text copy */
+.scroll-item {
+  flex-shrink: 0;
+}
+
+/* Optional shadow */
+.scroll-shadow {
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}

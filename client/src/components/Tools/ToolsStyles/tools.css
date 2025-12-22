@@ -1,41 +1,41 @@
 .tools-page {
   min-height: 100vh;
   padding: 120px 40px 60px;
-  background: linear-gradient(135deg, #0b1020, #1a1f3c);
-  color: #ffffff;
-  font-family: "Poppins", system-ui, sans-serif;
+  background: white;
+  color: #000000;
+  border-radius: 25px;
 }
 
 .tools-title {
-  text-align: center;
+  text-align: left;
   font-size: 3.2rem;
   font-weight: 700;
-  margin-bottom: 12px;
+  margin-top: -7%;
   letter-spacing: 0.5px;
+  color: #da97c4;
 }
 
 .tools-subtitle {
-  text-align: center;
+  text-align: left !important;
   max-width: 720px;
-  margin: 0 auto 60px;
+  /* margin: 0 auto 60px; */
   font-size: 1.6rem;
   opacity: 0.85;
   line-height: 1.6;
 }
 
-/* Grid that holds both tools */
 .tools-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-  gap: 50px;
-  align-items: start;
+  margin-top: -5%;
+  display: flex;
+  gap: 20px; /* optional spacing between tools */
+  flex-wrap: wrap; /* optional: allows wrapping on small screens */
 }
 
-/* Make sure inner tool cards don’t stretch weirdly */
 .tools-grid > * {
-  width: 100%;
+  flex: 1 1 300px; /* grow, shrink, base width */
+  max-width: 500px; /* optional */
+  animation: fadeUp 0.6s ease both;
 }
-
 /* Optional subtle entrance animation */
 .tools-grid > * {
   animation: fadeUp 0.6s ease both;
@@ -62,6 +62,14 @@
     padding: 100px 20px 40px;
   }
 
+    .tools-grid {
+    flex-direction: column;
+  }
+
+  .tools-grid > * {
+    width: 100%;
+  }
+
   .tools-title {
     font-size: 2.6rem;
   }
@@ -71,3 +79,4 @@
     margin-bottom: 40px;
   }
 }
+

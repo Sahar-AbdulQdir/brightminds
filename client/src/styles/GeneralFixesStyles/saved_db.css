@@ -6,15 +6,17 @@
 .saved-page-container {
   min-height: 100vh;
   padding: 3.5rem 6%;
-  background: linear-gradient(
+  /* background: linear-gradient(
     135deg,
     #ffffff,
     #ffe6f1,
     #dbc9ff,
     #bff3ff
-  );
-  background-size: 300% 300%;
-  animation: gradientFlow 16s ease infinite;
+  ); */
+  background: white;
+  border-radius: 25px;
+  /* background-size: 300% 300%; */
+  /* animation: gradientFlow 16s ease infinite; */
   font-family: "Montserrat", system-ui, sans-serif;
   letter-spacing: 0.02em;
 }
@@ -41,7 +43,7 @@
 .saved-title {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #2e1c55;
+  color: #da97c4;
   text-shadow: 0 2px 8px rgba(155, 246, 255, 0.4);
 }
 
@@ -65,7 +67,7 @@
   border: none;
   background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(14px);
-  color: #4a2f7c;
+  color: #000000;
   cursor: pointer;
   transition: all 0.25s ease;
   box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
@@ -83,7 +85,7 @@
     #e6c6ff,
     #c6f2ff
   );
-  color: #2d1f4a;
+  color: #000000;
   font-weight: 600;
 }
 
@@ -275,6 +277,7 @@
 .empty-icon {
   font-size: 3rem;
   margin-bottom: 1rem;
+  filter: grayscale(100%) brightness(0);
 }
 
 /* =========================

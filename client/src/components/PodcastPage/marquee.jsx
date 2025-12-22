@@ -1,4 +1,3 @@
-import React from "react";
 import { useRef, useLayoutEffect, useState } from 'react';
 import {
   motion,
@@ -9,6 +8,8 @@ import {
   useVelocity,
   useAnimationFrame
 } from 'motion/react';
+import React from "react";
+import './/PodcastPageStyles/marquee.css';
 
 function useElementWidth(ref) {
   const [width, setWidth] = useState(0);
@@ -36,16 +37,17 @@ export const ScrollVelocity = ({
   stiffness = 400,
   numCopies = 6,
   velocityMapping = { input: [0, 1000], output: [0, 5] },
-  parallaxClassName,
-  scrollerClassName,
+  parallaxClassName = '',
+  scrollerClassName = '',
   parallaxStyle,
   scrollerStyle
 }) => {
+
   function VelocityText({
     children,
-    baseVelocity = velocity,
+    baseVelocity,
     scrollContainerRef,
-    className = '',
+    className,
     damping,
     stiffness,
     numCopies,
@@ -59,14 +61,16 @@ export const ScrollVelocity = ({
     const scrollOptions = scrollContainerRef ? { container: scrollContainerRef } : {};
     const { scrollY } = useScroll(scrollOptions);
     const scrollVelocity = useVelocity(scrollY);
+
     const smoothVelocity = useSpring(scrollVelocity, {
-      damping: damping ?? 50,
-      stiffness: stiffness ?? 400
+      damping,
+      stiffness
     });
+
     const velocityFactor = useTransform(
       smoothVelocity,
-      velocityMapping?.input || [0, 1000],
-      velocityMapping?.output || [0, 5],
+      velocityMapping.input,
+      velocityMapping.output,
       { clamp: false }
     );
 
@@ -75,45 +79,42 @@ export const ScrollVelocity = ({
 
     function wrap(min, max, v) {
       const range = max - min;
-      const mod = (((v - min) % range) + range) % range;
-      return mod + min;
+      return ((((v - min) % range) + range) % range) + min;
     }
 
-    const x = useTransform(baseX, v => {
-      if (copyWidth === 0) return '0px';
-      return `${wrap(-copyWidth, 0, v)}px`;
-    });
+    const x = useTransform(baseX, v =>
+      copyWidth === 0 ? '0px' : `${wrap(-copyWidth, 0, v)}px`
+    );
 
     const directionFactor = useRef(1);
-    useAnimationFrame((t, delta) => {
+
+    useAnimationFrame((_, delta) => {
       let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
 
-      if (velocityFactor.get() < 0) {
-        directionFactor.current = -1;
-      } else if (velocityFactor.get() > 0) {
-        directionFactor.current = 1;
-      }
-
+      directionFactor.current = velocityFactor.get() < 0 ? -1 : 1;
       moveBy += directionFactor.current * moveBy * velocityFactor.get();
+
       baseX.set(baseX.get() + moveBy);
     });
 
-    const spans = [];
-    for (let i = 0; i < (numCopies ?? 1); i++) {
-      spans.push(
-        <span className={`flex-shrink-0 ${className}`} key={i} ref={i === 0 ? copyRef : null}>
-          {children}
-        </span>
-      );
-    }
-
     return (
-      <div className={`${parallaxClassName} relative overflow-hidden`} style={parallaxStyle}>
+      <div
+        className={`scroll-parallax ${parallaxClassName}`}
+        style={parallaxStyle}
+      >
         <motion.div
-          className={`${scrollerClassName} flex whitespace-nowrap text-center font-sans text-4xl font-bold tracking-[-0.02em] drop-shadow md:text-[5rem] md:leading-[5rem]`}
-           style={{ x, gap: '6rem', ...scrollerStyle }}
+          className={`scroll-scroller scroll-shadow ${scrollerClassName}`}
+          style={{ x, ...scrollerStyle }}
         >
-          {spans}
+          {Array.from({ length: numCopies }).map((_, i) => (
+            <span
+              key={i}
+              ref={i === 0 ? copyRef : null}
+              className={`scroll-item ${className}`}
+            >
+              {children}
+            </span>
+          ))}
         </motion.div>
       </div>
     );
@@ -124,8 +125,7 @@ export const ScrollVelocity = ({
       {texts.map((text, index) => (
         <VelocityText
           key={index}
-          className={className}
-          baseVelocity={index % 2 !== 0 ? -velocity : velocity}
+          baseVelocity={index % 2 ? -velocity : velocity}
           scrollContainerRef={scrollContainerRef}
           damping={damping}
           stiffness={stiffness}
@@ -135,6 +135,7 @@ export const ScrollVelocity = ({
           scrollerClassName={scrollerClassName}
           parallaxStyle={parallaxStyle}
           scrollerStyle={scrollerStyle}
+          className={className}
         >
           {text}&nbsp;
         </VelocityText>

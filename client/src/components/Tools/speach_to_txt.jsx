@@ -40,7 +40,7 @@ const VoiceToText = () => {
 
   return (
     <div className="voice_to_text">
-      <h1>Voice To Text Converter</h1>
+      <h1>Voice To Text <span>Converter</span></h1>
 
       <textarea
         value={text}

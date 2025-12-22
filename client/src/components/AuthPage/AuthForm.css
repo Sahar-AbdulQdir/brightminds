@@ -97,7 +97,8 @@ p {
 }
 
 span {
-	font-size: 12px;
+	font-size: 3rem;
+	font-weight: 1000;
 }
 
 a {

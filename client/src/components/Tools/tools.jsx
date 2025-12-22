@@ -2,8 +2,8 @@ import React from "react";
 import MyNavbar from "../Navbar.jsx"
 import VoiceToText from "../Tools/speach_to_txt.jsx";
 import TextToSpeech from "../Tools/txt_to_speach.jsx";
-import TextEditor from "./textEditor.jsx";
-// import "../Tools/ToolsStyles/tools.css";
+import TextSimplifier from "./textEditor.jsx";
+import "../Tools/ToolsStyles/tools.css";
 
 const Tools = () => {
   return (
@@ -16,10 +16,13 @@ const Tools = () => {
           Convert your voice to text or turn your text into natural speech.
         </p>
 
-        <div className="tools-grid">
+<div
+  className="tools-grid"
+  style={{ display: "flex", gap: "20px", flexWrap: "wrap" }}
+>
           <VoiceToText />
           <TextToSpeech />
-          <TextEditor />
+          <TextSimplifier/>
         </div>
       </div>
     </>
