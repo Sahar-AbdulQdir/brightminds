@@ -2,7 +2,7 @@
 
 :root {
   --c1: #f0f8ff;
-  --c2: #000000;
+  --c2: #383838;
 }
 
 .article {
@@ -19,7 +19,7 @@
   min-width: 800px;
   margin: 3rem -4rem;
   font-size: 1.6rem;
-  color:black;
+  color: var(--c2);
   border-radius: 12px;
   /* background-color: #fdfdfd; */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
@@ -35,7 +35,7 @@
   margin: 0;
   font-size: 1.5rem;
   text-align: justify;
-  color: black;
+  color: var(--c2);
 }
 .article blockquote p::first-letter {
   font-size: 2rem;          /* Make the first letter bigger */

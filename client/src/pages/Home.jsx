@@ -72,7 +72,7 @@ const Home = () => {
         <div className="right-section">
           <div className="video-card">
             <video className="video-bg" autoPlay loop muted playsInline>
-              <source src="/Hvid.mp4" type="video/mp4" />
+              <source src="/bg3.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             <div className="video-overlay-home bottom-left">

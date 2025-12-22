@@ -3,8 +3,15 @@
   width: 100%;
   overflow: hidden;
   padding: 40px 0 80px; /* extra bottom space for image overflow */
+  margin-top: 5%;
 }
 
+.books-slider-container .section-title {
+  color: #785c8a;
+  font-size: 4rem;
+  font-weight: 800;
+  /* margin-left: 5%; */
+}
 .books-slider {
   display: flex;
   gap: 20px;
@@ -27,6 +34,7 @@
   padding: 24px;
   position: relative;
   flex-shrink: 0;
+  border-radius: 12px;
 }
 
 /* 🔥 IMAGE OVERFLOW MAGIC */
@@ -37,7 +45,7 @@
   position: absolute;
   bottom: -60px; /* half outside */
   left: 24px;
-   border-radius: 2px;
+   border-radius: 15px;
  box-shadow: -1px 2px 9px 1px #4e4d4d;
  transition: .3s ease;
  flex-shrink: 0;
@@ -52,13 +60,14 @@
 
 .book-title {
   font-size: 1.2rem;
-  font-weight: bold;
+  font-weight: 900;
   color: #fff;
 }
 
 .book-author {
   font-size: 0.85rem;
   color: #fff;
+  font-weight: 700;
   opacity: 0.9;
 }
 
@@ -68,10 +77,11 @@
 }
 
 .book-description {
-  font-size: 0.6rem;
+  font-size: 0.9rem;
   color: #fff;
   opacity: 0.95;
   line-height: 1.4;
+  font-weight: 600;
 }
 
 

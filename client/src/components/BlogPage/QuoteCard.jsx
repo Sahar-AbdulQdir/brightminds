@@ -8,12 +8,10 @@ const QuoteCard = () => {
       <blockquote>
         <FaQuoteLeft className="quote-icon left" />
         <p>
-          Now I see the secret of making the best person: it is to grow in
-          the open air and to eat and sleep with the earth.it is to grow in
-          the open air and to eat and sleep with the earth.
+          Reading is escape, and the opposite of escape; it's a way to make contact with reality after a day of making things up, and it's a way of making contact with someone else's imagination after a day that's all too real
         </p>
         <FaQuoteRight className="quote-icon right" />
-        <cite>Walt Whitman</cite>
+        <cite>Nora Ephron</cite>
       </blockquote>
     </article>
   );

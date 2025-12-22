@@ -7,31 +7,31 @@ const Highlights = () => {
   const podcasts = [
     {
       id: 1,
-      title: "The Future of Tech",
-      videoSrc: "/podvid.mp4",
+      title: "How to Make Time for Everything?",
+      videoSrc: "/H_vid1.mp4",
       duration: "0:15",
-      sourceUrl: "https://example.com/podcast1"
+      sourceUrl: "https://www.youtube.com/watch?v=mAGVDDhujzc"
     },
     {
       id: 2,
-      title: "Mindfulness & Meditation",
-      videoSrc: "/podvid.mp4",
+      title: "Why Dehydration Is Worse Than You Think!",
+      videoSrc: "/H_vid2.mp4",
       duration: "0:12",
-      sourceUrl: "https://example.com/podcast2"
+      sourceUrl: "https://www.youtube.com/watch?v=JIKU7PVhEdU"
     },
     {
       id: 3,
-      title: "Business Innovation",
-      videoSrc: "/podvid.mp4",
+      title: "The Habit That Will Make Or Break Your Entire 2026!",
+      videoSrc: "/H_vid3.mp4",
       duration: "0:10",
-      sourceUrl: "https://example.com/podcast3"
+      sourceUrl: "https://www.youtube.com/watch?v=rtufWBLOXgw"
     },
     {
       id: 4,
-      title: "Science Discoveries",
-      videoSrc: "/podvid.mp4",
+      title: "Change Your Brain: Neuroscientist Dr. Andrew Huberman",
+      videoSrc: "/H_vid4.mp4",
       duration: "0:18",
-      sourceUrl: "https://example.com/podcast4"
+      sourceUrl: "https://www.youtube.com/watch?v=SwQhKFMxmDY"
     }
   ];
 
@@ -101,7 +101,7 @@ const handleHoverStop = (index) => {
                       className="podcast-source-btn"
                       onClick={(e) => handlePodcastClick(e, podcast.sourceUrl)}
                     >
-                      Listen <i className="fas fa-external-link-alt"></i>
+                    <i className="fas fa-external-link-alt"></i>
                     </button>
                   </div>
                 ))}

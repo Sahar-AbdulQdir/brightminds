@@ -31,7 +31,11 @@ header {
 }
 
 .icon-btn:hover {
-  color: #007bff; 
+    color: #ffffff;
+  background: #bd8fda;
+  border-radius: 5px;
+  padding: 2px 2px;
+  transition: ease-in-out 0.3s;
 } 
 
 /* Adjust for mobile if needed */
@@ -51,7 +55,7 @@ header h3 {
 nav {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 2.2rem;
   position: static;
   height: auto;
   width: auto;
@@ -70,7 +74,11 @@ nav a {
 }
 
 nav a:hover {
-  color: var(--secondaryColor);
+  color: #ffffff;
+  background: #bd8fda;
+  border-radius: 5px;
+  padding: 2px 2px;
+  transition: ease-in-out 0.3s;
 }
 
 /* ---------------- Hamburger Button ---------------- */

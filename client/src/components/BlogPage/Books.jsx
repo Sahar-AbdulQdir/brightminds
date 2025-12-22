@@ -19,7 +19,18 @@ const Books = () => {
   const audioRef = useRef(new Audio());
   const booksPerPage = 30;
 
-  const mainGenres = ["All", "Fiction", "Science", "History", "Poetry", "Philosophy", "Adventure"];
+  const mainGenres = [
+  "All",
+  "Fiction",
+  "Mystery",
+  "Romance",
+  "Fantasy",
+  "Science Fiction",
+  "Biography",
+  "Adventure",
+  "Historical",
+  "Poetry"
+];
 
   // Fetch books from archive.org
   useEffect(() => {
@@ -126,7 +137,7 @@ const Books = () => {
     <div className="library-container">
       {/* Top Border */}
       <div className="library-border-top">
-        <div className="library-nameplate">Knowledge Repository</div>
+        <div className="library-nameplate">ᖳᖰAudio Books Collection</div>
       </div>
 
       {/* Left Shelf: Genre Buttons */}
@@ -156,7 +167,7 @@ const Books = () => {
         >
           Prev
         </button>
-        <span style={{ margin: "15px 0", color: "#e6dcc9" }}>
+        <span style={{ margin: "15px 0", color: "#785c8a" }}>
           {currentPage} / {totalPages}
         </span>
         <button

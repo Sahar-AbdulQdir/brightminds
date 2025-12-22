@@ -75,62 +75,30 @@ app.get("/api/users", async (req, res) => {
 app.use(savedRoutes);
 
 
-app.post("/api/simplify", async (req, res) => {
+
+// Grammar & spelling check
+app.post("/api/grammar", async (req, res) => {
   try {
     const { text } = req.body;
+    if (!text?.trim()) return res.status(400).json({ message: "Text is required" });
 
-    if (!text?.trim()) {
-      return res.status(400).json({ message: "Text is required" });
-    }
-
-    // Use Hugging Face Router endpoint
-    const response = await fetch(
-      "https://router.huggingface.co/models/facebook/bart-large-cnn",
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${process.env.HF_TOKEN}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          inputs: text,
-          parameters: {
-            max_length: 120,
-            min_length: 30,
-            do_sample: false,
-          },
-          options: {
-            wait_for_model: true, // handles cold start
-          },
-        }),
-      }
-    );
+    // LanguageTool API
+    const response = await fetch("https://api.languagetoolplus.com/v2/check", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({
+        text,
+        language: "en-US",
+      }),
+    });
 
     const data = await response.json();
-    console.log("HF RAW RESPONSE:", data);
-
-    if (data.error) {
-      return res.status(503).json({
-        message: "AI model unavailable",
-        error: data.error,
-      });
-    }
-
-    // Router API still returns summary_text for BART
-    if (!Array.isArray(data) || !data[0]?.summary_text) {
-      return res.status(500).json({
-        message: "Unexpected AI response format",
-        data,
-      });
-    }
-
-    res.json({ simplifiedText: data[0].summary_text });
+    res.json(data); // contains grammar, spelling, and style suggestions
   } catch (err) {
-    console.error("❌ Simplify crash:", err);
+    console.error(err);
     res.status(500).json({ message: "Server error" });
   }
 });
-
 
 
 const PORT = process.env.PORT || 5000;

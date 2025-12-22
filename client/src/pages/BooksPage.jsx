@@ -35,9 +35,9 @@ const Bloggy = () => {
         
         {/* <Topics/> */}
         {/* <Articles/> */}
-        <BooksSlider/>
-        <Books/>
       
+        <Books/>
+        <BooksSlider/>
 
 {/* 
         <iframe
