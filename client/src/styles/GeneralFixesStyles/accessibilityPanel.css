@@ -1,28 +1,94 @@
-/* src/styles/accessibility.css */
+/* src/styles/GeneralFixesStyles/accessibilityPanel.css */
+
 .accessibility-panel {
   position: fixed;
-  top: 80px;
+  top: 90px;
   right: 20px;
-  width: 250px;
-  background: #f2f2f2;
-  border: 2px solid #ccc;
-  border-radius: 10px;
-  padding: 15px;
+  width: 280px;
+  background: #ffffff;
+  border: 2px solid #1f2937; /* strong contrast */
+  border-radius: 14px;
+  padding: 16px 18px;
   z-index: 9999;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  font-family: inherit;
 }
 
+/* Header */
 .accessibility-panel h3 {
-  margin-top: 0;
-  margin-bottom: 10px;
+  margin: 0 0 14px;
   font-size: 1.1rem;
+  font-weight: 700;
+  color: #111827;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 6px;
 }
 
+/* Setting wrapper */
 .accessibility-panel .setting {
-  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
 }
 
+/* Labels */
+.accessibility-panel label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* Inputs & select */
+.accessibility-panel select,
+.accessibility-panel input[type="number"],
+.accessibility-panel input[type="color"] {
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 2px solid #d1d5db;
+  font-size: 0.95rem;
+  background-color: #f9fafb;
+  color: #111827;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Focus state (VERY important for accessibility) */
+.accessibility-panel select:focus,
+.accessibility-panel input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.3);
+}
+
+/* Number input arrows spacing */
+.accessibility-panel input[type="number"] {
+  width: 100%;
+}
+
+/* Checkbox layout (for future options) */
+.accessibility-panel input[type="checkbox"] {
+  margin-right: 8px;
+  transform: scale(1.1);
+}
+
+/* Checkbox label row */
+.accessibility-panel .setting label:has(input[type="checkbox"]) {
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+}
+
+/* Reduce animations mode */
 .reduce-animations * {
   transition: none !important;
   animation: none !important;
+}
+
+/* Small screens */
+@media (max-width: 480px) {
+  .accessibility-panel {
+    right: 10px;
+    left: 10px;
+    width: auto;
+  }
 }
