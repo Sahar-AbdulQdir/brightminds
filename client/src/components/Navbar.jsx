@@ -16,23 +16,23 @@ function AccessibilityPanel() {
   const [font, setFont] = useState("Verdana");
   const [lineHeight, setLineHeight] = useState("1.5");
   const [letterSpacing, setLetterSpacing] = useState("0");
-  const [bgColor, setBgColor] = useState("#ffffff");
-  const [ttsEnabled, setTtsEnabled] = useState(false);
-  const [reduceAnimations, setReduceAnimations] = useState(false);
+  // const [bgColor, setBgColor] = useState("#ffffff");
+  // const [ttsEnabled, setTtsEnabled] = useState(false);
+  // const [reduceAnimations, setReduceAnimations] = useState(false);
 
   // Apply styles to the document body
   useEffect(() => {
     document.body.style.fontFamily = font;
     document.body.style.lineHeight = lineHeight;
     document.body.style.letterSpacing = `${letterSpacing}px`;
-    document.body.style.backgroundColor = bgColor;
+    // document.body.style.backgroundColor = bgColor;
 
-    if (reduceAnimations) {
-      document.body.classList.add("reduce-animations");
-    } else {
-      document.body.classList.remove("reduce-animations");
-    }
-  }, [font, lineHeight, letterSpacing, bgColor, reduceAnimations]);
+    // if (reduceAnimations) {
+    //   document.body.classList.add("reduce-animations");
+    // } else {
+    //   document.body.classList.remove("reduce-animations");
+    // }
+  }, [font, lineHeight, letterSpacing]);
 
   return (
     <div className="accessibility-panel">
@@ -40,11 +40,38 @@ function AccessibilityPanel() {
 
       <div className="setting">
         <label>Font</label>
-        <select value={font} onChange={(e) => setFont(e.target.value)}>
-          <option value="Verdana">Verdana</option>
-          <option value="Lexend">Lexend</option>
-          <option value="OpenDyslexic">OpenDyslexic</option>
-        </select>
+<select value={font} onChange={(e) => setFont(e.target.value)}>
+  {/* System fonts */}
+  <option value='"Comic Sans MS", "Comic Sans", cursive'>
+    Comic Sans
+  </option>
+
+  <option value="Arial, Helvetica, sans-serif">
+    Arial
+  </option>
+
+  <option value="Helvetica, Arial, sans-serif">
+    Helvetica
+  </option>
+
+  {/* Accessibility fonts */}
+  <option value='"OpenDyslexic", Arial, sans-serif'>
+    OpenDyslexic
+  </option>
+
+  <option value='"Atkinson Hyperlegible", Arial, sans-serif'>
+    Atkinson Hyperlegible
+  </option>
+
+  <option value='"Atkinson Hyperlegible Next", Arial, sans-serif'>
+    Atkinson Hyperlegible Next
+  </option>
+
+  <option value='"Atkinson Hyperlegible Mono", monospace'>
+    Atkinson Hyperlegible Mono
+  </option>
+</select>
+
       </div>
 
       <div className="setting">
@@ -71,16 +98,16 @@ function AccessibilityPanel() {
         />
       </div>
 
-      <div className="setting">
+      {/* <div className="setting">
         <label>Background Color</label>
         <input
           type="color"
           value={bgColor}
           onChange={(e) => setBgColor(e.target.value)}
         />
-      </div>
+      </div> */}
 
-      <div className="setting">
+      {/* <div className="setting">
         <label>
           <input
             type="checkbox"
@@ -89,9 +116,9 @@ function AccessibilityPanel() {
           />
           Text-to-Speech
         </label>
-      </div>
+      </div> */}
 
-      <div className="setting">
+      {/* <div className="setting">
         <label>
           <input
             type="checkbox"
@@ -100,7 +127,7 @@ function AccessibilityPanel() {
           />
           Reduce Animations
         </label>
-      </div>
+      </div> */}
     </div>
   );
 }

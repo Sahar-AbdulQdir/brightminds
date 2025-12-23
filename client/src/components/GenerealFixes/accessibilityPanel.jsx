@@ -6,22 +6,22 @@ function AccessibilityPanel() {
   const [font, setFont] = useState("Verdana");
   const [lineHeight, setLineHeight] = useState("1.5");
   const [letterSpacing, setLetterSpacing] = useState("0");
-  const [bgColor, setBgColor] = useState("#ffffff");
-  const [ttsEnabled, setTtsEnabled] = useState(false);
-  const [reduceAnimations, setReduceAnimations] = useState(false);
+  // const [bgColor, setBgColor] = useState("#ffffff");
+  // const [ttsEnabled, setTtsEnabled] = useState(false);
+  // const [reduceAnimations, setReduceAnimations] = useState(false);
 
   // Apply styles to the document body
   useEffect(() => {
     document.body.style.fontFamily = font;
     document.body.style.lineHeight = lineHeight;
     document.body.style.letterSpacing = `${letterSpacing}px`;
-    document.body.style.backgroundColor = bgColor;
-    if (reduceAnimations) {
-      document.body.classList.add("reduce-animations");
-    } else {
-      document.body.classList.remove("reduce-animations");
-    }
-  }, [font, lineHeight, letterSpacing, bgColor, reduceAnimations]);
+    // document.body.style.backgroundColor = bgColor;
+    // if (reduceAnimations) {
+    //   document.body.classList.add("reduce-animations");
+    // } else {
+    //   document.body.classList.remove("reduce-animations");
+    // }
+  }, [font, lineHeight, letterSpacing]);
 
   return (
     <div className="accessibility-panel">
@@ -60,16 +60,16 @@ function AccessibilityPanel() {
         />
       </div>
 
-      <div className="setting">
+      {/* <div className="setting">
         <label>Background Color</label>
         <input
           type="color"
           value={bgColor}
           onChange={(e) => setBgColor(e.target.value)}
         />
-      </div>
+      </div> */}
 
-      <div className="setting">
+      {/* <div className="setting">
         <label>
           <input
             type="checkbox"
@@ -78,9 +78,9 @@ function AccessibilityPanel() {
           />
           Text-to-Speech
         </label>
-      </div>
+      </div> */}
 
-      <div className="setting">
+      {/* <div className="setting">
         <label>
           <input
             type="checkbox"
@@ -89,7 +89,7 @@ function AccessibilityPanel() {
           />
           Reduce Animations
         </label>
-      </div>
+      </div> */}
     </div>
   );
 }

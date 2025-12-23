@@ -7,7 +7,6 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    font-family: 'Open Sans', 'Comic Neue', sans-serif;
     height: 100vh;
     animation: gradientBG 15s ease infinite;
     overflow: hidden;
@@ -70,7 +69,6 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            font-family: 'Open Sans', 'Comic Neue', sans-serif;
             height: 100vh;
             margin: -20px 0 50px;
             animation: gradientBG 15s ease infinite;

@@ -3,14 +3,35 @@
 @tailwind components;
 @tailwind utilities;
 
+/* OpenDyslexic */
 @font-face {
-  font-family: "MyFont";
-  src: url("./assets//fonts/OpenDyslexic-Regular.otf") format("opentype");
-  font-weight: 700;
+  font-family: "OpenDyslexic";
+  src: url("./assets/fonts/opendyslexic_0.92/OpenDyslexic-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
 }
 
+/* Atkinson Hyperlegible */
+@font-face {
+  font-family: "Atkinson Hyperlegible";
+  src: url("./assets/fonts/Atkinson_Hyperlegible/Atkinson-Hyperlegible-Regular-102.ttf") format("woff2");
+}
+
+/* Atkinson Hyperlegible Next */
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  src: url("./assets//fonts//Atkinson_Hyperlegible_Next/AtkinsonHyperlegibleNext-Regular.otf") format("woff2");
+}
+
+/* Atkinson Hyperlegible Mono */
+@font-face {
+  font-family: "Atkinson Hyperlegible Mono";
+  src: url("./assets//fonts/Atkinson_Hyperlegible_Mono/AtkinsonHyperlegibleMono-Regular.otf") format("woff2");
+}
+
+
 body {
-  font-family: "MyFont", cursive;
+  font-family:sans-serif;
 }
 
 
