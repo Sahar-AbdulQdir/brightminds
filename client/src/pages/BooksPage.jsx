@@ -9,6 +9,7 @@ import BooksSlider from "../components/BlogPage/BooksSlider.jsx";
 import QuoteCard from "../components/BlogPage/QuoteCard.jsx";
 import Notebook  from "../components/BlogPage/Nootbook.jsx";
 import { useEffect } from 'react';
+import "../styles/main.css"
 
 
 

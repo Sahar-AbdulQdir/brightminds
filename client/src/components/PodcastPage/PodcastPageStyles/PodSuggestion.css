@@ -4,21 +4,74 @@
 }
 
 .suggestion-section h2 {
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: bold;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
+/*  */
+.circle-sketch-highlight {
+  position: relative;
+  display: inline-block;
+  padding: 0.15em 0.45em;
+}
+
+.circle-sketch-highlight::before,
+.circle-sketch-highlight::after {
+  content: "";
+  position: absolute;
+  inset: 0;               /* 👈 makes it match text size */
+  border: 6px solid rgb(225, 69, 239);
+  border-radius: 50%;
+  opacity: 0.7;
+  pointer-events: none;
+  height: 5rem;
+}
+
+.circle-sketch-highlight::before {
+  transform: rotate(2deg);
+  border-right-color: transparent;
+}
+
+.circle-sketch-highlight::after {
+  transform: rotate(-2deg);
+  border-left-color: transparent;
+  border-top-color: transparent;
+}
+
+
 .suggestion-section p {
-  color: #555;
-  margin-bottom: 1rem;
+  color: #383737;
+  margin-bottom: 1.5rem;
+}
+
+.suggestion_name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  font-size: 1.3rem;
+}
+
+/* Icon */
+.suggestion_name .rank_icon {
+  color: #000000;
+  margin-top: -0.2rem;
+  font-size: 1.7rem;
+}
+
+/* Highlighted text */
+.suggestion_name span {
+  font-size: 1.3rem;
+  color: #a31010;
 }
 
 .suggestion-content {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: end;
   align-items: center;
-  gap: 2rem;
+  gap: 0rem;
 }
 
 @media (min-width: 768px) {
@@ -34,7 +87,7 @@
   max-width: 18rem;
   padding: 1rem;
   border-radius: 1rem;
-  transform: rotate(-3deg); /* slight rotation one way */
+  transform: rotate(-7deg); /* slight rotation one way */
   background: radial-gradient(circle at 100% 100%, #ffffff 0, #ffffff 3px, transparent 3px) 0% 0%/8px 8px no-repeat,
               radial-gradient(circle at 0 100%, #ffffff 0, #ffffff 3px, transparent 3px) 100% 0%/8px 8px no-repeat,
               radial-gradient(circle at 100% 0, #ffffff 0, #ffffff 3px, transparent 3px) 0% 100%/8px 8px no-repeat,
@@ -43,13 +96,20 @@
               linear-gradient(#ffffff, #ffffff) 50% 50%/calc(100% - 16px) calc(100% - 10px) no-repeat,
               linear-gradient(133deg, transparent 0%, #d6abfe 100%);
   box-sizing: border-box;
+  margin-right: -2rem;
+  margin-top: -5rem;
 }
 
 /* Text pieces with lines */
 .card-text p {
   margin: 0.3rem 0 0;
-  font-size: 0.875rem;
-  color: #333;
+  font-size: 0.9rem;
+  color: #1b1b1b;
+  span{
+    font-size: .9rem;
+    font-weight: 800;
+    color:#9f71ca;
+  }
 }
 
 .card-text hr {
@@ -60,9 +120,9 @@
 
 /* Image styles */
 .suggestion-img {
-  width: 16rem; /* bigger image */
+  width: 30rem; /* bigger image */
   height: auto;
   border-radius: 0.75rem;
   object-fit: cover;
-  transform: rotate(3deg); /* rotate opposite direction */
+  transform: rotate(7deg); /* rotate opposite direction */
 }

@@ -10,18 +10,18 @@
 .faq-section .faqTop{
   display: flex;
   flex-direction: row;
-  gap: 10rem;
+  gap: 5rem;
   justify-content: center;
 }
 .faq-section h2 {
   font-size: 4rem; /* text-3xl */
   font-weight: 700;
   color: #000000; /* indigo-700 */
-  /* margin-bottom: 2.5rem;  */
+  margin-top: 3rem; 
 }
 
 .faq-section img{
-    width: 15%;
+    width: 20%;
   height: 20%;
   object-fit: cover;
   margin-top: -2.5rem;
@@ -66,6 +66,9 @@ box-sizing: border-box;
   cursor: pointer;
   font-weight: 600; /* font-semibold */
   font-size: 1.125rem; /* text-lg */
+  span{
+    font-size: 2rem;
+  }
 }
 
 /* Answer section */

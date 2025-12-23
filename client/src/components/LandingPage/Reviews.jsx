@@ -1,4 +1,5 @@
 import React from "react";
+import "./LandingPageStyles/Reviews.css";
 
 const reviews = [
   {
@@ -50,33 +51,26 @@ const reviews = [
 
 const ReviewsSection = () => {
   return (
-    <section className="bg-gray-100 py-20 px-6">
-      <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-4xl font-extrabold text-gray-900 mb-12">
-          What Our Users Say
-        </h2>
+    <section className="reviews-section">
+      <div className="reviews-container">
+        <h2 className="reviews-title">What Our Users Say</h2>
 
-        <div className="flex flex-wrap justify-center gap-8">
+        <div className="reviews-grid">
           {reviews.map((review, index) => (
             <div
               key={index}
-              className={`bg-gray-50 rounded-lg border border-gray-200 shadow-md hover:shadow-lg transition duration-300 text-left p-5 w-full sm:w-[45%] lg:w-[30%]
-              ${
-                // add offset to every second row
-                Math.floor(index / 3) % 2 === 1 ? "lg:translate-x-12" : ""
+              className={`review-card ${
+                Math.floor(index / 3) % 2 === 1 ? "offset-card" : ""
               }`}
             >
-              <div className="flex items-center justify-between mb-2">
-                <h3 className="text-sm font-medium text-gray-700">
-                  {review.name}
-                </h3>
-                <div className="flex items-center text-pink-600 font-semibold text-sm">
-                  ❤️ <span className="ml-1">{review.likes}</span>
+              <div className="review-header">
+                <h3 className="review-name">{review.name}</h3>
+                <div className="review-likes">
+                  ❤️ <span>{review.likes}</span>
                 </div>
               </div>
-              <p className="text-gray-600 text-sm leading-relaxed">
-                {review.text}
-              </p>
+
+              <p className="review-text">{review.text}</p>
             </div>
           ))}
         </div>

@@ -21,8 +21,8 @@ const PodcastPage = () => {
         <PodcastHero />
 <ScrollVelocity
   texts={[
-    'Mind Matters ᖰ  ᖳ',
-    'NeuroNotes ၊၊||၊',
+      "The huberman lab ᖰ  ᖳ",
+  "Ali abdaal ၊၊||၊'",
   ]}
   velocity={110}
   className="text-4xl md:text-6xl font-extrabold tracking-tight"

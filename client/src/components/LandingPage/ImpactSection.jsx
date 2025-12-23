@@ -1,23 +1,25 @@
 import React from "react";
 import "../../components/LandingPage/LandingPageStyles/Impact.css";
-import Ch1 from "../../assets/images/L-Ch1.png";
-import Ch2 from "../../assets/images/L-Ch2.png";
+import I1 from "../../assets/images/impact1.png";
+import I2 from "../../assets/images/impact2.png";
+import I3 from "../../assets/images/impact3.png";
+import I4 from "../../assets/images/impact4.png";
 const impacts = [
   {
-    img: Ch1,
-    text: "Serve Diverse Learners: 88% of users enhance focus and memory.",
+    img: I1,
+    text: "Built for Different Minds.",
   },
   {
-    img: Ch2,
-    text: "Save Time: 94% of learners report faster progress.",
+    img: I2,
+    text: "Learn Faster.",
   },
   {
-    img: Ch1,
-    text: "Drive Results: 28% improvement in academic performance.",
+    img: I3,
+    text: "Better Learning Outcomes.",
   },
   {
-    img: Ch2,
-    text: "Share the Love: 95% recommend BrainBoost to friends.",
+    img: I4,
+    text: "Loved by Users.",
   },
 ];
 

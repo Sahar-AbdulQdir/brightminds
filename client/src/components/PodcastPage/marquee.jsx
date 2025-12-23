@@ -31,11 +31,17 @@ function useElementWidth(ref) {
 export const ScrollVelocity = ({
   scrollContainerRef,
   texts = [],
-  velocity = 100,
+  // velocity = 100,
   className = '',
-  damping = 50,
-  stiffness = 400,
-  numCopies = 6,
+  // damping = 50,
+  // stiffness = 400,
+  // numCopies = 6,
+
+  velocity=15,      // slower
+damping=50,    // smoother
+stiffness=250,
+numCopies=3,        // fewer repetitions
+
   velocityMapping = { input: [0, 1000], output: [0, 5] },
   parallaxClassName = '',
   scrollerClassName = '',

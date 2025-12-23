@@ -34,7 +34,7 @@
   /* padding-bottom: 0px; */
   /* From https://css.glass */
 /* From https://css.glass */
-background: #fffeedc2;
+background: #ffffffc2;
 border-radius: 16px;
 
   margin-top: -1.2rem;
@@ -192,10 +192,10 @@ border-bottom-left-radius: 15px;
 }
 
 .video-btn {
-  background: #ffffffe6;
-  border: 2px solid #ffffffe6;
+  background: #ffffff;
+  border: 2px solid #ffffff;
   /* padding: 6px 10px; */
-  border-radius: 25px; /* slightly rounded */
+  border-radius: 15px; /* slightly rounded */
   height: 60px;
   width: 30%;
   color: #000;

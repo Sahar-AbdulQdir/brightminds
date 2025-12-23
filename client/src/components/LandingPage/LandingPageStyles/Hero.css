@@ -10,7 +10,7 @@ background: linear-gradient(1deg,rgba(149, 61, 159, 1) 0%, rgba(255, 255, 255, 1
 .hero-section h1 {
   font-size: 1.875rem; /* text-3xl */
   font-weight: 900;
-  margin-bottom: 2rem; /* mb-4 */
+  margin-top: -1.5rem; 
   color: black;
 }
 
@@ -22,7 +22,7 @@ background: linear-gradient(1deg,rgba(149, 61, 159, 1) 0%, rgba(255, 255, 255, 1
 
 .hero-section p {
   font-size: 1.125rem; /* text-lg */
-  margin-bottom: 2rem; /* mb-6 */
+  margin-bottom: 2.5rem; /* mb-6 */
   color: #000000;
   font-weight: 500;
 }
@@ -46,8 +46,8 @@ background: linear-gradient(1deg,rgba(149, 61, 159, 1) 0%, rgba(255, 255, 255, 1
 }
 
 .hero-buttons button.login-btn {
-  background-color: rgb(0, 0, 0);
-  color: rgb(255, 255, 255);
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
 }
 
 .hero-buttons button.login-btn:hover {

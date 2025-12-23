@@ -41,10 +41,10 @@
 }
 
 .saved-title {
-  font-size: 2.5rem;
+  font-size: 4rem;
   font-weight: 700;
   color: #da97c4;
-  text-shadow: 0 2px 8px rgba(155, 246, 255, 0.4);
+  /* text-shadow: 0 2px 8px #53f1ff90; */
 }
 
 /* =========================

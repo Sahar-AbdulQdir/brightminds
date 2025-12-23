@@ -83,7 +83,7 @@ border-bottom-right-radius: 10px;
 
 .library-content {
   grid-area: content;
-  background: #f4eeea;
+  background: #ffffff;
   border-radius: 15px;
   box-shadow: outset 8px 8px 16px #d1c0f0, inset -8px -8px 16px #ffffff;
   padding: 20px;

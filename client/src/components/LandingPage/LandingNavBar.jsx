@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes, FaSearch, FaUserCircle } from "react-icons/fa";
 import "../../styles/main.css";
+import Logo from "../../assets/icons/Logo.svg";
 
 function LandingNavbar() {
   const navRef = useRef();
@@ -12,7 +13,10 @@ function LandingNavbar() {
 
   return (
     <header>
-      <h3>LOGO</h3>
+
+              <h3>
+                <img src={Logo} alt="Cognify Minds Logo" className="nav-logo" />
+              </h3>
 
       <nav ref={navRef}>
         <Link to="/home">Explore</Link>

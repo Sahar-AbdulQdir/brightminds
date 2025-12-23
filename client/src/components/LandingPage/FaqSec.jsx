@@ -1,20 +1,21 @@
 import React, { useState } from "react";
 import "../../components/LandingPage/LandingPageStyles/faq.css";
-import faqImg from "../../assets/images/L-faq.png";
+import faqImg from "../../assets/images/faq.png";
 const faqs = [
   {
-    q: "How can I save my favourite podcast or article?",
-    a: "Simply click the 'Save' icon under the content you like, and it will appear in your saved section.",
+    q: "Can I save audiobooks, podcasts, or articles I like?",
+    a: "Yes. Tap the save icon and your favourites will be easy to find later.",
   },
   {
-    q: "Can I track my progress over time?",
-    a: "Yes! Your learning history and puzzle scores are automatically stored.",
+    q: "Can I change the text style to make reading easier?",
+    a: "Yes. Use the accessibility panel to adjust font size, spacing, and line height.",
   },
   {
-    q: "Is there a mobile app version?",
-    a: "Yes, BrainBoost mobile is available on iOS and Android.",
+    q: "Does the website support listening instead of reading?",
+    a: "Yes. You can turn text into speech, or speech into text, using our tools.",
   },
 ];
+
 
 const FaqSec = () => {
   const [openIndex, setOpenIndex] = useState(null);

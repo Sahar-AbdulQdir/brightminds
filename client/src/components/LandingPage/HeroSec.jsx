@@ -14,13 +14,13 @@ const HeroSec = () => {
         <div className="hero-buttons">
           <button
             className="login-btn"
-            onClick={() => navigate("/auth?form=signIn")}
+            onClick={() => navigate("/auth?form=signUp")}
           >
             Log in
           </button>
           <button
             className="signin-btn"
-            onClick={() => navigate("/auth?form=signUp")}
+            onClick={() => navigate("/auth?form=signIn")}
           >
             Sign up
           </button>

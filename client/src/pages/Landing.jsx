@@ -7,6 +7,7 @@ import ReviewsSection from "../components/LandingPage/Reviews";
 import FaqSec from "../components/LandingPage/FaqSec";
 import LandingFooter from "../components/LandingPage/LandingFooter";
 import BHeroSection from "../components/BlogPage/Hero";
+import About from "../components/LandingPage/AboutDys"
 import { useEffect } from 'react';
 
 const LandingPage = () => {
@@ -33,6 +34,7 @@ useEffect(() => {
     <div>
       <LandingNavbar />
       <HeroSec />
+      <About/>
       <WhyChooseUs />
       <ImpactSection />
       <ReviewsSection />

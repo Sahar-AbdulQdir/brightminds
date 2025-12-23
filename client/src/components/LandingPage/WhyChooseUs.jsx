@@ -2,42 +2,48 @@ import React from "react";
 import "../../components/LandingPage/LandingPageStyles/WhyChooseUs.css";
 
 // Images
-import PuzzleImg from "../../assets/images/L-Puzz.png";
-import BlogsImg from "../../assets/images/L-blog.png";
-import PodcastsImg from "../../assets/images/L-pod.png";
-import SaveImg from "../../assets/images/L-interact.png";
-
+import Landing1 from "../../assets/images/Landing1.png";
+import Landing2 from "../../assets/images/Landing2.png";
+import Landing3 from "../../assets/images/Landing3.png";
+import Landing4 from "../../assets/images/Landing4.png";
+import Landing5 from "../../assets/images/Landing5.png";
 const features = [
-  {
-    title: "Daily Mind Puzzles",
-    text: "Sharpen your brain with new challenges every day.",
-    gradient: "blue-gradient",
-    img: PuzzleImg,
-  },
-  {
-    title: "Educational Articles",
-    text: "Learn smarter with curated content and insights.",
-    gradient: "purple-gradient",
-    img: BlogsImg,
-  },
-  {
-    title: "Podcasts & Videos",
-    text: "Engage with visual and auditory learning tools.",
-    gradient: "yellow-gradient",
-    img: PodcastsImg,
-  },
-  {
-    title: "Progress Tracking",
-    text: "Monitor your journey and celebrate your wins.",
+    {
+    title: "Design and Accessibility Settings",
+    text: "Change the font style. Adjust line height and spacing. Choose what feels easiest for your eyes.",
     gradient: "green-gradient",
-    img: SaveImg,
+    img: Landing1,
   },
+  {
+    title: "Audiobooks",
+    text: "Listen to books instead of reading. Pause, replay, and choose your own pace.",
+    gradient: "blue-gradient",
+    img: Landing2,
+  },
+  {
+    title: "Podcasts",
+    text: "Interesting and clear audio content. Easy to follow and less tiring.",
+    gradient: "purple-gradient",
+    img: Landing3,
+  },
+  {
+    title: "Save Your Favourites",
+    text: "Save books, podcasts, or tools you like.Come back to them anytime..",
+    gradient: "yellow-gradient",
+    img: Landing4,
+  },
+  {
+    title: "Reading and Listening Tools",
+    text: "Turn text into speech.Turn speech into text.Use the tools in a way that feels comfortable.",
+    gradient: "green-gradient",
+    img: Landing5,
+  }
 ];
 
 const WhyChooseUs = () => {
   return (
     <section className="why-choose-us">
-      <h2>Why Choose Us?</h2>
+      <h2>Why this website helps?</h2>
       <div className="features-grid">
         {features.map((item, index) => (
           <div

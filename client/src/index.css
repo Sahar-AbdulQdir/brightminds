@@ -3,13 +3,18 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  /* background: linear-gradient(to bottom right, #d6f5ff, #ffe6ff); */
-  font-family: "Poppins", sans-serif;
+@font-face {
+  font-family: "MyFont";
+  src: url("./assets//fonts/OpenDyslexic-Regular.otf") format("opentype");
+  font-weight: 700;
 }
 
+body {
+  font-family: "MyFont", cursive;
+}
+
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   /* line-height: 1.5;
   font-weight: 400; */
 
@@ -108,7 +113,6 @@ button {
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
-  font-family: inherit;
   background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;

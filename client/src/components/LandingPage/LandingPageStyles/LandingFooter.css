@@ -1,0 +1,12 @@
+.landing-footer {
+  background-color: #c7d2fe; /* indigo-200 */
+  color: #ffffff;
+  padding: 0.10rem 0;
+  text-align: center;
+  position: relative;
+}
+
+.footer-text {
+  font-size: 1rem;
+  font-weight: 600;
+}
