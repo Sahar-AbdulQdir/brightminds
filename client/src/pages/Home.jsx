@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import MyNavbar from "../components/Navbar.jsx";
 import "../styles/home.css";
 import podcastImg from "../assets/images/pod.jpeg";
+import { useNavigate } from "react-router-dom";
 
 
 const Home = () => {
@@ -14,14 +15,14 @@ const Home = () => {
 
 
     // Disable scroll when Home is mounted, enable scroll when unmounted
-  useEffect(() => {
-    const originalStyle = window.getComputedStyle(document.body).overflow;
-    document.body.style.overflow = "hidden"; // disable scroll
+  // useEffect(() => {
+  //   const originalStyle = window.getComputedStyle(document.body).overflow;
+  //   document.body.style.overflow = "hidden"; 
 
-    return () => {
-      document.body.style.overflow = originalStyle; // restore scroll
-    };
-  }, []);
+  //   return () => {
+  //     document.body.style.overflow = originalStyle; 
+  //   };
+  // }, []);
 
   return (
     <div className="home-container">
@@ -45,7 +46,9 @@ const Home = () => {
             <p>
               Read, listen, adjust, and learn at your own pace, without pressure.
             </p>
-            <button className="read-more-btn">Read More</button>
+                  <button className="read-more-btn" onClick={() => navigate("/BooksPage")}>
+        Read More
+      </button>
           </div>
 
           <div className="home-podcast-card">
@@ -57,7 +60,9 @@ const Home = () => {
                 Our podcasts are made for curious minds that learn better by listening.
 Perfect for breaks, walks, or moments when reading just isn’t the mood.
               </p>
-              <button className="read-more-btn">Listen Now!</button>
+                    <button className="read-more-btn" onClick={() => navigate("/PodcastsPage")}>
+        Listen Now!
+      </button>
             </div>
           </div>
         </div>
@@ -75,7 +80,7 @@ Perfect for breaks, walks, or moments when reading just isn’t the mood.
               <p>Our audiobooks let you enjoy stories, learning, and ideas without struggling through text.
 Just press play and focus on understanding</p>
               </div>
-              <button className="video-btn">Browse Books</button>
+              <button className="video-btn" onClick={() => navigate("/BooksPage")}>Browse Books</button>
             </div>
           </div>
         </div>
