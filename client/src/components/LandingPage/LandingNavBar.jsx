@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes, FaSearch, FaUserCircle } from "react-icons/fa";
 import "../../styles/main.css";
-import Logo from "../../assets/icons/Logo3.svg";
+import Logo from "../../assets/icons/Logo.svg";
 
 function LandingNavbar() {
   const navRef = useRef();

@@ -10,7 +10,7 @@ import { RiSave3Line } from "react-icons/ri";
 
 
 // ⬅️ Import your SVG logo
-import Logo from "../assets/icons/Logo3.svg";
+import Logo from "../assets/icons/Logo.svg";
 
 function AccessibilityPanel({ ttsEnabled, setTtsEnabled }) {
   const [font, setFont] = useState("Verdana");
@@ -142,7 +142,7 @@ useEffect(() => {
         <nav ref={navRef}>
           <Link to="/">Home</Link>
           <Link to="/AudioBooks">Audio Books</Link>
-          <Link to="/games">Games</Link>
+          {/* <Link to="/games">Games</Link> */}
           <Link to="/podcasts">Podcasts</Link>
 
           <button className="nav-btn nav-close-btn" onClick={showNavbar}>
