@@ -2,7 +2,6 @@ import React from "react";
 import MyNavbar from "../components/Navbar.jsx";
 import PodcastHero from "../components/PodcastPage/PodcastHero.jsx";
 import PodcastGrid from "../components/PodcastPage/PodcastGrid";
-import SearchBar from "../components/PodcastPage/SearchBar";
 import PodcastHighlights from "../components/PodcastPage/PodcastHighlights.jsx";
 import Suggestion from "../components/PodcastPage/Suggestion";
 import "../components/PodcastPage/PodcastPageStyles/PodcastPage.css";

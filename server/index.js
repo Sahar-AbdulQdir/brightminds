@@ -9,6 +9,8 @@ import fetch from "node-fetch";
 dotenv.config();
 
 const app = express();
+const PODCAST_API_KEY = process.env.PODCAST_API_KEY;
+
 
 // Middleware
 app.use(cors());
@@ -99,6 +101,45 @@ app.post("/api/grammar", async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
+
+app.get("/api/podcasts/hot", async (req, res) => {
+  try {
+    const response = await fetch(
+      "https://listen-api.listennotes.com/api/v2/best_podcasts",
+      {
+        headers: {
+          "X-ListenAPI-Key": PODCAST_API_KEY,
+        },
+      }
+    );
+
+    const data = await response.json();
+    res.json(data.podcasts);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to fetch podcasts" });
+  }
+});
+
+app.get("/api/podcasts/:id/episodes", async (req, res) => {
+  try {
+    const response = await fetch(
+      `https://listen-api.listennotes.com/api/v2/podcasts/${req.params.id}`,
+      {
+        headers: {
+          "X-ListenAPI-Key": PODCAST_API_KEY,
+        },
+      }
+    );
+
+    const data = await response.json();
+    res.json(data.episodes);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to fetch episodes" });
+  }
+});
+
 
 
 const PORT = process.env.PORT || 5000;

@@ -15,9 +15,10 @@
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 150px 150px 150px; 
   gap: 1rem;
+    min-height: 30em;
 }
 
-.podcast-card {
+.podcast-grid .podcast-card {
   position: relative;
   background-size: cover;
   background-position: center;
@@ -30,25 +31,25 @@
   transition: transform 0.3s;
 }
 
-.podcast-card:hover {
+.podcast-grid .podcast-card:hover {
   transform: scale(1.05);
 }
 
 /* Overlay for text */
-.overlay {
+.podcast-card .overlay {
   background: #fbcfe8c9;
   width: 100%;
 border-radius: 0px 0px 0px 0px;
   padding: 0.3rem; 
 }
 
-.overlay h3 {
+.podcast-card .overlay h3 {
   margin: 0;
   font-size: 0.9rem; 
   font-weight: bold;
 }
 
-.overlay p {
+.podcast-card .overlay p {
   margin: 0.1rem 0 0;
   font-size: 0.7rem; 
 }
@@ -60,7 +61,12 @@ border-radius: 0px 0px 0px 0px;
 .card-4 { grid-column: 1; grid-row: 2 / span 2; } 
 .card-5 { grid-column: 2; grid-row: 2; }
 .card-6 { grid-column: 3; grid-row: 2; }
-.card-7 { grid-column: 2 / span 2; grid-row: 3; } 
+.card-7 { 
+  grid-column: 2 / span 2; 
+  grid-row: 3; 
+  height: 10em;
+
+} 
 
 .episode-list {
   list-style: none;
@@ -75,6 +81,10 @@ border-radius: 0px 0px 0px 0px;
   padding: 0.5rem;
   border: 1px solid #ddd;
   border-radius: 8px;
+  span{
+    font-size: 1rem;
+    font-weight: 500;
+  }
 }
 .episode-controls {
   display: flex;
@@ -87,11 +97,11 @@ border-radius: 0px 0px 0px 0px;
   align-items: center;
   gap: 0.25rem;
   background-color: #000000; /* Blue theme */
-  color: #fff;
+  color: #000000;
   border: none;
   border-radius: 999px; /* Pill shape */
   padding: 0.4rem 0.8rem;
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   cursor: pointer;
   transition: all 0.2s ease;
 }

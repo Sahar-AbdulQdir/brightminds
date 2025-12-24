@@ -104,7 +104,7 @@ const data = await res.json();
         duration: "N/A",
       };
 
-      const res = await fetch("http://localhost:5000/api/save-item", {
+      const res = await fetch(`${BASE_URL}/api/save-item`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, item: itemToSave }),
