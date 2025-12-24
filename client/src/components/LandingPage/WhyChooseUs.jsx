@@ -2,11 +2,11 @@ import React from "react";
 import "../../components/LandingPage/LandingPageStyles/WhyChooseUs.css";
 
 // Images
-import Landing1 from "../../assets/images/Landing1.png";
-import Landing2 from "../../assets/images/Landing2.png";
-import Landing3 from "../../assets/images/Landing3.png";
-import Landing4 from "../../assets/images/Landing4.png";
-import Landing5 from "../../assets/images/Landing5.png";
+import Landing1 from "../../assets/images/landing1.png";
+import Landing2 from "../../assets/images/landing2.png";
+import Landing3 from "../../assets/images/landing3.png";
+import Landing4 from "../../assets/images/landing4.png";
+import Landing5 from "../../assets/images/landing5.png";
 const features = [
     {
     title: "Design and Accessibility Settings",
