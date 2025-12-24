@@ -192,6 +192,9 @@
   font-size: 0.7rem;
   margin-top: auto;
   opacity: 0.75;
+  span{
+    font-size: .9rem;
+  }
 }
 
 .item-type-label {

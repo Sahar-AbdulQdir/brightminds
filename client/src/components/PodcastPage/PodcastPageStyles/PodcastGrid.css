@@ -15,7 +15,7 @@
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 150px 150px 150px; 
   gap: 1rem;
-    min-height: 30em;
+    /* min-height: 30em; */
 }
 
 .podcast-grid .podcast-card {

@@ -113,7 +113,7 @@ const SavedPage = () => {
               <FaPlay /> Podcasts ({savedItems.filter(i => i.type === "podcast").length})
             </button>
             <button
-              className={`filter-btn ${filter === "book" ? "active" : ""}`}
+              className={`filter-btn ${filter === "Saved_book" ? "active" : ""}`}
               onClick={() => setFilter("book")}
             >
               <FaBookmark /> Books ({savedItems.filter(i => i.type === "book").length})
