@@ -9,11 +9,16 @@ import fetch from "node-fetch";
 dotenv.config();
 
 const app = express();
-const PODCAST_API_KEY = process.env.PODCAST_API_KEY;
 
 
 // Middleware
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://lexiaminds-private-testing.onrender.com", // your deployed front-end
+    credentials: true, // only if using cookies/auth headers
+  })
+);
+
 app.use(express.json());
 
 // Connect to MongoDB

@@ -18,7 +18,7 @@ const AuthForm = () => {
     const password = e.target.password.value;
 
     try {
-      const res = await fetch("http://localhost:5000/api/signup", {
+      const res = await fetch("https://lexiaminds-private-test.onrender.com/api/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email, password }),
@@ -47,7 +47,7 @@ const AuthForm = () => {
     const password = e.target.password.value;
 
     try {
-      const res = await fetch("http://localhost:5000/api/signin", {
+      const res = await fetch("https://lexiaminds-private-test.onrender.com/api/signin", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
