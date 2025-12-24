@@ -3,7 +3,6 @@
   min-height:45vh;
   /* padding: 80px; */
   /* background: linear-gradient(135deg, #6a84ed 0%, #4a5fc1 100%); */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #000000;
   box-sizing: border-box;
     transform: scale(0.9);
@@ -306,7 +305,6 @@
   align-items: center;
   gap: 5px;
   text-decoration: none;
-  font-family: inherit;
 }
 
 .podcast-source-btn:hover {

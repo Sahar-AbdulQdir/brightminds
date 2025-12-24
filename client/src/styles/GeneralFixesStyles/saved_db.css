@@ -16,9 +16,7 @@
   background: white;
   border-radius: 25px;
   /* background-size: 300% 300%; */
-  /* animation: gradientFlow 16s ease infinite; */
-  font-family: "Montserrat", system-ui, sans-serif;
-  letter-spacing: 0.02em;
+  /* animation: gradientFlow 16s ease infinite; */  letter-spacing: 0.02em;
 }
 
 @keyframes gradientFlow {
