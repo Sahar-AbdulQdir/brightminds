@@ -7,7 +7,7 @@ const Loader = () => {
     <div className="video-loader-overlay">
       <video 
         className="loader-video" 
-        src="/loader.mp4" // Use URL path starting with /
+        src="/Loader.mp4" // Use URL path starting with /
         autoPlay 
         loop 
         muted 
