@@ -34,14 +34,15 @@ const Books = () => {
 
   // Fetch books from archive.org
   useEffect(() => {
-    fetch(
-      "https://archive.org/advancedsearch.php?q=collection:(librivoxaudio)&fl[]=identifier&fl[]=title&fl[]=subject&rows=200&page=1&output=json"
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setBooks(data.response.docs);
-        setCurrentPage(1);
-      });
+const url = "https://archive.org/advancedsearch.php?q=collection:(librivoxaudio)&fl[]=identifier&fl[]=title&fl[]=subject&rows=200&page=1&output=json";
+fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`)
+  .then((res) => res.json())
+  .then((data) => {
+    setBooks(data.response.docs);
+    setCurrentPage(1);
+  })
+  .catch(err => console.error("Failed to fetch books:", err));
+
   }, []);
 
   // Filter and paginate books
@@ -64,8 +65,10 @@ const Books = () => {
 
   // Audio functions
   const loadAndPlay = async (id) => {
-    const res = await fetch(`https://archive.org/metadata/${id}`);
-    const data = await res.json();
+const metadataUrl = `https://archive.org/metadata/${id}`;
+const res = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(metadataUrl)}`);
+const data = await res.json();
+
     const mp3 = data.files.find((f) => f.name.endsWith(".mp3"));
     if (!mp3) return;
 
