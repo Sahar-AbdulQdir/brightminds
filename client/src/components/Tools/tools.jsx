@@ -2,7 +2,6 @@ import React from "react";
 import MyNavbar from "../Navbar.jsx"
 import VoiceToText from "../Tools/speach_to_txt.jsx";
 import TextToSpeech from "../Tools/txt_to_speach.jsx";
-import GrammarChecker from "./textEditor.jsx";
 import "../Tools/ToolsStyles/tools.css";
 
 const Tools = () => {
@@ -22,7 +21,6 @@ const Tools = () => {
 >
           <VoiceToText />
           <TextToSpeech />
-          {/* <GrammarChecker/> */}
         </div>
       </div>
     </>
