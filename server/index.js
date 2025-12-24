@@ -6,31 +6,31 @@ import savedRoutes from "./routes/saved.js";
 import User from "./models/User.js";
 import fetch from "node-fetch";
 import bcrypt from "bcryptjs";
+import path from "path";
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 const PODCAST_API_KEY = process.env.PODCAST_API_KEY;
+const __dirname = path.resolve();
 
-// Middleware
+// ------------------ Middleware ------------------
 app.use(express.json());
 app.use(
   cors({
-    origin: "*", // For testing. Replace with your frontend URL in production
+    origin: "*", // OK for now; restrict later in production
     credentials: true,
   })
 );
 
-// Connect to MongoDB
+// ------------------ MongoDB ------------------
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("✅ MongoDB connected"))
   .catch((err) => console.error("❌ MongoDB connection error:", err));
 
 // ------------------ Auth Routes ------------------
-
-// Sign Up
 app.post("/api/signup", async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -38,7 +38,8 @@ app.post("/api/signup", async (req, res) => {
       return res.status(400).json({ message: "All fields are required" });
 
     const existingUser = await User.findOne({ email });
-    if (existingUser) return res.status(400).json({ message: "Email already exists" });
+    if (existingUser)
+      return res.status(400).json({ message: "Email already exists" });
 
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({ name, email, password: hashedPassword });
@@ -51,7 +52,6 @@ app.post("/api/signup", async (req, res) => {
   }
 });
 
-// Sign In
 app.post("/api/signin", async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -59,12 +59,17 @@ app.post("/api/signin", async (req, res) => {
       return res.status(400).json({ message: "Email and password are required" });
 
     const user = await User.findOne({ email });
-    if (!user) return res.status(400).json({ message: "Invalid email or password" });
+    if (!user)
+      return res.status(400).json({ message: "Invalid email or password" });
 
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ message: "Invalid email or password" });
+    if (!isMatch)
+      return res.status(400).json({ message: "Invalid email or password" });
 
-    res.status(200).json({ message: "Sign in successful", user: { name: user.name, email: user.email } });
+    res.status(200).json({
+      message: "Sign in successful",
+      user: { name: user.name, email: user.email },
+    });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Sign in failed" });
@@ -86,13 +91,17 @@ app.get("/api/users", async (req, res) => {
 app.post("/api/grammar", async (req, res) => {
   try {
     const { text } = req.body;
-    if (!text?.trim()) return res.status(400).json({ message: "Text is required" });
+    if (!text?.trim())
+      return res.status(400).json({ message: "Text is required" });
 
-    const response = await fetch("https://api.languagetoolplus.com/v2/check", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({ text, language: "en-US" }),
-    });
+    const response = await fetch(
+      "https://api.languagetoolplus.com/v2/check",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({ text, language: "en-US" }),
+      }
+    );
 
     const data = await response.json();
     res.json(data);
@@ -102,12 +111,15 @@ app.post("/api/grammar", async (req, res) => {
   }
 });
 
-// ------------------ Podcast Proxy ------------------
+// ------------------ Podcasts ------------------
 app.get("/api/podcasts/hot", async (req, res) => {
   try {
-    const response = await fetch("https://listen-api.listennotes.com/api/v2/best_podcasts", {
-      headers: { "X-ListenAPI-Key": PODCAST_API_KEY },
-    });
+    const response = await fetch(
+      "https://listen-api.listennotes.com/api/v2/best_podcasts",
+      {
+        headers: { "X-ListenAPI-Key": PODCAST_API_KEY },
+      }
+    );
     const data = await response.json();
     res.json(data.podcasts);
   } catch (err) {
@@ -118,9 +130,12 @@ app.get("/api/podcasts/hot", async (req, res) => {
 
 app.get("/api/podcasts/:id/episodes", async (req, res) => {
   try {
-    const response = await fetch(`https://listen-api.listennotes.com/api/v2/podcasts/${req.params.id}`, {
-      headers: { "X-ListenAPI-Key": PODCAST_API_KEY },
-    });
+    const response = await fetch(
+      `https://listen-api.listennotes.com/api/v2/podcasts/${req.params.id}`,
+      {
+        headers: { "X-ListenAPI-Key": PODCAST_API_KEY },
+      }
+    );
     const data = await response.json();
     res.json(data.episodes);
   } catch (err) {
@@ -129,21 +144,18 @@ app.get("/api/podcasts/:id/episodes", async (req, res) => {
   }
 });
 
-// Saved routes
+// ------------------ Saved ------------------
 app.use(savedRoutes);
 
-import path from "path";
-
-const __dirname = path.resolve();
-
-// Serve frontend build
+// ------------------ Frontend ------------------
 app.use(express.static(path.join(__dirname, "../dist")));
 
-// React SPA fallback (THIS replaces the rewrite rule)
-app.get("*", (req, res) => {
+// ✅ Express-5 safe SPA fallback (DO NOT use app.get("*"))
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, "../dist/index.html"));
 });
 
-
 // ------------------ Start Server ------------------
-app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+app.listen(PORT, () =>
+  console.log(`🚀 Server running on port ${PORT}`)
+);
