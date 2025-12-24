@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import MyNavbar from "../components/Navbar.jsx";
 import "../styles/home.css";
 import podcastImg from "../assets/images/pod.jpeg";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"; 
 
 
 const Home = () => {
@@ -12,6 +12,8 @@ const Home = () => {
     const storedName = localStorage.getItem("userName");
     if (storedName) setUserName(storedName);
   }, []);
+
+    const navigate = useNavigate(); 
 
 
     // Disable scroll when Home is mounted, enable scroll when unmounted
