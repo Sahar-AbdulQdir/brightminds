@@ -46,7 +46,7 @@ const Home = () => {
             <p>
               Read, listen, adjust, and learn at your own pace, without pressure.
             </p>
-                  <button className="read-more-btn" onClick={() => navigate("/BooksPage")}>
+                  <button className="read-more-btn" onClick={() => navigate("/AudioBooks")}>
         Read More
       </button>
           </div>
@@ -60,7 +60,7 @@ const Home = () => {
                 Our podcasts are made for curious minds that learn better by listening.
 Perfect for breaks, walks, or moments when reading just isn’t the mood.
               </p>
-                    <button className="read-more-btn" onClick={() => navigate("/PodcastsPage")}>
+                    <button className="read-more-btn" onClick={() => navigate("/Podcasts")}>
         Listen Now!
       </button>
             </div>
@@ -80,7 +80,7 @@ Perfect for breaks, walks, or moments when reading just isn’t the mood.
               <p>Our audiobooks let you enjoy stories, learning, and ideas without struggling through text.
 Just press play and focus on understanding</p>
               </div>
-              <button className="video-btn" onClick={() => navigate("/BooksPage")}>Browse Books</button>
+              <button className="video-btn" onClick={() => navigate("/AudioBooks")}>Browse Books</button>
             </div>
           </div>
         </div>
