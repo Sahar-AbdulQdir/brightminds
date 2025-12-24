@@ -202,7 +202,7 @@ border-bottom-right-radius: 10px;
 }
 
 /* PAGES */
-.book::before {
+.Saved_book::before {
   content: "";
   position: absolute;
   top: 2px;
@@ -214,7 +214,7 @@ border-bottom-right-radius: 10px;
 }
 
 /* BACK */
-.book::after {
+.Saved_book::after {
   content: "";
   position: absolute;
   width: 100px;          /* match book width */
