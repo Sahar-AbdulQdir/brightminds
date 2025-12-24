@@ -5,13 +5,6 @@ import podcastImg from "../assets/images/pod.jpeg";
 
 
 const Home = () => {
-  // useEffect(() => {
-  //   document.body.style.backgroundImage =
-  //     'linear-gradient(318deg, rgba(121, 130, 224, 1) 0%, rgba(158, 174, 218, 1) 50%, rgba(211, 147, 189, 1) 100%);';
-  //   return () => {
-  //     document.body.style.backgroundImage = '';
-  //   };
-  // }, []);
 
    const [userName, setUserName] = useState("User");
    useEffect(() => {
