@@ -12,26 +12,16 @@ import { RiSave3Line } from "react-icons/ri";
 // ⬅️ Import your SVG logo
 import Logo from "../assets/icons/Logo3.svg";
 
-function AccessibilityPanel() {
+function AccessibilityPanel({ ttsEnabled, setTtsEnabled }) {
   const [font, setFont] = useState("Verdana");
   const [lineHeight, setLineHeight] = useState("1.5");
   const [letterSpacing, setLetterSpacing] = useState("0");
-  // const [bgColor, setBgColor] = useState("#ffffff");
-  // const [ttsEnabled, setTtsEnabled] = useState(false);
-  // const [reduceAnimations, setReduceAnimations] = useState(false);
 
-  // Apply styles to the document body
+  // Apply styles
   useEffect(() => {
     document.body.style.fontFamily = font;
     document.body.style.lineHeight = lineHeight;
     document.body.style.letterSpacing = `${letterSpacing}px`;
-    // document.body.style.backgroundColor = bgColor;
-
-    // if (reduceAnimations) {
-    //   document.body.classList.add("reduce-animations");
-    // } else {
-    //   document.body.classList.remove("reduce-animations");
-    // }
   }, [font, lineHeight, letterSpacing]);
 
   return (
@@ -40,38 +30,15 @@ function AccessibilityPanel() {
 
       <div className="setting">
         <label>Font</label>
-<select value={font} onChange={(e) => setFont(e.target.value)}>
-  {/* System fonts */}
-  <option value='"Comic Sans MS", "Comic Sans", cursive'>
-    Comic Sans
-  </option>
-
-  <option value="Arial, Helvetica, sans-serif">
-    Arial
-  </option>
-
-  <option value="Helvetica, Arial, sans-serif">
-    Helvetica
-  </option>
-
-  {/* Accessibility fonts */}
-  <option value='"OpenDyslexic", Arial, sans-serif'>
-    OpenDyslexic
-  </option>
-
-  <option value='"Atkinson Hyperlegible", Arial, sans-serif'>
-    Atkinson Hyperlegible
-  </option>
-
-  <option value='"Atkinson Hyperlegible Next", Arial, sans-serif'>
-    Atkinson Hyperlegible Next
-  </option>
-
-  <option value='"Atkinson Hyperlegible Mono", monospace'>
-    Atkinson Hyperlegible Mono
-  </option>
-</select>
-
+        <select value={font} onChange={(e) => setFont(e.target.value)}>
+          <option value='"Comic Sans MS", "Comic Sans", cursive'>Comic Sans</option>
+          <option value="Arial, Helvetica, sans-serif">Arial</option>
+          <option value="Helvetica, Arial, sans-serif">Helvetica</option>
+          <option value='"OpenDyslexic", Arial, sans-serif'>OpenDyslexic</option>
+          <option value='"Atkinson Hyperlegible", Arial, sans-serif'>Atkinson Hyperlegible</option>
+          <option value='"Atkinson Hyperlegible Next", Arial, sans-serif'>Atkinson Hyperlegible Next</option>
+          <option value='"Atkinson Hyperlegible Mono", monospace'>Atkinson Hyperlegible Mono</option>
+        </select>
       </div>
 
       <div className="setting">
@@ -98,48 +65,72 @@ function AccessibilityPanel() {
         />
       </div>
 
-      {/* <div className="setting">
-        <label>Background Color</label>
-        <input
-          type="color"
-          value={bgColor}
-          onChange={(e) => setBgColor(e.target.value)}
-        />
-      </div> */}
+      {/* Toggle for hover-to-read */}
+<div className="setting">
+  <label className="switch-label">
+    Enable Text-to-Speech on Hover
+    <div className="switch">
+      <input
+        type="checkbox"
+        checked={ttsEnabled}
+        onChange={() => setTtsEnabled(!ttsEnabled)}
+      />
+      <span className="slider"></span>
+    </div>
+  </label>
+</div>
 
-      {/* <div className="setting">
-        <label>
-          <input
-            type="checkbox"
-            checked={ttsEnabled}
-            onChange={() => setTtsEnabled(!ttsEnabled)}
-          />
-          Text-to-Speech
-        </label>
-      </div> */}
-
-      {/* <div className="setting">
-        <label>
-          <input
-            type="checkbox"
-            checked={reduceAnimations}
-            onChange={() => setReduceAnimations(!reduceAnimations)}
-          />
-          Reduce Animations
-        </label>
-      </div> */}
     </div>
   );
 }
 
+
 function MyNavbar() {
   const navRef = useRef();
   const [showAccessibility, setShowAccessibility] = useState(false);
-  
+  const [ttsEnabled, setTtsEnabled] = useState(false);
 
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
   };
+useEffect(() => {
+  if (!ttsEnabled) return;
+
+  let utterance = null;
+
+  const handleMouseOver = (e) => {
+    if (
+      e.target &&
+      ["P","SPAN","H1","H2","H3","H4","H5","H6","LI","BUTTON","A"].includes(e.target.tagName)
+    ) {
+      // Only read direct text, not child elements
+      const text = e.target.childNodes.length === 1 && e.target.childNodes[0].nodeType === 3
+        ? e.target.innerText
+        : e.target.childNodes[0]?.nodeValue || e.target.innerText;
+
+      if (text?.trim()) {
+        utterance = new SpeechSynthesisUtterance(text);
+        window.speechSynthesis.speak(utterance);
+      }
+    }
+  };
+
+  const handleMouseOut = () => {
+    if (utterance) {
+      window.speechSynthesis.cancel();
+      utterance = null;
+    }
+  };
+
+  document.addEventListener("mouseover", handleMouseOver);
+  document.addEventListener("mouseout", handleMouseOut);
+
+  return () => {
+    document.removeEventListener("mouseover", handleMouseOver);
+    document.removeEventListener("mouseout", handleMouseOut);
+    window.speechSynthesis.cancel();
+  };
+}, [ttsEnabled]);
 
   return (
     <>
@@ -159,34 +150,34 @@ function MyNavbar() {
           </button>
         </nav>
 
-<div className="nav-icons">
-  <Link to="/tools" className="icon-btn">
-    <FaWandMagicSparkles />
-  </Link>
+        <div className="nav-icons">
+          <Link to="/tools" className="icon-btn">
+            <FaWandMagicSparkles />
+          </Link>
 
-  <button
-    className="icon-btn accessabilitySettings"
-    onClick={() => setShowAccessibility(!showAccessibility)}
-  >
-    <MdEditSquare />
-  </button>
+          <button
+            className="icon-btn accessabilitySettings"
+            onClick={() => setShowAccessibility(!showAccessibility)}
+          >
+            <MdEditSquare />
+          </button>
 
-<Link to="/SavedPage" className="icon-btn">
-  <RiSave3Line />
-</Link>
-
-
-</div>
-
+          <Link to="/SavedPage" className="icon-btn">
+            <RiSave3Line />
+          </Link>
+        </div>
 
         <button className="nav-btn" onClick={showNavbar}>
           <FaBars />
         </button>
       </header>
 
-      {showAccessibility && <AccessibilityPanel />}
+      {showAccessibility && (
+        <AccessibilityPanel ttsEnabled={ttsEnabled} setTtsEnabled={setTtsEnabled} />
+      )}
     </>
   );
 }
+
 
 export default MyNavbar;
