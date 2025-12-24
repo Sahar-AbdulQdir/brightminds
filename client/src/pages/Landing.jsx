@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import LandingNavbar from "../components/LandingPage/LandingNavBar";
 import HeroSec from "../components/LandingPage/HeroSec";
 import WhyChooseUs from "../components/LandingPage/WhyChooseUs";
@@ -7,11 +7,19 @@ import ReviewsSection from "../components/LandingPage/Reviews";
 import FaqSec from "../components/LandingPage/FaqSec";
 import LandingFooter from "../components/LandingPage/LandingFooter";
 import About from "../components/LandingPage/AboutDys";
+import Loader from "../components/GenerealFixes/Loader";
 
 const LandingPage = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Show loader for 3 seconds
+    const timer = setTimeout(() => setLoading(false), 2000);
+    return () => clearTimeout(timer);
+  }, []);
+
   useEffect(() => {
     document.body.style.backgroundColor = "#ffffffff"; // solid color
-
     const root = document.getElementById("root");
     if (root) root.style.padding = "0";
 
@@ -21,8 +29,13 @@ const LandingPage = () => {
     };
   }, []);
 
+  if (loading) {
+    // Show loader overlay while loading
+    return <Loader />;
+  }
+
   return (
-    <div>
+    <>
       <LandingNavbar />
 
       <section>
@@ -50,7 +63,7 @@ const LandingPage = () => {
       </section>
 
       <LandingFooter />
-    </div>
+    </>
   );
 };
 
