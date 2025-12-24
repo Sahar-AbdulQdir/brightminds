@@ -5,10 +5,10 @@ import {
   FaForward,
   FaBackward,
   FaBookmark,
-  FaChevronLeft,
-  FaChevronRight,
 } from "react-icons/fa";
-import "../BlogPage/BlogsPage/books.css";
+import "./BlogsPage/books.css";
+
+const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 const Books = () => {
   const [books, setBooks] = useState([]);
@@ -20,29 +20,38 @@ const Books = () => {
   const booksPerPage = 30;
 
   const mainGenres = [
-  "All",
-  "Fiction",
-  "Mystery",
-  "Romance",
-  "Fantasy",
-  "Science Fiction",
-  "Biography",
-  "Adventure",
-  "Historical",
-  "Poetry"
-];
+    "All",
+    "Fiction",
+    "Mystery",
+    "Romance",
+    "Fantasy",
+    "Science Fiction",
+    "Biography",
+    "Adventure",
+    "Historical",
+    "Poetry",
+  ];
 
   // Fetch books from archive.org
   useEffect(() => {
-const url = "https://archive.org/advancedsearch.php?q=collection:(librivoxaudio)&fl[]=identifier&fl[]=title&fl[]=subject&rows=200&page=1&output=json";
-fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`)
-  .then((res) => res.json())
-  .then((data) => {
-    setBooks(data.response.docs);
-    setCurrentPage(1);
-  })
-  .catch(err => console.error("Failed to fetch books:", err));
+    const fetchBooks = async () => {
+      try {
+        const url =
+          "https://archive.org/advancedsearch.php?q=collection:(librivoxaudio)&fl[]=identifier&fl[]=title&fl[]=subject&rows=200&page=1&output=json";
+        const res = await fetch(
+          `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`
+        );
+        if (!res.ok) throw new Error("Network response was not ok");
 
+        const data = await res.json();
+        setBooks(data.response.docs);
+        setCurrentPage(1);
+      } catch (err) {
+        console.error("Failed to fetch books:", err);
+      }
+    };
+
+    fetchBooks();
   }, []);
 
   // Filter and paginate books
@@ -51,7 +60,9 @@ fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`)
     if (selectedGenre !== "All") {
       filtered = books.filter((b) =>
         Array.isArray(b.subject)
-          ? b.subject.some((s) => s.toLowerCase().includes(selectedGenre.toLowerCase()))
+          ? b.subject.some((s) =>
+              s.toLowerCase().includes(selectedGenre.toLowerCase())
+            )
           : typeof b.subject === "string"
           ? b.subject.toLowerCase().includes(selectedGenre.toLowerCase())
           : false
@@ -63,30 +74,48 @@ fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`)
     setDisplayedBooks(filtered.slice(start, end));
   }, [books, selectedGenre, currentPage]);
 
-  // Audio functions
+  // Load and play audio safely
   const loadAndPlay = async (id) => {
-const metadataUrl = `https://archive.org/metadata/${id}`;
-const res = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(metadataUrl)}`);
-const data = await res.json();
+    try {
+      const metadataUrl = `https://archive.org/metadata/${id}`;
+      const res = await fetch(
+        `https://api.allorigins.win/raw?url=${encodeURIComponent(metadataUrl)}`
+      );
+      if (!res.ok) throw new Error("Failed to fetch metadata");
 
-    const mp3 = data.files.find((f) => f.name.endsWith(".mp3"));
-    if (!mp3) return;
+      const data = await res.json();
+      const mp3 = data.files.find((f) => f.name.endsWith(".mp3"));
+      if (!mp3) return;
 
-    const url = `https://archive.org/download/${id}/${mp3.name}`;
-    if (current === url) {
-      audioRef.current.pause();
-      setCurrent(null);
-    } else {
-      audioRef.current.src = url;
-      audioRef.current.play();
-      setCurrent(url);
+      const url = `https://archive.org/download/${id}/${mp3.name}`;
+
+      if (current === url) {
+        audioRef.current.pause();
+        setCurrent(null);
+      } else {
+        // Stop previous audio
+        audioRef.current.pause();
+        audioRef.current.src = url;
+
+        try {
+          await audioRef.current.play();
+          setCurrent(url);
+        } catch (err) {
+          if (err.name !== "AbortError")
+            console.error("Audio play error:", err);
+        }
+      }
+    } catch (err) {
+      console.error("Failed to load and play audio:", err);
     }
   };
 
+  // Seek audio
   const seek = (seconds) => {
     audioRef.current.currentTime += seconds;
   };
 
+  // Save book
   const saveBook = async (book) => {
     const email = localStorage.getItem("userEmail");
     if (!email) {
@@ -114,22 +143,26 @@ const data = await res.json();
 
       alert("Book saved!");
     } catch (err) {
-      console.error(err);
+      console.error("Error saving book:", err);
       alert("Could not save the book");
     }
   };
 
+  // Filter by genre
   const filterByGenre = (genre) => {
     setSelectedGenre(genre);
     setCurrentPage(1);
   };
 
+  // Calculate total pages
   const totalPages = Math.ceil(
     (selectedGenre === "All"
       ? books.length
       : books.filter((b) =>
           Array.isArray(b.subject)
-            ? b.subject.some((s) => s.toLowerCase().includes(selectedGenre.toLowerCase()))
+            ? b.subject.some((s) =>
+                s.toLowerCase().includes(selectedGenre.toLowerCase())
+              )
             : typeof b.subject === "string"
             ? b.subject.toLowerCase().includes(selectedGenre.toLowerCase())
             : false
@@ -140,25 +173,29 @@ const data = await res.json();
     <div className="library-container">
       {/* Top Border */}
       <div className="library-border-top">
-        <div className="library-nameplate">ᖳᖰAudio Books Collection</div>
+        <div className="library-nameplate">ᖳᖰ Audio Books Collection</div>
       </div>
 
       {/* Left Shelf: Genre Buttons */}
       <div className="library-border-left">
-      <div className="genre-buttons">
-        {mainGenres.map((genre) => (
-          <div
-            key={genre}
-            className="genre-btn"
-            onClick={() => filterByGenre(genre)}
-          >
-            <div className={`genre-btn-icon ${selectedGenre === genre ? "active" : ""}`}>
-              {genre[0]} {/* First letter as icon */}
+        <div className="genre-buttons">
+          {mainGenres.map((genre) => (
+            <div
+              key={genre}
+              className="genre-btn"
+              onClick={() => filterByGenre(genre)}
+            >
+              <div
+                className={`genre-btn-icon ${
+                  selectedGenre === genre ? "active" : ""
+                }`}
+              >
+                {genre[0]}
+              </div>
+              <div className="genre-btn-label">{genre}</div>
             </div>
-            <div className="genre-btn-label">{genre}</div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
       </div>
 
       {/* Right Shelf: Pagination */}
@@ -206,13 +243,6 @@ const data = await res.json();
           ))}
         </div>
       </div>
-
-      {/* Bottom Border */}
-      {/* <div className="library-border-bottom">
-        <div className="library-stamp">Established 1847</div>
-        <div>Reference Section - Non-circulating</div>
-        <div className="library-stamp">Library Seal</div>
-      </div> */}
     </div>
   );
 };
