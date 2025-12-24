@@ -5,21 +5,22 @@ import mongoose from "mongoose";
 import savedRoutes from "./routes/saved.js";
 import User from "./models/User.js";
 import fetch from "node-fetch";
+import bcrypt from "bcryptjs";
 
 dotenv.config();
 
 const app = express();
-
+const PORT = process.env.PORT || 5000;
+const PODCAST_API_KEY = process.env.PODCAST_API_KEY;
 
 // Middleware
+app.use(express.json());
 app.use(
   cors({
-    origin: "https://lexiaminds-private-testing.onrender.com", // your deployed front-end
-    credentials: true, // only if using cookies/auth headers
+    origin: "*", // For testing. Replace with your frontend URL in production
+    credentials: true,
   })
 );
-
-app.use(express.json());
 
 // Connect to MongoDB
 mongoose
@@ -27,17 +28,20 @@ mongoose
   .then(() => console.log("✅ MongoDB connected"))
   .catch((err) => console.error("❌ MongoDB connection error:", err));
 
+// ------------------ Auth Routes ------------------
+
 // Sign Up
 app.post("/api/signup", async (req, res) => {
   try {
     const { name, email, password } = req.body;
+    if (!name || !email || !password)
+      return res.status(400).json({ message: "All fields are required" });
 
     const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return res.status(400).json({ message: "Email already exists" });
-    }
+    if (existingUser) return res.status(400).json({ message: "Email already exists" });
 
-    const newUser = new User({ name, email, password });
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = new User({ name, email, password: hashedPassword });
     await newUser.save();
 
     res.status(201).json({ message: "User created successfully" });
@@ -51,23 +55,23 @@ app.post("/api/signup", async (req, res) => {
 app.post("/api/signin", async (req, res) => {
   try {
     const { email, password } = req.body;
+    if (!email || !password)
+      return res.status(400).json({ message: "Email and password are required" });
 
     const user = await User.findOne({ email });
-    if (!user || user.password !== password) {
-      return res.status(400).json({ message: "Invalid email or password" });
-    }
+    if (!user) return res.status(400).json({ message: "Invalid email or password" });
 
-    res.status(200).json({
-      message: "Sign in successful",
-      user: { name: user.name, email: user.email },
-    });
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) return res.status(400).json({ message: "Invalid email or password" });
+
+    res.status(200).json({ message: "Sign in successful", user: { name: user.name, email: user.email } });
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Sign in failed" });
   }
 });
 
-// View all users (without passwords)
+// ------------------ Users ------------------
 app.get("/api/users", async (req, res) => {
   try {
     const users = await User.find({}, "-password");
@@ -78,46 +82,32 @@ app.get("/api/users", async (req, res) => {
   }
 });
 
-
-app.use(savedRoutes);
-
-
-
-// Grammar & spelling check
+// ------------------ Grammar ------------------
 app.post("/api/grammar", async (req, res) => {
   try {
     const { text } = req.body;
     if (!text?.trim()) return res.status(400).json({ message: "Text is required" });
 
-    // LanguageTool API
     const response = await fetch("https://api.languagetoolplus.com/v2/check", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({
-        text,
-        language: "en-US",
-      }),
+      body: new URLSearchParams({ text, language: "en-US" }),
     });
 
     const data = await response.json();
-    res.json(data); // contains grammar, spelling, and style suggestions
+    res.json(data);
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Server error" });
   }
 });
 
+// ------------------ Podcast Proxy ------------------
 app.get("/api/podcasts/hot", async (req, res) => {
   try {
-    const response = await fetch(
-      "https://listen-api.listennotes.com/api/v2/best_podcasts",
-      {
-        headers: {
-          "X-ListenAPI-Key": PODCAST_API_KEY,
-        },
-      }
-    );
-
+    const response = await fetch("https://listen-api.listennotes.com/api/v2/best_podcasts", {
+      headers: { "X-ListenAPI-Key": PODCAST_API_KEY },
+    });
     const data = await response.json();
     res.json(data.podcasts);
   } catch (err) {
@@ -128,15 +118,9 @@ app.get("/api/podcasts/hot", async (req, res) => {
 
 app.get("/api/podcasts/:id/episodes", async (req, res) => {
   try {
-    const response = await fetch(
-      `https://listen-api.listennotes.com/api/v2/podcasts/${req.params.id}`,
-      {
-        headers: {
-          "X-ListenAPI-Key": PODCAST_API_KEY,
-        },
-      }
-    );
-
+    const response = await fetch(`https://listen-api.listennotes.com/api/v2/podcasts/${req.params.id}`, {
+      headers: { "X-ListenAPI-Key": PODCAST_API_KEY },
+    });
     const data = await response.json();
     res.json(data.episodes);
   } catch (err) {
@@ -145,7 +129,8 @@ app.get("/api/podcasts/:id/episodes", async (req, res) => {
   }
 });
 
+// Saved routes
+app.use(savedRoutes);
 
-
-const PORT = process.env.PORT || 5000;
+// ------------------ Start Server ------------------
 app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
