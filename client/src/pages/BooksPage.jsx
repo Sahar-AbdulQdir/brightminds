@@ -7,7 +7,6 @@ import Articles from "../components/BlogPage/articles.jsx";
 import Books from "../components/BlogPage/Books.jsx";
 import BooksSlider from "../components/BlogPage/BooksSlider.jsx";
 import QuoteCard from "../components/BlogPage/QuoteCard.jsx";
-import Notebook  from "../components/BlogPage/Nootbook.jsx";
 import { useEffect } from 'react';
 import "../styles/main.css"
 
@@ -28,6 +27,7 @@ const Bloggy = () => {
       <div className="navbar-section">
         <MyNavbar />
       </div>
+    
 
       {/* Main Content */}
       <div className="blogs-content-section">

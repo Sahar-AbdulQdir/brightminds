@@ -177,8 +177,8 @@ border-bottom-right-radius: 10px;
 }
 
 /* BOOK (SMALLER) */.book {
-  width: 100px;          /* updated width */
-  height: 160px;         /* updated height */
+  width: 100px;        
+  height: 160px;         
   position: relative;
   transform-style: preserve-3d;
   transform: rotateY(-25deg);
