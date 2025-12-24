@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes, FaSearch, FaUserCircle } from "react-icons/fa";
 import "../../styles/main.css";
-import Logo from "../../assets/icons/Logo.svg";
+import Logo from "../../assets/icons/Logo3.svg";
 
 function LandingNavbar() {
   const navRef = useRef();
@@ -18,16 +18,17 @@ function LandingNavbar() {
                 <img src={Logo} alt="Cognify Minds Logo" className="nav-logo" />
               </h3>
 
-      <nav ref={navRef}>
-        <Link to="/home">Explore</Link>
-        <Link to="/blog">FAQ</Link>
-        <Link to="/games">Impact</Link>
+<nav ref={navRef}>
 
-        {/* Close button for mobile */}
-        <button className="nav-btn nav-close-btn" onClick={showNavbar}>
-          <FaTimes />
-        </button>
-      </nav>
+  <a href="#Landing-about">About</a>
+  <a href="#Landing-why-us">Why Us</a>
+  <a href="#Landing-faq">FAQ</a>
+
+  <button className="nav-btn nav-close-btn" onClick={showNavbar}>
+    <FaTimes />
+  </button>
+</nav>
+
 
       
 

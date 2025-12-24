@@ -1,5 +1,5 @@
 import React from "react";
-import HeroImg from "../../assets/images/Hero.png";
+import HeroImg from "../../assets/images/landingHero.png";
 import "../../components/LandingPage/LandingPageStyles/Hero.css";
 import { useNavigate } from "react-router-dom"; // ✅ import
 
@@ -9,8 +9,8 @@ const HeroSec = () => {
   return (
     <section className="hero-section">
       <div className="Hero">
-        <h1>WELCOME TO BRAINBOOST</h1>
-        <p>Challenge your mind. Learn smarter. Play daily.</p>
+        <h1>Welcome to Lexi Minds</h1>
+        <p>Read, listen, and explore at your own pace.</p>
         <div className="hero-buttons">
           <button
             className="login-btn"

@@ -1,44 +1,54 @@
-import React from "react";
-import LandingNavbar from  "../components/LandingPage/LandingNavBar";
+import React, { useEffect } from "react";
+import LandingNavbar from "../components/LandingPage/LandingNavBar";
 import HeroSec from "../components/LandingPage/HeroSec";
 import WhyChooseUs from "../components/LandingPage/WhyChooseUs";
 import ImpactSection from "../components/LandingPage/ImpactSection";
 import ReviewsSection from "../components/LandingPage/Reviews";
 import FaqSec from "../components/LandingPage/FaqSec";
 import LandingFooter from "../components/LandingPage/LandingFooter";
-import BHeroSection from "../components/BlogPage/Hero";
-import About from "../components/LandingPage/AboutDys"
-import { useEffect } from 'react';
+import About from "../components/LandingPage/AboutDys";
 
 const LandingPage = () => {
-useEffect(() => {
-  // Set background color
-  document.body.style.backgroundColor = '#ffffffff'; // solid color or you can use gradient with backgroundImage
+  useEffect(() => {
+    document.body.style.backgroundColor = "#ffffffff"; // solid color
 
-  // Remove root padding
-  const root = document.getElementById('root');
-  if (root) {
-    root.style.padding = '0';
-  }
+    const root = document.getElementById("root");
+    if (root) root.style.padding = "0";
 
-  // Cleanup on unmount
-  return () => {
-    document.body.style.backgroundColor = '';
-    if (root) {
-      root.style.padding = ''; // reset padding
-    }
-  };
-}, []);
+    return () => {
+      document.body.style.backgroundColor = "";
+      if (root) root.style.padding = "";
+    };
+  }, []);
 
   return (
     <div>
       <LandingNavbar />
-      <HeroSec />
-      <About/>
-      <WhyChooseUs />
-      <ImpactSection />
-      <ReviewsSection />
-      <FaqSec />
+
+      <section>
+        <HeroSec />
+      </section>
+
+      <section id="Landing-about">
+        <About />
+      </section>
+
+      <section id="Landing-why-us">
+        <WhyChooseUs />
+      </section>
+
+      <section>
+        <ImpactSection />
+      </section>
+
+      <section>
+        <ReviewsSection />
+      </section>
+
+      <section id="Landing-faq">
+        <FaqSec />
+      </section>
+
       <LandingFooter />
     </div>
   );

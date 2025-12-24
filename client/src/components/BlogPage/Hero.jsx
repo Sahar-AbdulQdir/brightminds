@@ -74,7 +74,7 @@ const BHeroSection = () => {
 
         {/* MAIN TEXT */}
         <h1 className="bhero-title">Read Your Way</h1>
-        <h2 className="bhero-subtitle">A Better Way to Enjoy Books</h2>
+        <h2 className="bhero-subtitle">A Better Way to <span className="circle-sketch-highlight">Enjoy</span> Books</h2>
         <h2 className="bhero-subtitle-muted">listen at your own pace.</h2>
         <h1 className="bhero-title">Designed for you</h1>
         <p className="bhero-text">

@@ -44,12 +44,13 @@ const Home = () => {
           <div className="welcome-card">
             <h2>Hello, {userName}</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              This space is designed for dyslexic minds and different learners.
+              You don’t have to force yourself to read the “normal” way, here,
+               you choose what works best for you.
+
             </p>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Read, listen, adjust, and learn at your own pace, without pressure.
             </p>
             <button className="read-more-btn">Read More</button>
           </div>
@@ -60,8 +61,8 @@ const Home = () => {
             </div>
             <div className="podcast-right">
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor
+                Our podcasts are made for curious minds that learn better by listening.
+Perfect for breaks, walks, or moments when reading just isn’t the mood.
               </p>
               <button className="read-more-btn">Listen Now!</button>
             </div>
@@ -78,9 +79,10 @@ const Home = () => {
             <div className="video-overlay-home bottom-left">
               <div>
                 <h2>Boost Your Focus</h2>
-              <p>Discover how to stay productive and mindful every day.</p>
+              <p>Our audiobooks let you enjoy stories, learning, and ideas without struggling through text.
+Just press play and focus on understanding</p>
               </div>
-              <button className="video-btn">Explore Now</button>
+              <button className="video-btn">Browse Books</button>
             </div>
           </div>
         </div>

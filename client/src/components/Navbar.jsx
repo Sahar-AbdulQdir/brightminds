@@ -10,7 +10,7 @@ import { RiSave3Line } from "react-icons/ri";
 
 
 // ⬅️ Import your SVG logo
-import Logo from "../assets/icons/Logo.svg";
+import Logo from "../assets/icons/Logo3.svg";
 
 function AccessibilityPanel() {
   const [font, setFont] = useState("Verdana");

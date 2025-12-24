@@ -1,7 +1,7 @@
 
 .hero-section {
   background: #953D9F;
-background: linear-gradient(1deg,rgba(149, 61, 159, 1) 0%, rgba(255, 255, 255, 1) 100%);
+background: linear-gradient(1deg,#FB91FB 0%, #ffffff 100%);
   text-align: center;
   /* padding: 5rem 0; */
   color: white;
@@ -36,10 +36,10 @@ background: linear-gradient(1deg,rgba(149, 61, 159, 1) 0%, rgba(255, 255, 255, 1
 }
 
 .hero-buttons button {
-  padding: 0.5rem 1.5rem; /* py-2 px-6 */
-  border-radius: 9999px; /* rounded-full */
-  font-weight: 600; /* font-semibold */
-  margin-right: 1rem; /* space-x-4 */
+  padding: 0.5rem 1.5rem; 
+  border-radius: 15px;
+  font-weight: 600; 
+  margin-right: 1rem; 
   cursor: pointer;
   border: none;
   transition: all 0.3s ease;
