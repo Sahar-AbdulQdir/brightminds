@@ -82,3 +82,40 @@ box-sizing: border-box;
 .faq-icon{
   font-weight: 500;
 }
+
+@media (max-width: 767px) {
+  .faq-section .faqTop {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .faq-section h2 {
+    font-size: 2.2rem;
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .faq-section img {
+    width: 60%;
+    height: auto;
+    margin-top: 0;
+  }
+}
+
+
+@media (max-width: 1023px) {
+  .faq-section .faqTop {
+    gap: 3rem;
+  }
+
+  .faq-section h2 {
+    font-size: 3rem;
+  }
+
+  .faq-section img {
+    width: 35%;
+    height: auto;
+    margin-top: -1rem;
+  }
+}

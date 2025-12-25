@@ -1,84 +1,102 @@
-
 .hero-section {
-  background: #953D9F;
-background: linear-gradient(1deg,#FB91FB 0%, #ffffff 100%);
+  background: linear-gradient(1deg, #fb91fb 0%, #ffffff 100%);
   text-align: center;
-  /* padding: 5rem 0; */
   color: white;
+  padding: 4rem 1rem 2rem;
+  padding-bottom: 0rem !important;
 }
 
+/* Wrapper */
+.Hero {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Title */
 .hero-section h1 {
-  font-size: 1.875rem; /* text-3xl */
+  font-size: 2rem;
   font-weight: 900;
-  margin-top: -1.5rem; 
   color: black;
+  margin-top: -5rem;
 }
 
-@media (min-width: 768px) {
-  .hero-section h1 {
-    font-size: 3rem; /* md:text-5xl */
-  }
-}
-
+/* Subtitle */
 .hero-section p {
-  font-size: 1.125rem; /* text-lg */
-  margin-bottom: 2.5rem; /* mb-6 */
-  color: #000000;
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #000;
   font-weight: 500;
+  padding: 0 1rem;
 }
 
+/* Buttons container */
 .hero-buttons {
-  margin-bottom: -1rem; 
   display: flex;
-  flex-direction: row;
   justify-content: center;
-  gap: 15rem;
+  gap: 4rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
 }
 
+/* Buttons */
 .hero-buttons button {
-  padding: 0.5rem 1.5rem; 
+  padding: 0.6rem 1.8rem;
   border-radius: 15px;
-  font-weight: 600; 
-  margin-right: 1rem; 
+  font-weight: 600;
   cursor: pointer;
   border: none;
   transition: all 0.3s ease;
+  min-width: 120px;
 }
 
-.hero-buttons button.login-btn {
-  background-color: rgb(255, 255, 255);
-  color: rgb(0, 0, 0);
+.hero-buttons .login-btn {
+  background-color: white;
+  color: black;
 }
 
-.hero-buttons button.login-btn:hover {
+.hero-buttons .login-btn:hover {
   opacity: 0.9;
 }
 
-.hero-buttons button.signin-btn {
+.hero-buttons .signin-btn {
   background-color: black;
   color: white;
 }
 
-.hero-buttons button.signin-btn:hover {
-  background-color: #1a1a1a; /* dark gray */
+.hero-buttons .signin-btn:hover {
+  background-color: #1a1a1a;
 }
 
+/* Image */
 .hero-image {
   display: flex;
   justify-content: center;
 }
 
 .hero-image img {
-  max-width: 80%; /* w-4/5 */
-  border-radius: 0.75rem; /* rounded-xl */
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* shadow-lg */
+  width: 100%;
+  max-width: 700px;
+  border-radius: 0.75rem;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
+/* Tablet */
 @media (min-width: 768px) {
+  .hero-section {
+    padding: 6rem 2rem 3rem;
+  }
+
+  .hero-section h1 {
+    font-size: 3rem;
+  }
+
+  .hero-section p {
+    font-size: 1.25rem;
+  }
+
   .hero-image img {
-    max-width: 80.0%; /* md:w-2/3 */
-    margin-top: 2.5rem;
+    max-width: 80%;
+    margin-top: 2rem;
   }
 }
-
 

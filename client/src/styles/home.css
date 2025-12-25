@@ -212,3 +212,100 @@ border-bottom-left-radius: 15px;
 }
 
 
+/* Mobile: ≤ 767px */
+@media (max-width: 767px) {
+  .content-section {
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 0;
+  }
+
+  .left-section,
+  .right-section {
+    width: 100%;
+  }
+
+  .home-podcast-card {
+    flex-direction: column;
+  }
+
+  .podcast-left,
+  .podcast-right {
+    flex: 1 1 100%;
+    padding: 1rem;
+  }
+
+  .podcast-img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px 15px 0 0;
+  }
+
+  .video-card {
+    width: 100%;
+    height: auto;
+  }
+
+  .video-bg {
+    height: 250px; /* scale down for mobile */
+  }
+
+  .video-overlay-home {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 10px 15px;
+    height: auto;
+    border-radius: 0 0 15px 15px;
+  }
+
+  .video-overlay-home h2 {
+    font-size: 1.5rem;
+  }
+
+  .video-overlay-home p {
+    font-size: 0.8rem;
+  }
+
+  .video-btn {
+    width: 80%;
+    height: 45px;
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+  }
+}
+
+/* Tablet: 768px – 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .content-section {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .left-section {
+    flex: 1 1 60%;
+  }
+
+  .right-section {
+    flex: 1 1 35%;
+  }
+
+  .video-card {
+    width: 100%;
+    height: 350px;
+  }
+
+  .video-overlay-home h2 {
+    font-size: 1.6rem;
+  }
+
+  .video-overlay-home p {
+    font-size: 0.85rem;
+  }
+
+  .video-btn {
+    width: 50%;
+    height: 50px;
+    font-size: 0.85rem;
+  }
+}

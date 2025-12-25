@@ -1,6 +1,7 @@
 .scene{
     display: flex;
     flex-direction: row-reverse;
+
 }
 .dyslexia-note {
   margin-left: 2rem;
@@ -673,7 +674,8 @@ a {
 
 @media (max-width: 991px) {
   .scene {
-    height: 56vw;
+    /* height: 56vw; */
+    flex-direction: column-reverse;
   }
   .book-wrap {
     width: 62vw;
@@ -706,6 +708,19 @@ a {
   .page-right-2 {
     padding-left: 9%;
   }
+
+  .w-richtext ul li {
+  font-size: 0.4rem;
+  /* color: #da5a13; */
+  }
+
+  .book-wrap img{
+    display: none;
+  }
+
+     .scene{
+        min-height: 200vh;
+   }
 }
 
 @media (max-width: 767px) {
@@ -777,16 +792,42 @@ a {
     -ms-flex: 0 auto;
     flex: 0 auto;
   }
+
+    .w-richtext ul li {
+  font-size: 0.3rem;
+  /* color: aqua; */
+  }
+
+  .book-wrap img{
+    display: none;
+  }
+
+   .scene{
+        min-height: 200vh;
+   }
 }
 
 @media (max-width: 479px) {
   .scene {
-    height: 69vw;
+    /* height: 69vw; */
+        flex-direction: column-reverse;
   }
   .corner-fold {
     width: 5.5vw;
     height: 5.5vw;
     min-width: 21px;
   }
-}
 
+      .w-richtext ul li {
+  font-size: 0.3rem;
+  /* color: rgb(255, 0, 0); */
+  }
+
+  .book-wrap img{
+    display: none;
+  }
+     .scene{
+        min-height: 200vh;
+   }
+}
+  
