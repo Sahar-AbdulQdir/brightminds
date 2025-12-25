@@ -15,9 +15,9 @@ function App() {
     <Router>
       <Routes>
         <Route path="/Home" element={<Layout><Home /></Layout>} />
-        <Route path="/" element={<Layout><Podcasts /></Layout>} />
+        <Route path="/Podcasts" element={<Layout><Podcasts /></Layout>} />
         <Route path="/AudioBooks" element={<Layout><AudioBooks /></Layout>} />
-        <Route path="/Landing" element={<LandingPage />} /> 
+        <Route path="/" element={<LandingPage />} /> 
         <Route path="/tools" element={<Layout><ToolsResources /></Layout>} />
         <Route path="/auth" element={<AuthPage />} />
         <Route path="/SavedPage" element={<Layout><SavedPage /></Layout>} />
