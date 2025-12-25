@@ -1,19 +1,17 @@
-
 /* ---------------- Header ---------------- */
 header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
-  margin-top: -2.5%;
-} 
-
-.nav-logo {
-  width: 200px;   /* adjust as needed */
-  height: auto;
-  margin-top: 1rem;
+  position: relative;
+  z-index: 1000;
 }
 
+.nav-logo {
+  width: 150px; /* smaller on mobile */
+  height: auto;
+}
 
 .nav-icons {
   display: flex;
@@ -27,42 +25,21 @@ header {
   cursor: pointer;
   font-size: 1.4rem;
   color: #000000;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .icon-btn:hover {
-    color: #ffffff;
+  color: #ffffff;
   background: #bd8fda;
   border-radius: 5px;
-  padding: 2px 2px;
-  transition: ease-in-out 0.3s;
-} 
-
-/* Adjust for mobile if needed */
-@media (max-width: 768px) {
-  .nav-icons {
-    display: none;
-  }
-}
-
-
-header h3 {
-  font-size: 1.8rem;
-  font-weight: 800;
+  padding: 2px 4px;
 }
 
 /* ---------------- Desktop Navbar ---------------- */
 nav {
   display: flex;
   align-items: center;
-  gap: 2.2rem;
-  position: static;
-  height: auto;
-  width: auto;
-  flex-direction: row;
-  justify-content: flex-end;
-  background: none;
-  transform: none;
+  gap: 2rem;
 }
 
 nav a {
@@ -70,15 +47,14 @@ nav a {
   text-decoration: none;
   font-weight: 800;
   font-size: 1rem;
-  transition: color 0.3s;
+  transition: all 0.3s ease;
 }
 
 nav a:hover {
   color: #ffffff;
   background: #bd8fda;
   border-radius: 5px;
-  padding: 2px 2px;
-  transition: ease-in-out 0.3s;
+  padding: 2px 4px;
 }
 
 /* ---------------- Hamburger Button ---------------- */
@@ -88,22 +64,29 @@ header .nav-btn {
   cursor: pointer;
   background: transparent;
   border: none;
-  outline: none;
-  color: var(--textColor);
   font-size: 1.8rem;
-} */
+}
 
 /* Close button for mobile */
 .nav-close-btn {
   position: absolute;
-  top: 1.5rem;
-  right: 2rem;
+  top: 1.2rem;
+  right: 1.5rem;
+  font-size: 2rem;
+  color: #000;
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 /* ---------------- Mobile Styles ---------------- */
-@media only screen and (max-width: 1024px) {
+@media (max-width: 1024px) {
+  .nav-icons {
+    /* display: none;  */
+  }
+
   header .nav-btn {
-    display: block;
+    display: block; /* show hamburger */
   }
 
   nav {
@@ -119,15 +102,32 @@ header .nav-btn {
     padding-top: 5rem;
     gap: 2rem;
     transform: translateY(-100%);
-    transition: transform 0.5s ease;
+    transition: transform 0.4s ease-in-out;
     z-index: 999;
-  }
-
-  header .responsive_nav {
-    transform: translateY(0);
   }
 
   nav a {
     font-size: 1.5rem;
+  }
+
+  nav.responsive_nav {
+    transform: translateY(0);
+  }
+}
+
+/* ---------------- Extra Small Screens ---------------- */
+@media (max-width: 480px) {
+  .nav-logo {
+    width: 120px;
+  }
+
+  nav a {
+    font-size: 1.2rem;
+  }
+
+  .nav-close-btn {
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.8rem;
   }
 }
