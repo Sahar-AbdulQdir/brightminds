@@ -220,3 +220,87 @@
 .quote-card-content p.highlight {
   font-weight: 600;
 }
+
+
+/* Mobile: ≤ 767px */
+@media (max-width: 767px) {
+  .bhero-section {
+    padding: 40px 15px;
+  }
+
+  .bhero-title {
+    font-size: 2rem;
+  }
+
+  .bhero-subtitle,
+  .bhero-subtitle-muted {
+    font-size: 1.3rem;
+  }
+
+  .bhero-text {
+    font-size: 0.9rem;
+    max-width: 90%;
+  }
+
+  .bhero-button {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+  }
+
+  /* Floating cards stacked for mobile */
+  .floating-left-top,
+  .floating-left-black,
+  .floating-right-light,
+  .floating-right-purple {
+    position: static;
+    transform: none !important;
+    width: 90%;
+    margin: 15px auto;
+    scale: 1 !important;
+  }
+
+  .quote-card-content img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .quote-card-content .name {
+    font-size: 0.95rem;
+  }
+
+  .quote-card-content .role {
+    font-size: 0.75rem;
+  }
+
+  .quote-card-content p {
+    font-size: 0.85rem;
+  }
+}
+
+/* Tablet: 768px – 1023px */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .bhero-section {
+    padding: 50px 20px;
+  }
+
+  .bhero-title {
+    font-size: 2.5rem;
+  }
+
+  .bhero-subtitle,
+  .bhero-subtitle-muted {
+    font-size: 1.7rem;
+  }
+
+  .bhero-text {
+    font-size: 0.95rem;
+    max-width: 480px;
+  }
+
+  /* Slightly adjust floating card positions for tablets */
+  .floating-left-top { top: 40px; left: -40px; }
+  .floating-left-black { top: 250px; left: -20px; }
+  .floating-right-light { top: 0; right: -50px; transform: scale(0.95); }
+  .floating-right-purple { top: 180px; right: -20px; }
+}
+
