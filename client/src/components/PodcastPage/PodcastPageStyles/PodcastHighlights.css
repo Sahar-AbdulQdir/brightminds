@@ -398,3 +398,53 @@
 }
 
 
+/* Extra responsive for small laptops / tablets */
+@media (max-width: 600px) {
+  .Main-Laptop-container {
+    flex-direction: column;
+    gap: 30px;
+    padding: 0 10px;
+  }
+
+  .content {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .laptop-container {
+    max-width: 100%;
+  }
+
+  .laptop {
+    max-width: 100%;
+    transform: scale(0.85); /* adjust size to fit small screens */
+  }
+
+  .laptop__screen {
+    width: 100%;
+    height: auto; /* maintain aspect ratio */
+    aspect-ratio: 16 / 10; /* ensures height scales automatically */
+  }
+
+  .podcast-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+  }
+
+  .podcast-item video {
+    object-fit: cover;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .description {
+    font-size: 1rem;
+  }
+
+  .stats {
+    flex-direction: column;
+    gap: 15px;
+  }
+}

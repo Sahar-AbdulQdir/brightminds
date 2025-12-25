@@ -4,12 +4,12 @@
 }
 
 .suggestion-section h2 {
-  font-size: 3rem;
+  font-size: clamp(1.8rem, 4vw, 3rem);
   font-weight: bold;
   margin-bottom: 1.5rem;
 }
 
-/*  */
+/* Highlight circle */
 .circle-sketch-highlight {
   position: relative;
   display: inline-block;
@@ -20,12 +20,12 @@
 .circle-sketch-highlight::after {
   content: "";
   position: absolute;
-  inset: 0;               /* 👈 makes it match text size */
-  border: 6px solid rgb(225, 69, 239);
+  inset: 0;
+  border: 4px solid rgb(225, 69, 239);
   border-radius: 50%;
   opacity: 0.7;
   pointer-events: none;
-  height: 5rem;
+  height: 4rem;
 }
 
 .circle-sketch-highlight::before {
@@ -39,10 +39,10 @@
   border-top-color: transparent;
 }
 
-
 .suggestion-section p {
   color: #383737;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: clamp(0.9rem, 2vw, 1.3rem);
 }
 
 .suggestion_name {
@@ -50,44 +50,35 @@
   align-items: center;
   justify-content: center;
   gap: 0.2rem;
-  font-size: 1.3rem;
+  font-size: clamp(1rem, 2vw, 1.3rem);
 }
 
-/* Icon */
 .suggestion_name .rank_icon {
   color: #000000;
   margin-top: -0.2rem;
-  font-size: 1.7rem;
+  font-size: clamp(1.2rem, 2.5vw, 1.7rem);
 }
 
-/* Highlighted text */
 .suggestion_name span {
-  font-size: 1.3rem;
+  font-size: clamp(1rem, 2vw, 1.3rem);
   color: #a31010;
 }
 
 .suggestion-content {
   display: flex;
-  flex-direction: row;
-  justify-content: end;
+  flex-direction: column;
   align-items: center;
-  gap: 0rem;
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
-@media (min-width: 768px) {
-  .suggestion-content {
-    flex-direction: row;
-    justify-content: center;
-  }
-}
-
-/* Card styles */
 .suggestion-card {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  max-width: 18rem;
+  max-width: 90%;
+  width: 300px;
   padding: 1rem;
   border-radius: 1rem;
-  transform: rotate(-7deg); /* slight rotation one way */
+  transform: rotate(-7deg);
   background: radial-gradient(circle at 100% 100%, #ffffff 0, #ffffff 3px, transparent 3px) 0% 0%/8px 8px no-repeat,
               radial-gradient(circle at 0 100%, #ffffff 0, #ffffff 3px, transparent 3px) 100% 0%/8px 8px no-repeat,
               radial-gradient(circle at 100% 0, #ffffff 0, #ffffff 3px, transparent 3px) 0% 100%/8px 8px no-repeat,
@@ -96,20 +87,19 @@
               linear-gradient(#ffffff, #ffffff) 50% 50%/calc(100% - 16px) calc(100% - 10px) no-repeat,
               linear-gradient(133deg, transparent 0%, #d6abfe 100%);
   box-sizing: border-box;
-  margin-right: -2rem;
-  margin-top: -5rem;
+  margin-top: 5% !important;
 }
 
-/* Text pieces with lines */
 .card-text p {
   margin: 0.3rem 0 0;
-  font-size: 0.9rem;
+  font-size: clamp(0.8rem, 1.8vw, 0.9rem);
   color: #1b1b1b;
-  span{
-    font-size: .9rem;
-    font-weight: 800;
-    color:#9f71ca;
-  }
+}
+
+.card-text p span {
+  font-weight: 800;
+  color: #9f71ca;
+  font-size: .8rem;
 }
 
 .card-text hr {
@@ -118,11 +108,25 @@
   margin: 0.3rem 0;
 }
 
-/* Image styles */
 .suggestion-img {
-  width: 30rem; /* bigger image */
+  width: 90%;
+  max-width: 30rem;
   height: auto;
   border-radius: 0.75rem;
   object-fit: cover;
-  transform: rotate(7deg); /* rotate opposite direction */
+  transform: rotate(7deg);
+}
+
+@media (min-width: 768px) {
+  .suggestion-content {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .suggestion-card {
+    margin-top: -5rem;
+    margin-right: -2rem;
+  }
 }

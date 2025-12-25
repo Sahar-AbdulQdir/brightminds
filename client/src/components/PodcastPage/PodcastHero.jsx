@@ -1,5 +1,5 @@
 import React from "react";
-import HeroPodImg from "../../assets/images/pod5.png";
+import HeroPodImg from "../../assets/images/HeroImgPod.png";
 import "../../components/PodcastPage/PodcastPageStyles/PodcastHero.css";
 
 const PodcastHero = () => (
@@ -15,7 +15,7 @@ const PodcastHero = () => (
       <div className="hero-inner">
         {/* Text */}
         <div className="Pod-hero-text">
-          <h1>The Podcast Show</h1>
+          <h1>The Podcast<span className="TxtEffect">´ˎ˗</span> Show</h1>
           <p>Dive into inspiring conversations, stories, and insights from top creators and thinkers.</p>
           <button>Listen Now</button>
         </div>
