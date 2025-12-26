@@ -7,13 +7,18 @@ import User from "./models/User.js";
 import fetch from "node-fetch";
 import bcrypt from "bcryptjs";
 import path from "path";
-
+import rateLimit from 'express-rate-limit';
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 const PODCAST_API_KEY = process.env.PODCAST_API_KEY;
 const __dirname = path.resolve();
+const simplifyLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // 100 requests per IP
+  message: { error: 'Too many requests, please try again later' }
+});
 
 // ------------------ Middleware ------------------
 app.use(express.json());
@@ -147,6 +152,43 @@ app.get("/api/podcasts/:id/episodes", async (req, res) => {
 // ------------------ Saved ------------------
 app.use(savedRoutes);
 
+
+
+app.post('/api/simplify', simplifyLimiter, async (req, res) => {
+  try {
+    const { text, complexityLevel, targetAudience } = req.body;
+    
+    const response = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
+      },
+      body: JSON.stringify({
+        model: 'gpt-3.5-turbo',
+        messages: [
+          {
+            role: 'system',
+            content: `Simplify the following text for ${targetAudience} audience. Make it ${complexityLevel === 'very-simple' ? 'extremely simple' : complexityLevel === 'simple' ? 'simple' : 'moderately simple'}. Use shorter sentences, simpler words, and clearer structure.`
+          },
+          {
+            role: 'user',
+            content: text
+          }
+        ],
+        temperature: 0.7,
+        max_tokens: 1000
+      })
+    });
+
+    const data = await response.json();
+    res.json({ simplifiedText: data.choices[0].message.content });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+
 // ------------------ Frontend ------------------
 app.use(express.static(path.join(__dirname, "../dist")));
 
@@ -154,6 +196,9 @@ app.use(express.static(path.join(__dirname, "../dist")));
 app.use((req, res) => {
   res.sendFile(path.join(__dirname, "../dist/index.html"));
 });
+
+
+
 
 // ------------------ Start Server ------------------
 app.listen(PORT, () =>

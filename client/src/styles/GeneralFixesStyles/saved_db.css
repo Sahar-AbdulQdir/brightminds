@@ -159,6 +159,8 @@
   padding: 0.3rem 0.45rem;
   font-size: 0.85rem;
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+      width: auto;
+    height: auto;
 }
 
 /* =========================

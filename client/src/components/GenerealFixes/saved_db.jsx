@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { FaPlay, FaPause, FaBookmark, FaTrash, FaFilter } from "react-icons/fa";
 import MyNavbar from "../Navbar.jsx";
 import "../../styles/GeneralFixesStyles/saved_db.css";
+import { FaBook } from "react-icons/fa";
+import { HiMicrophone } from "react-icons/hi2";
 
 // ✅ BASE URL (WORKS LOCALLY + WHEN HOSTED)
 const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
@@ -143,7 +145,7 @@ const SavedPage = () => {
                       alt={item.title}
                     />
                     <div className={`item-type ${item.type}`}>
-                      {item.type === "podcast" ? "🎙️" : "📚"}
+                      {item.type === "podcast" ? <HiMicrophone /> : <FaBook />}
                     </div>
                   </div>
 
