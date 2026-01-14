@@ -1,8 +1,16 @@
+/*
+ * Styles for the About Dyslexia section including the note, small images,
+ * the book scene, and layered background elements.
+ */
+
+/* Top-level scene wrapper (arranges book visual and text note) */
 .scene{
     display: flex;
     flex-direction: row-reverse;
 
 }
+
+/* Dyslexia note block (text callout area with heading and paragraphs) */
 .dyslexia-note {
   margin-left: 2rem;
   margin-top: 10rem;
@@ -22,19 +30,6 @@
   line-height: 1.6;
   margin-bottom: 1rem;
 }
-
-/* 
-html {
-  height: 100%;
-}
-body {
-  margin: 0;
-  min-height: 100%;
-  background-color: #fff;
-  font-size: 14px;
-  line-height: 20px;
-  color: #333;
-} */
 
 /*Webflow standard classes */
 html.w-mod-touch * {
@@ -157,6 +152,7 @@ html.w-mod-touch * {
 }
 
 /*-----------------------*/
+/* Rich text H4: used for section sub-headings in content blocks */
 .w-richtext h4 {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -172,17 +168,6 @@ html.w-mod-touch * {
   display: inline-block;
   margin-left: 0.5rem;
 }
-
-/* Arrow above the image */
-/* .dr-img-wrapper::before {
-content: "⬆";
-    position: absolute;
-    top: -1.7rem;
-    left: 13rem;
-    transform: translateX(-50%) rotate(217deg);
-    font-size: 1rem;
-    color: #a31010;
-} */
 
 /* Keep the small rotated image styling */
 .small-rotated-img {
@@ -201,17 +186,6 @@ content: "⬆";
     color:#a8651d;
     font-size: .7rem;
 }
-/* 
-.small-rotated-img {
-  width: 40px;
-  height: 40px;
-  margin-left: 0.5rem;
-  transform: rotate(-15deg);
-  border-radius: 50%;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  vertical-align: middle;
-} */
-
 /* Book images style */
 .book-img-wrap {
   display: flex;
@@ -237,26 +211,29 @@ content: "⬆";
 }
 
 /* Make the list look less plain */
+/* Styled list items: smaller text and custom bullet */
 .w-richtext ul li {
   font-size: 0.8rem;
   margin-bottom: 6px;
   padding-left: 1.2rem;
   position: relative;
-}
+} 
 
+/* Custom bullet icon for list items */
 .w-richtext ul li::before {
   content: "✪";
   position: absolute;
   left: 0;
   color: #5c3406;
   font-size: 0.8rem;
-}
+} 
 
 
 a {
   text-decoration: underline;
 }
 
+/* 3D book scene: sets perspective and layout for the animated book display */
 .scene {
   display: -webkit-box;
   display: -webkit-flex;
@@ -277,8 +254,9 @@ a {
   perspective: 4000px;
   -webkit-perspective-origin: 50% 0%;
   perspective-origin: 50% 0%;
-}
+} 
 
+/* Book wrap: establishes 3D transform, perspective, and hover transition for the display */
 .book-wrap {
   position: relative;
   display: -webkit-box;
@@ -307,7 +285,7 @@ a {
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   transform: scale(.85);
-}
+} 
 
 .book-wrap:hover {
   -webkit-transform: translate3d(0px, 5%, -200px) rotateX(10deg) rotateY(0deg) rotateZ(-2deg);
@@ -342,6 +320,7 @@ a {
   box-shadow: inset -4px -4px 4px 1px #635648, inset -7px -7px 4px 0 #221b14;
 }
 
+/* Layered background and page panels used to create depth behind the book */
 .layer1 {
   position: fixed;
   left: 0px;
@@ -363,6 +342,7 @@ a {
   transform-style: preserve-3d;
 }
 
+/* Left page backdrop */
 .page-left {
   -webkit-box-flex: 1;
   -webkit-flex: 1;

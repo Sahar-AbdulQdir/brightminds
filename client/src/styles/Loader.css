@@ -1,20 +1,21 @@
+/* Overlay for the video loader */
 .video-loader-overlay {
   position: fixed;
-  inset: 0; /* shorthand for top/left/right/bottom */
+  inset: 0; 
   width: 100%;
   height: 100%;
   background-color: #fdcef2;
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 9999;
+  z-index: 9999;  
 }
 
 /* Default (desktop) */
 .loader-video {
-  width: 45vw;           /* responsive width */
-  max-width: 800px;      /* prevents it from getting too big */
-  min-width: 280px;      /* prevents it from getting too small */
+  width: 45vw;         
+  max-width: 800px;     
+  min-width: 280px;      
   height: auto;
 }
 

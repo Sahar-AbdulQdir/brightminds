@@ -1,0 +1,62 @@
+/* colors.css */
+:root{
+  /* main shades */
+  --sh1:#D2ACE8FF;
+  --sh2:#B5A6E9FF;
+  --sh3:#FEFCFEFF;
+  --sh4:#EDB9DCFF;
+  --sh5:#E4BCE4FF;
+
+  /* Light shades */
+  --l1:#ffffff;
+  --l2:#ffffff33;
+  --l3:#ffffff00;
+  --l4:#0000001a;
+  --l5:#ffffffd9;
+  --l6:#f0f0f3;
+  --l7:#fffffff2;
+  --l8:#ffffffe6;
+  --l9:#e5e7eb;
+
+  /* Dark shades */
+  --d1:#000000ff;
+  --d2:#000000b3;
+
+  /* purple shades */
+  --p1:#b25de4;
+  --p2:#dec6ec;
+  --p3:#7c5993;
+  --p4:#d1c0f0;
+  --p5:#fb9ce6;
+  --p6:#e096f3;
+  --p7:#8a1d98;
+  --p8:#c1aae6;
+  --p9:#f1cfe6;
+  --p10:#e88eff;
+  --p11:#e145ef;
+  --p12:#ffd6e7;
+  --p13:#e6c6ff;
+  --p14:#ff4d9d; 
+  --p15:#B5A6E9;
+
+
+  /* grey shades */
+  --g1:#111;
+  --g2:#222;
+  --g3:#666;
+  --g4:#888;
+  --g5:#9c948d;
+  --g6:#e2e8f0;
+  --g7:#bec7d1;
+  --g8:#333;
+  --g9:#b5a6e933;
+
+  /* Red shades */
+  --r1:#a31010;
+
+  /* blue shades */
+  --b1:#c6f2ff;
+  --b2:#2d1f4a;
+  --b3:#4f3b74;
+  --b4:#5b3cc4
+}

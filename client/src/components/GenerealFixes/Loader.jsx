@@ -1,20 +1,21 @@
-// src/components/GifLoader.jsx
 import React from "react";
-import "../../styles/GeneralFixesStyles/Loader.css";
+import "../../styles/Loader.css"; // Loader styles
 
+// Loader component showing a looping video
 const Loader = () => {
   return (
-    <div className="video-loader-overlay">
+    <div className="video-loader-overlay"> {/* Overlay container */}
       <video
-        className="loader-video"
-        src="/Loader.mp4"
-        autoPlay
-        loop
-        muted
+        className="loader-video" 
+        src="/Loader.mp4" 
+        // Video element
+        autoPlay 
+        loop 
+        muted 
         playsInline
       />
     </div>
   );
 };
 
-export default Loader;
+export default Loader; // Export loader component

@@ -1,3 +1,4 @@
+/* Hero section background and padding */
 .hero-section {
   background: linear-gradient(1deg, #fb91fb 0%, #ffffff 100%);
   text-align: center;
@@ -6,13 +7,13 @@
   padding-bottom: 0rem !important;
 }
 
-/* Wrapper */
+/* Wrapper for content */
 .Hero {
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Title */
+/* Hero title styling */
 .hero-section h1 {
   font-size: 2rem;
   font-weight: 900;
@@ -20,7 +21,7 @@
   margin-top: -5rem;
 }
 
-/* Subtitle */
+/* Hero subtitle styling */
 .hero-section p {
   font-size: 1.1rem;
   margin-bottom: 2rem;
@@ -29,7 +30,7 @@
   padding: 0 1rem;
 }
 
-/* Buttons container */
+/* Container for hero buttons */
 .hero-buttons {
   display: flex;
   justify-content: center;
@@ -38,7 +39,7 @@
   flex-wrap: wrap;
 }
 
-/* Buttons */
+/* General button styling */
 .hero-buttons button {
   padding: 0.6rem 1.8rem;
   border-radius: 15px;
@@ -49,6 +50,7 @@
   min-width: 120px;
 }
 
+/* Login button specific style */
 .hero-buttons .login-btn {
   background-color: white;
   color: black;
@@ -58,6 +60,7 @@
   opacity: 0.9;
 }
 
+/* Sign-in button specific style */
 .hero-buttons .signin-btn {
   background-color: black;
   color: white;
@@ -67,12 +70,13 @@
   background-color: #1a1a1a;
 }
 
-/* Image */
+/* Hero image container */
 .hero-image {
   display: flex;
   justify-content: center;
 }
 
+/* Hero image styling */
 .hero-image img {
   width: 100%;
   max-width: 700px;
@@ -80,7 +84,7 @@
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Tablet */
+/* Tablet and larger screen adjustments */
 @media (min-width: 768px) {
   .hero-section {
     padding: 6rem 2rem 3rem;
@@ -99,4 +103,3 @@
     margin-top: 2rem;
   }
 }
-

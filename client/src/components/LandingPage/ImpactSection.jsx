@@ -4,6 +4,8 @@ import I1 from "../../assets/images/impact1.png";
 import I2 from "../../assets/images/impact2.png";
 import I3 from "../../assets/images/impact3.png";
 import I4 from "../../assets/images/impact4.png";
+
+// Impact data
 const impacts = [
   {
     img: I1,
@@ -23,10 +25,14 @@ const impacts = [
   },
 ];
 
+// Impact Section Component
 const ImpactSection = () => {
   return (
     <section className="impact-section">
+      {/* Section title */}
       <h2>Our Impact</h2>
+
+      {/* Grid of impact cards */}
       <div className="impact-grid">
         {impacts.map((item, index) => (
           <div key={index} className="impact-card">

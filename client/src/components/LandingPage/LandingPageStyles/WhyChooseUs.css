@@ -82,8 +82,7 @@ background: linear-gradient(270deg, rgba(254, 224, 254, 1) 0%, rgba(255, 245, 25
   width: 90%;
   height: 100%;
   object-fit: cover;
-  /* border-radius: 1rem; */
-  /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); */
+
 }
 
 /* Responsive layout */

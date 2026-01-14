@@ -1,3 +1,4 @@
+// Import required modules
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -8,29 +9,33 @@ import fetch from "node-fetch";
 import bcrypt from "bcryptjs";
 import path from "path";
 
-dotenv.config();
+dotenv.config(); // Load environment variables
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 const PODCAST_API_KEY = process.env.PODCAST_API_KEY;
-const __dirname = path.resolve();
+const __dirname = path.resolve(); // Resolve current directory
 
 // ------------------ Middleware ------------------
+// Parse JSON requests
 app.use(express.json());
+// Enable CORS for all origins
 app.use(
   cors({
-    origin: "*", // OK for now; restrict later in production
+    origin: "*",
     credentials: true,
   })
 );
 
 // ------------------ MongoDB ------------------
+// Connect to MongoDB using MONGO_URI from environment variables
 mongoose
   .connect(process.env.MONGO_URI)
-  .then(() => console.log("✅ MongoDB connected"))
-  .catch((err) => console.error("❌ MongoDB connection error:", err));
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.error("MongoDB connection error:", err));
 
 // ------------------ Auth Routes ------------------
+// Sign up new user
 app.post("/api/signup", async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -52,6 +57,7 @@ app.post("/api/signup", async (req, res) => {
   }
 });
 
+// Sign in existing user
 app.post("/api/signin", async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -77,6 +83,7 @@ app.post("/api/signin", async (req, res) => {
 });
 
 // ------------------ Users ------------------
+// Get all users (excluding passwords)
 app.get("/api/users", async (req, res) => {
   try {
     const users = await User.find({}, "-password");
@@ -87,38 +94,13 @@ app.get("/api/users", async (req, res) => {
   }
 });
 
-// ------------------ Grammar ------------------
-app.post("/api/grammar", async (req, res) => {
-  try {
-    const { text } = req.body;
-    if (!text?.trim())
-      return res.status(400).json({ message: "Text is required" });
-
-    const response = await fetch(
-      "https://api.languagetoolplus.com/v2/check",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: new URLSearchParams({ text, language: "en-US" }),
-      }
-    );
-
-    const data = await response.json();
-    res.json(data);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Server error" });
-  }
-});
-
 // ------------------ Podcasts ------------------
+// Fetch trending podcasts
 app.get("/api/podcasts/hot", async (req, res) => {
   try {
     const response = await fetch(
       "https://listen-api.listennotes.com/api/v2/best_podcasts",
-      {
-        headers: { "X-ListenAPI-Key": PODCAST_API_KEY },
-      }
+      { headers: { "X-ListenAPI-Key": PODCAST_API_KEY } }
     );
     const data = await response.json();
     res.json(data.podcasts);
@@ -128,13 +110,12 @@ app.get("/api/podcasts/hot", async (req, res) => {
   }
 });
 
+// Fetch episodes for a specific podcast by ID
 app.get("/api/podcasts/:id/episodes", async (req, res) => {
   try {
     const response = await fetch(
       `https://listen-api.listennotes.com/api/v2/podcasts/${req.params.id}`,
-      {
-        headers: { "X-ListenAPI-Key": PODCAST_API_KEY },
-      }
+      { headers: { "X-ListenAPI-Key": PODCAST_API_KEY } }
     );
     const data = await response.json();
     res.json(data.episodes);
@@ -145,20 +126,19 @@ app.get("/api/podcasts/:id/episodes", async (req, res) => {
 });
 
 // ------------------ Saved ------------------
+// Routes for saving and fetching user saved items
 app.use(savedRoutes);
 
 // ------------------ Frontend ------------------
+// Serve static frontend files
 app.use(express.static(path.join(__dirname, "../dist")));
 
-// ✅ Express-5 safe SPA fallback (DO NOT use app.get("*"))
+// SPA fallback for client-side routing
 app.use((req, res) => {
   res.sendFile(path.join(__dirname, "../dist/index.html"));
 });
 
-
-
-
 // ------------------ Start Server ------------------
 app.listen(PORT, () =>
-  console.log(`🚀 Server running on port ${PORT}`)
+  console.log(`Server running on port ${PORT}`)
 );

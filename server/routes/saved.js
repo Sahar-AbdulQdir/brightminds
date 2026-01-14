@@ -1,10 +1,11 @@
+// Import Express and models
 import express from "express";
 import SavedItem from "../models/SavedItem.js";
-import User from "../models/User.js"; // <-- fixed default import
+import User from "../models/User.js"; // Fixed default import
 
 const router = express.Router();
 
-// Save a new item
+// Route to save a new item for a user
 router.post("/api/save-item", async (req, res) => {
   try {
     const { email, item } = req.body;
@@ -20,7 +21,7 @@ router.post("/api/save-item", async (req, res) => {
   }
 });
 
-// Get all saved items for a user
+// Route to get all saved items for a user
 router.get("/api/saved-items", async (req, res) => {
   try {
     const { email } = req.query;
@@ -35,7 +36,7 @@ router.get("/api/saved-items", async (req, res) => {
   }
 });
 
-// Remove a saved item
+// Route to remove a saved item by ID
 router.delete("/api/saved-item/:id", async (req, res) => {
   try {
     await SavedItem.findByIdAndDelete(req.params.id);
@@ -46,4 +47,5 @@ router.delete("/api/saved-item/:id", async (req, res) => {
   }
 });
 
+// Export router for use in server
 export default router;

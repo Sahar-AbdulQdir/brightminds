@@ -1,0 +1,139 @@
+/* Main container for the text-to-speech hero section with max width, centered margin, padding, gradient background, rounded corners, shadow, text alignment, and blur effect */
+.tts-hero {
+  max-width: 540px;
+  margin: 80px auto;
+  padding: 36px;
+  background: linear-gradient(
+    135deg,
+    var(--p12),
+    var(--p13),
+    var(--b1)
+  );
+  border-radius: 22px;
+  box-shadow: 0 25px 60px var(--l4);
+  text-align: center;
+  backdrop-filter: blur(12px);
+}
+
+/* Main heading styling in the TTS hero section with font size, color, weight, and margin */
+.tts-hero h1 {
+  font-size: 2.6rem;
+  color: var(--l1);
+  font-weight: 800;
+  margin-bottom: 22px;
+}
+
+/* Highlighted span inside the heading with a different color */
+.tts-hero h1 span {
+  color: var(--p1);
+}
+
+/* Styling for the textarea in the TTS hero section including size, padding, border radius, font, color, background, and inner shadow */
+.tts-hero textarea {
+  width: 100%;
+  min-height: 150px;
+  padding: 18px;
+  border-radius: 16px;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 1rem;
+  color: var(--g2);
+  background: var(--l7);
+  box-shadow: inset 0 6px 14px var(--l4);
+}
+
+/* Row container for select and button elements with vertical layout, centered alignment, and optional gap */
+.tts-row {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  /* gap: 14px; */
+  align-items: center;
+  span{
+    font-size: .8rem;
+    color: var(--d1);
+    margin-top: -3%;
+  }
+}
+
+/* Styling for the select dropdown inside the TTS row including padding, border radius, background, font, and cursor */
+.tts-row select {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: none;
+  outline: none;
+  background: var(--l1);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Styling for the button inside the TTS row including layout, padding, border radius, background gradient, font, cursor, transition, and shadow */
+.tts-row button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 20px;
+  border: none;
+  background: linear-gradient(135deg, var(--sh1), var(--p1));
+  color: var(--g2);
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px var(--d2);
+}
+
+/* Hover effect for TTS row button including lift and shadow enhancement */
+.tts-row button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 35px var(--d2);
+}
+
+/* Active/pressed effect for TTS row button with slight scale down */
+.tts-row button:active {
+  transform: scale(0.96);
+}
+
+/* Container for highlighted text area with padding, rounded corners, font size, background, shadow, and left-aligned text */
+.highlight-text {
+  width: 100%;
+  min-height: 150px;
+  padding: 18px;
+  border-radius: 16px;
+  font-size: 1rem;
+  background: var(--l7);
+  box-shadow: inset 0 6px 14px var(--l4);
+  text-align: left;
+  span{
+    font-size: 1rem;
+  }
+}
+
+/* Style for highlighted text inside the highlight-text container with background color, text color, border radius, and padding */
+.highlighted {
+  background: var(--p1);
+  color: var(--l1);
+  border-radius: 6px;
+  padding: 2px 4px;
+}
+
+/* Responsive styling for screens smaller than 600px including reduced margin/padding, column layout for row, and full-width buttons */
+@media (max-width: 600px) {
+  .tts-hero {
+    margin: 40px 20px;
+    padding: 28px;
+  }
+
+  .tts-row {
+    flex-direction: column;
+  }
+
+  .tts-row button {
+    width: 100%;
+    justify-content: center;
+  }
+}

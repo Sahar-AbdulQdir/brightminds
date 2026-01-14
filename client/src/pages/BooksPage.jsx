@@ -1,59 +1,37 @@
+// Importing React, hooks, CSS files, and components needed for the Bloggy page
 import React from "react";
 import BHeroSection from "../components/BlogPage/Hero.jsx";
 import "../components/BlogPage/BlogsPage/blogs.css";
 import MyNavbar from "../components/Navbar.jsx";
-import Topics from "../components/BlogPage/topicsButtons.jsx";
-import Articles from "../components/BlogPage/articles.jsx";
 import Books from "../components/BlogPage/Books.jsx";
 import BooksSlider from "../components/BlogPage/BooksSlider.jsx";
 import QuoteCard from "../components/BlogPage/QuoteCard.jsx";
 import { useEffect } from 'react';
-import "../styles/main.css"
+import "../styles/colors.css"
 
-
-
+// Bloggy page component definition
 const Bloggy = () => {
-// useEffect(() => {
-//   document.body.style.backgroundImage = 
-//     'linear-gradient(318deg, rgba(121, 130, 224, 1) 0%, rgba(158, 174, 218, 1) 50%, rgba(211, 147, 189, 1) 100%);';
-//   return () => {
-//     document.body.style.backgroundImage = '';
-//   };
-// }, []);
-
   return (
     <div className="blogs-container">
-      {/* Navigation Bar */}
+      {/* Navigation Bar section */}
       <div className="navbar-section">
         <MyNavbar />
       </div>
     
-
-      {/* Main Content */}
+      {/* Main content section of the blog page */}
       <div className="blogs-content-section">
+        {/* Hero section at the top of the page */}
         <BHeroSection/>
+        {/* Quote card section */}
         <QuoteCard/>
-        
-        {/* <Topics/> */}
-        {/* <Articles/> */}
-      
+        {/* Books section */}
         <Books/>
+        {/* Slider for books */}
         <BooksSlider/>
-
-{/* 
-        <iframe
-  src="https://scratch.mit.edu/projects/123456789/embed"
-  allowtransparency="true"
-  width="100%"
-  height="600"
-  frameBorder="0"
-  scrolling="no"
-></iframe> */}
-
-
       </div>
    </div>
   );
 };
 
+// Export the Bloggy page component for routing or usage elsewhere
 export default Bloggy;

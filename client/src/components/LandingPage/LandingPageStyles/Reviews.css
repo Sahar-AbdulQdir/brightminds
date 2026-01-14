@@ -1,14 +1,17 @@
+/* Reviews section background and padding */
 .reviews-section {
   background-color: #f3f4f6;
   padding: 5rem 1.5rem;
 }
 
+/* Container for reviews content */
 .reviews-container {
   max-width: 1200px;
   margin: 0 auto;
   text-align: center;
 }
 
+/* Reviews section title */
 .reviews-title {
   font-size: 2.5rem;
   font-weight: 800;
@@ -16,7 +19,7 @@
   margin-bottom: 3rem;
 }
 
-
+/* Grid layout for review cards */
 .reviews-grid {
   display: flex;
   flex-wrap: wrap;
@@ -24,6 +27,7 @@
   gap: 2rem;
 }
 
+/* Individual review card styling */
 .review-card {
   background-color: #f9fafb;
   border: 1px solid #e5e7eb;
@@ -36,11 +40,13 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Hover effect for review cards */
 .review-card:hover {
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
   transform: translateY(-4px);
 }
 
+/* Header of each review card (name + likes) */
 .review-header {
   display: flex;
   align-items: center;
@@ -48,12 +54,14 @@
   margin-bottom: 0.5rem;
 }
 
+/* Reviewer's name */
 .review-name {
   font-size: 0.9rem;
   font-weight: 500;
   color: #374151;
 }
 
+/* Likes or reactions for the review */
 .review-likes {
   font-size: 0.9rem;
   font-weight: 600;
@@ -63,13 +71,14 @@
   gap: 0.25rem;
 }
 
+/* Review text content */
 .review-text {
   font-size: 0.9rem;
   color: #4b5563;
   line-height: 1.6;
 }
 
-/* Offset effect for alternating rows (desktop only) */
+/* Offset effect for alternating cards on desktop */
 @media (min-width: 1024px) {
   .offset-card {
     transform: translateX(3rem);

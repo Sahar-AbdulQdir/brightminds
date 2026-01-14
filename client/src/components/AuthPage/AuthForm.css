@@ -1,11 +1,12 @@
+/* CSS for AuthForm component */
 .auth-page {
     position: relative;
     background: linear-gradient(135deg, 
-        #FEFCFE 0%, 
-        #EDB9DC 25%, 
-        #E4BCE4 50%, 
-        #D2ACE8 75%, 
-        #B5A6E9 100%);
+        var(--sh3) 0%, 
+        var(--sh4) 25%, 
+        var(--sh5) 50%, 
+        var(--sh1) 75%, 
+        var(--sh2) 100%);
     background-size: 400% 400%;
     display: flex;
     justify-content: center;
@@ -15,12 +16,14 @@
     animation: gradientBG 20s ease infinite;
     overflow: hidden;
 }
+/* Gradient background animation */
 @keyframes gradientBG {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
+/* Floating elements */
 .floating-element {
     position: absolute;
     border-radius: 50%;
@@ -36,7 +39,7 @@
     top: 10%;
     left: 10%;
     animation-delay: 0s;
-    background: radial-gradient(circle, #EDB9DC, transparent 70%);
+    background: radial-gradient(circle, var(--sh4), transparent 70%);
 }
 
 .floating-element:nth-child(2) {
@@ -45,7 +48,7 @@
     top: 60%;
     right: 10%;
     animation-delay: 2s;
-    background: radial-gradient(circle, #D2ACE8, transparent 70%);
+    background: radial-gradient(circle, var(--sh1), transparent 70%);
 }
 
 .floating-element:nth-child(3) {
@@ -54,7 +57,7 @@
     bottom: 20%;
     left: 20%;
     animation-delay: 4s;
-    background: radial-gradient(circle, #B5A6E9, transparent 70%);
+    background: radial-gradient(circle, var(--sh2), transparent 70%);
 }
 
 @keyframes float {
@@ -69,48 +72,31 @@
 * {
 	box-sizing: border-box;
 }
-        /* body {
-            background: linear-gradient(135deg, #ffffff 0%, #ffc0cb 25%, #9370db 50%, #0abab5 100%);
-            background-size: 400% 400%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
-            margin: -20px 0 50px;
-            animation: gradientBG 15s ease infinite;
-            overflow: hidden;
-        } */
 
-        /* @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        } */
-		 
-
+/* Form container styling */
 .form-container h1 {
     font-weight: 800;
-    color: #333;
+    color: var(--g8);
     text-align: center;
     margin-bottom: 20px;
-    background: linear-gradient(90deg, #B5A6E9, #D2ACE8, #EDB9DC);
+    background: linear-gradient(90deg, var(--sh2), var(--sh1), var(--sh4));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
-
+/* Paragraph styling */
 .auth-page p {
     font-size: 14px;
     line-height: 1.6;
     letter-spacing: 0.5px;
-    color: #666;
+    color: var(--g3);
     margin: 10px 0;
 }
 
+/* Input field styling */
 input {
-    background-color: rgba(245, 245, 245, 0.9);
+    background-color: var(--l5);
     border: none;
     padding: 15px 20px;
     margin: 8px 0;
@@ -119,14 +105,14 @@ input {
     font-size: 14px;
     transition: all 0.3s ease;
     border: 2px solid transparent;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 5px var(--l4);
 }
 
 input:focus {
     outline: none;
-    border-color: #B5A6E9;
-    background-color: white;
-    box-shadow: 0 4px 15px rgba(181, 166, 233, 0.2);
+    border-color: var(--sh2);
+    background-color: var(--l1);
+    box-shadow: 0 4px 15px var(--g9);
 }
 
 span {
@@ -135,14 +121,13 @@ span {
 }
 
 a {
-  color: #000000;
+  color: var(--d1);
 	font-size: 14px;
 	text-decoration: none;
 	margin: 15px 0;
 }
 
-
-
+/* Button styling */
 .auth-page button {
     border-radius: 15px;
     border: none;
@@ -150,18 +135,19 @@ a {
     font-size: 14px;
     font-weight: 700;
     cursor: pointer;
-    background: linear-gradient(90deg, #B5A6E9, #D2ACE8, #E4BCE4);
-    color: white;
+    background: linear-gradient(90deg, var(--sh2), var(--sh1), var(--sh4));
+    color: var(--l1);
     text-transform: uppercase;
     box-shadow: 
-        0 4px 15px rgba(181, 166, 233, 0.4),
-        0 8px 25px rgba(0, 0, 0, 0.1);
+        0 4px 15px var(--g9),
+        0 8px 25px var(--l4);
     transition: all 0.3s ease;
     margin-top: 10px;
     position: relative;
     overflow: hidden;
 }
 
+/* Button hover effect */
 .auth-page button::before {
     content: '';
     position: absolute;
@@ -173,32 +159,35 @@ a {
     transition: left 0.5s ease;
 }
 
+/* Button hover effect */
 .auth-page button:hover {
     transform: translateY(-3px);
     box-shadow: 
-        0 6px 20px rgba(181, 166, 233, 0.5),
-        0 10px 30px rgba(0, 0, 0, 0.15);
+        0 6px 20px #b5a6e980,
+        0 10px 30px var(--l4);
 }
 
 .auth-page button:hover::before {
     left: 100%;
 }
 
+/* Ghost button styling */
 .auth-page button.ghost {
-    background: rgba(255, 255, 255, 0.25);
+    background: var(--l2);
     backdrop-filter: blur(5px);
-    border: 2px solid rgba(255, 255, 255, 0.8);
-    color: white;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 2px solid var(--l5);
+    color: var(--l1);
+    box-shadow: 0 4px 15px var(--l4);
 }
 
 .auth-page button.ghost:hover {
-    background: rgba(255, 255, 255, 0.4);
-    border-color: white;
+    background: var(--l2);
+    border-color: var(--l1);
 }
 
+/* Form container styling */
 form {
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--l7);
     backdrop-filter: blur(5px);
     display: flex;
     align-items: center;
@@ -210,10 +199,11 @@ form {
     gap: 15px;
 
     box-shadow: 
-        inset 0 0 0 1px rgba(255, 255, 255, 0.8),
-        0 8px 32px rgba(0, 0, 0, 0.1);
+        inset 0 0 0 1px var(--l5),
+        0 8px 32px var(--l4);
 }
 
+/* Container styling */
 .container {
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
@@ -233,7 +223,7 @@ form {
     z-index: 1;
 }
 
-
+/* Form container styling */
 .form-container {
 	position: absolute;
 	top: 0;
@@ -245,8 +235,8 @@ form {
 	left: 0;
 	width: 50%;
 	z-index: 2;
-	    -webkit-border-top-left-radius: 25px;
--webkit-border-bottom-left-radius: 25px;
+	-webkit-border-top-left-radius: 25px;
+   -webkit-border-bottom-left-radius: 25px;
 -moz-border-radius-topleft: 25px;
 -moz-border-radius-bottomleft: 25px;
 border-top-left-radius: 25px;
@@ -256,7 +246,7 @@ border-bottom-left-radius: 25px;
 .container.right-panel-active .sign-in-container {
 	transform: translateX(100%);
 }
-
+/* Sign Up Form */
 .sign-up-container {
 	left: 0;
 	width: 50%;
@@ -270,6 +260,7 @@ border-top-right-radius: 25px;
 border-bottom-right-radius: 25px;
 }
 
+
 .container.right-panel-active .sign-up-container {
 	transform: translateX(100%);
 	opacity: 1;
@@ -277,6 +268,7 @@ border-bottom-right-radius: 25px;
 	animation: show 0.6s;
 }
 
+/* Animation for showing the sign-up form */
 @keyframes show {
 	0%, 49.99% {
 		opacity: 0;
@@ -289,6 +281,7 @@ border-bottom-right-radius: 25px;
 	}
 }
 
+/* Overlay container styling */
 .overlay-container {
 	position: absolute;
 	top: 0;
@@ -305,15 +298,8 @@ border-bottom-right-radius: 25px;
 }
 
 .overlay {
-	/* background: #FF416C;
-	background: -webkit-linear-gradient(to right, #ffffff, #ffc0cb);
-	background: linear-gradient(to right, #a183de, #0fe3dc);
-	background-repeat: no-repeat;
-	background-size: cover; */
-	background: linear-gradient(135deg, #0fe3dc 0%, #a183de 25%, #ebbcc4 50%, #ffffff 100%);
-      /* background: linear-gradient(120deg, #ffb6c1, #dda0dd, #dda0dd, #ffffff); */
-  color: #fff;
-	/* background-position: 0 0; */
+	background: linear-gradient(135deg, var(--p14) 0%, var(--p1) 25%, var(--p10) 50%, var(--l1) 100%);
+  color: var(--l1);
 	position: relative;
 	left: -100%;
 	height: 100%;
@@ -326,14 +312,13 @@ border-bottom-right-radius: 25px;
   	transform: translateX(50%);
 }
 
-
 .overlay {
     background: linear-gradient(135deg, 
-        #B5A6E9 0%, 
-        #D2ACE8 33%, 
-        #E4BCE4 66%, 
-        #FEFCFE 100%);
-    color: white;
+        var(--p15) 0%, 
+        var(--sh1) 33%, 
+        var(--sh5) 66%, 
+        var(--sh3) 100%);
+    color: var(--l1);
     position: relative;
     left: -100%;
     height: 100%;
@@ -342,6 +327,7 @@ border-bottom-right-radius: 25px;
     transition: transform 0.6s ease-in-out;
 }
 
+/* Overlay panel styling */
 .overlay-panel {
     position: absolute;
     display: flex;
@@ -355,19 +341,19 @@ border-bottom-right-radius: 25px;
     width: 50%;
     transform: translateX(0);
     transition: transform 0.6s ease-in-out;
-    background: rgba(0, 0, 0, 0.1);
+    background: var(--l4);
 }
 
 .overlay-panel h1 {
-    color: white;
+    color: var(--l1);
     font-weight: 800;
     font-size: 2.2rem;
     margin-bottom: 20px;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    text-shadow: 2px 2px 4px var(--l4);
 }
 
 .overlay-panel p {
-    color: rgba(255, 255, 255, 0.9);
+    color: var(--l8);
     font-size: 16px;
     line-height: 1.6;
     margin-bottom: 30px;
@@ -394,8 +380,9 @@ border-bottom-right-radius: 25px;
     margin: 20px 0;
 }
 
+/* Social media links styling */
 .social-container a {
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid var(--l5);
     border-radius: 50%;
     display: inline-flex;
     justify-content: center;
@@ -403,31 +390,29 @@ border-bottom-right-radius: 25px;
     margin: 0 10px;
     height: 45px;
     width: 45px;
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--l2);
     transition: all 0.3s ease;
-    color: white;
+    color: var(--l1);
 }
 
+/* Social media links hover effect */
 .social-container a:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--l2);
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 15px var(--l4);
 }
-
-
+/* Footer styling */
 footer {
-  background-color: rgba(255, 255, 255, 0.139);
+  background-color: var(--l6);
   backdrop-filter: blur(5px);
-  color: #000000;
+  color: var(--d1);
   font-size: 12px;
   font-weight: 500;
   bottom: 0;
   position: fixed;
   left: 0;
   right: 0;
-  /* text-align: center; */
   padding: 5px 0;
-  /* z-index: 999; */
 }
 
 footer p {
@@ -438,10 +423,8 @@ footer p {
 }
 
 footer i {
-  color: rgb(255, 255, 255);
+  color: var(--l1);
 }
-
-
 
 /* Responsive adjustments */
 @media (max-width: 768px) {

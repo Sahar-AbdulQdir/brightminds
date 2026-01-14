@@ -1,9 +1,12 @@
+/* Import Tailwind CSS base, components, and utilities */
 @import "tailwindcss";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* OpenDyslexic */
+/* Custom fonts for dyslexia-friendly reading */
+
+/* OpenDyslexic Regular */
 @font-face {
   font-family: "OpenDyslexic";
   src: url("./assets/fonts/opendyslexic_0.92/OpenDyslexic-Regular.otf") format("opentype");
@@ -11,56 +14,50 @@
   font-style: normal;
 }
 
-/* Atkinson Hyperlegible */
+/* Atkinson Hyperlegible Regular */
 @font-face {
   font-family: "Atkinson Hyperlegible";
   src: url("./assets/fonts/Atkinson_Hyperlegible/Atkinson-Hyperlegible-Regular-102.ttf") format("woff2");
 }
 
-/* Atkinson Hyperlegible Next */
+/* Atkinson Hyperlegible Next Regular */
 @font-face {
   font-family: "Atkinson Hyperlegible Next";
-  src: url("./assets//fonts//Atkinson_Hyperlegible_Next/AtkinsonHyperlegibleNext-Regular.otf") format("woff2");
+  src: url("./assets/fonts/Atkinson_Hyperlegible_Next/AtkinsonHyperlegibleNext-Regular.otf") format("woff2");
 }
 
-/* Atkinson Hyperlegible Mono */
+/* Atkinson Hyperlegible Mono Regular */
 @font-face {
   font-family: "Atkinson Hyperlegible Mono";
-  src: url("./assets//fonts/Atkinson_Hyperlegible_Mono/AtkinsonHyperlegibleMono-Regular.otf") format("woff2");
+  src: url("./assets/fonts/Atkinson_Hyperlegible_Mono/AtkinsonHyperlegibleMono-Regular.otf") format("woff2");
 }
 
-
+/* Default body font */
 body {
-  font-family:sans-serif;
+  font-family: sans-serif;
+  margin: 0;
 }
 
-
+/* Root variables and text rendering improvements */
 :root {
-  /* line-height: 1.5;
-  font-weight: 400; */
-
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* For Chrome, Edge, Safari */
+/* Custom scrollbar for Webkit browsers */
 ::-webkit-scrollbar {
-  width: 15px;               /* Make it bigger */
+  width: 15px;
   height: 10px;
   border-radius: 10px;
-  color: #1a1a1a00;
-
 }
 
 ::-webkit-scrollbar-track {
-  border-radius: 10px; 
-  /* background: #e4bee4; */
-   background-image: linear-gradient(
+  border-radius: 10px;
+  background-image: linear-gradient(
     45deg,
     hsl(0deg 0% 100%) 0%,
     hsl(261deg 45% 92%) 8%,
@@ -79,36 +76,18 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  /* background: linear-gradient(135deg, #a18cd1, #fbc2eb);  */
-  /* background-image: linear-gradient(
-    45deg,
-    hsl(0deg 0% 100%) 0%,
-    hsl(261deg 45% 92%) 8%,
-    hsl(260deg 44% 84%) 17%,
-    hsl(259deg 44% 76%) 25%,
-    hsl(258deg 43% 68%) 34%,
-    hsl(273deg 44% 72%) 42%,
-    hsl(287deg 46% 76%) 50%,
-    hsl(304deg 52% 80%) 59%,
-    hsl(317deg 88% 87%) 67%,
-    hsl(317deg 90% 91%) 75%,
-    hsl(318deg 92% 94%) 83%,
-    hsl(319deg 95% 97%) 92%,
-    hsl(0deg 0% 100%) 100%
-  ); */
   background: white;
   border-radius: 10px;
-  border:  solid #f0f0f000;  /* Creates padding effect */
-  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.769); /* Outer shadow */
-    /* box-shadow: inset 2px 2px 5px rgba(203, 27, 118, 0.655);  */
+  border: solid #f0f0f000;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.769);
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(135deg, #f6d365, #fda085);
-  box-shadow: 2px 2px 12px rgba(0,0,0,0.3); /* Stronger shadow on hover */
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.3);
 }
 
-
+/* Links styling */
 a {
   font-weight: 500;
   color: #646cff;
@@ -118,16 +97,14 @@ a:hover {
   color: #535bf2;
 }
 
-body {
-  margin: 0;
-}
-
+/* Headings */
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
   color: #535bf2;
 }
 
+/* Button default styling */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -138,14 +115,17 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+/* Light color scheme overrides */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -157,4 +137,14 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* ---------------- Global Styles ---------------- */
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html{
+  scroll-behavior: smooth;
 }

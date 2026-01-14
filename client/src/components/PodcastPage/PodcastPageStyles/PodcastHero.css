@@ -8,7 +8,7 @@
   border-radius: 1.5rem;
   overflow: hidden;
   margin-top: -2rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 25px var(--l4);
 }
 
 /* Background halves */
@@ -23,12 +23,12 @@
 
 .bg-top {
   top: 0;
-  background-color: #c1aae6;
+  background-color: var(--p8);
 }
 
 .bg-bottom {
   bottom: 0;
-  background-color: #f1cfe6;
+  background-color: var(--p9);
 }
 
 /* Content wrapper */
@@ -62,7 +62,7 @@
 
 /* Text content */
 .Pod-hero-text {
-  color: #ffffff;
+  color: var(--l1);
   text-align: left;
   max-width: 600px;
 }
@@ -72,7 +72,7 @@
   font-weight: 600;
   line-height: 1.2;
   margin-bottom: 1.5rem;
-  color: #ffffff;
+  color: var(--l1);
 }
 
 .TxtEffect {
@@ -97,8 +97,8 @@
 }
 
 .Pod-hero-text button {
-  background: #fff;
-  color: #000;
+  background: var(--l1);
+  color: var(--d1);
   font-size: clamp(1rem, 1.5vw, 1.4rem);
   font-weight: 600;
   padding: 0.7rem 2rem;
@@ -106,17 +106,17 @@
   border: none;
   cursor: pointer;
   transition: background 0.3s ease;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 3px 8px var(--l4);
 }
 
 .Pod-hero-text button:hover {
-  background: #f5f5f5;
+  background: var(--l6);
 }
 
 /* Image */
 .pod-hero-image img {
   width: 100%;
-  max-width: 500px; /* optional: prevents huge images */
+  max-width: 500px;
   height: auto;
   object-fit: contain;
   transition: all 0.3s ease;

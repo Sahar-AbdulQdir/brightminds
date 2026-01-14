@@ -1,16 +1,14 @@
-/* src/styles/GeneralFixesStyles/accessibilityPanel.css */
-
 .accessibility-panel {
   position: fixed;
   top: 90px;
   right: 20px;
   width: 280px;
-  background: #ffffff;
-  border: 2px solid #1f2937; /* strong contrast */
+  background: var(--l1);
+  border: 2px solid var(--p1); /* strong contrast */
   border-radius: 14px;
   padding: 16px 18px;
   z-index: 9999;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 25px var(--l4);
   font-family: inherit;
 }
 
@@ -19,8 +17,8 @@
   margin: 0 0 14px;
   font-size: 1.1rem;
   font-weight: 700;
-  color: #111827;
-  border-bottom: 2px solid #e5e7eb;
+  color: var(--b2);
+  border-bottom: 2px solid var(--l9);
   padding-bottom: 6px;
 }
 
@@ -36,7 +34,7 @@
 .accessibility-panel label {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #374151;
+  color: var(--b3);
 }
 
 /* Inputs & select */
@@ -123,7 +121,7 @@
   width: 20px;
   left: 3px;
   bottom: 3px;
-  background-color: white;
+  background-color: var(--l1);
   transition: 0.4s;
   border-radius: 50%;
 }

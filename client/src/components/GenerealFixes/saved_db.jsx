@@ -1,20 +1,22 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaPlay, FaPause, FaBookmark, FaTrash, FaFilter } from "react-icons/fa";
 import MyNavbar from "../Navbar.jsx";
-import "../../styles/GeneralFixesStyles/saved_db.css";
+import "../../styles/saved_db.css";
 import { FaBook } from "react-icons/fa";
 import { HiMicrophone } from "react-icons/hi2";
+import "../../styles/colors.css"
 
-// ✅ BASE URL (WORKS LOCALLY + WHEN HOSTED)
+// Base URL for API requests
 const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 const SavedPage = () => {
+  // State for saved items, filter type, and currently playing audio
   const [savedItems, setSavedItems] = useState([]);
   const [filter, setFilter] = useState("all");
   const [playingId, setPlayingId] = useState(null);
   const audioRef = useRef(null);
 
-  /* ========================= FETCH SAVED ITEMS ========================= */
+  // Fetch saved items from the server
   const fetchSavedItems = async () => {
     const email = localStorage.getItem("userEmail");
     if (!email) return;
@@ -27,19 +29,20 @@ const SavedPage = () => {
       setSavedItems(
         data.map(item => ({
           ...item,
-          id: item._id, // MongoDB ID
+          id: item._id, // Use MongoDB _id
         }))
       );
     } catch (err) {
-      console.error("❌ Failed to fetch saved items:", err);
+      console.error(" Failed to fetch saved items:", err);
     }
   };
 
+  // Load saved items on component mount
   useEffect(() => {
     fetchSavedItems();
   }, []);
 
-  /* ========================= REMOVE ITEM ========================= */
+  // Remove a saved item by ID
   const removeItem = async (id) => {
     try {
       const res = await fetch(`${BASE_URL}/api/saved-item/${id}`, {
@@ -50,11 +53,11 @@ const SavedPage = () => {
 
       setSavedItems(prev => prev.filter(item => item.id !== id));
     } catch (err) {
-      console.error("❌ Failed to remove item:", err);
+      console.error("Failed to remove item:", err);
     }
   };
 
-  /* ========================= PLAY / PAUSE ========================= */
+  // Play or pause the selected audio item
   const handlePlayPause = item => {
     if (playingId === item.id) {
       audioRef.current?.pause();
@@ -73,16 +76,16 @@ const SavedPage = () => {
     audioRef.current
       .play()
       .then(() => setPlayingId(item.id))
-      .catch(err => console.error("❌ Playback failed:", err));
+      .catch(err => console.error("Playback failed:", err));
   };
 
-  /* ========================= FILTERING ========================= */
+  // Filter saved items based on selected type
   const filteredItems = savedItems.filter(item => {
     if (filter === "all") return true;
     return item.type === filter;
   });
 
-  /* ========================= CARD GRADIENTS ========================= */
+  // Gradient backgrounds for cards
   const gradients = [
     "linear-gradient(135deg, #ffffff, #ffd6e7)",
     "linear-gradient(135deg, #ffffff, #e6c6ff)",
@@ -90,15 +93,16 @@ const SavedPage = () => {
     "linear-gradient(135deg, #ffd6e7, #e6c6ff)",
     "linear-gradient(135deg, #e6c6ff, #c6f2ff)",
   ];
-
   const getCardGradient = index => gradients[index % gradients.length];
 
-  /* ========================= RENDER ========================= */
+  // Render page
   return (
     <>
+      {/* Navbar */}
       <MyNavbar />
+
       <div className="saved-page-container">
-        {/* HEADER */}
+        {/* Header with filter buttons */}
         <div className="saved-header">
           <h1 className="saved-title">Saved Items</h1>
           <div className="filter-buttons">
@@ -123,7 +127,7 @@ const SavedPage = () => {
           </div>
         </div>
 
-        {/* CONTENT */}
+        {/* Empty state */}
         {filteredItems.length === 0 ? (
           <div className="empty-state">
             <div className="empty-icon">📖🎧</div>
@@ -131,6 +135,7 @@ const SavedPage = () => {
             <p>Save podcasts and audiobooks to see them here</p>
           </div>
         ) : (
+          /* Grid of saved items */
           <div className="saved-grid">
             {filteredItems.map((item, index) => (
               <div
@@ -139,6 +144,7 @@ const SavedPage = () => {
                 style={{ background: getCardGradient(index) }}
               >
                 <div className="card-content">
+                  {/* Item image and type */}
                   <div className="item-image">
                     <img
                       src={item.image || "https://via.placeholder.com/150"}
@@ -149,6 +155,7 @@ const SavedPage = () => {
                     </div>
                   </div>
 
+                  {/* Item information */}
                   <div className="item-info">
                     <h3 className="item-title">{item.title}</h3>
                     <p className="item-description">
@@ -160,6 +167,7 @@ const SavedPage = () => {
                     </div>
                   </div>
 
+                  {/* Play and remove buttons */}
                   <div className="item-controls">
                     <button
                       className="control-btn play-btn"
@@ -176,6 +184,7 @@ const SavedPage = () => {
                   </div>
                 </div>
 
+                {/* Progress bar */}
                 <div className="progress-bar">
                   <div className="progress-fill" style={{ width: "60%" }} />
                 </div>

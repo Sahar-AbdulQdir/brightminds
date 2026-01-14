@@ -1,9 +1,13 @@
 import React, { useRef } from 'react';
 import './PodcastPageStyles/PodcastHighlights.css';
+import "../../styles/colors.css"
 
+// Component for displaying trending podcast highlights with hover-preview videos
 const Highlights = () => {
+  // Ref array to hold references to each video element
   const videoRefs = useRef([]);
 
+  // Array of featured podcast highlights
   const podcasts = [
     {
       id: 1,
@@ -35,35 +39,68 @@ const Highlights = () => {
     }
   ];
 
-const handleHoverPlay = (index) => {
-  const video = videoRefs.current[index];
-  if (!video) return;
+  // Play video with sound on hover
+  const handleHoverPlay = (index) => {
+    const video = videoRefs.current[index];
+    if (!video) return;
 
-  // Start playing with sound when hovered
-  video.muted = false; // unmute
-  video.play();
-};
+    video.muted = false; // unmute for hover preview
+    video.play();
+  };
 
-const handleHoverStop = (index) => {
-  const video = videoRefs.current[index];
-  if (!video) return;
+  // Stop video and reset on mouse leave
+  const handleHoverStop = (index) => {
+    const video = videoRefs.current[index];
+    if (!video) return;
 
-  video.pause();
-  video.currentTime = 0;
-  video.muted = true; // mute again for next hover
-};
+    video.pause();
+    video.currentTime = 0;
+    video.muted = true; // mute again for next hover
+  };
 
-
+  // Open podcast source link in a new tab
   const handlePodcastClick = (e, url) => {
-    e.stopPropagation();
+    e.stopPropagation(); // prevent parent handlers
     window.open(url, '_blank', 'noopener,noreferrer');
   };
 
   return (
     <div className="podcast-highlights-container">
       <div className="Main-Laptop-container">
-<div className="content"> <div className="badge"> <i className="fas fa-headphones"></i> Trending Worldwide </div> <h1>From The <span className="circle-sketch-highlight">World</span> To Your Ears</h1> <p className="description"> Discover the most compelling conversations from around the globe. Our podcast highlights bring you thought-provoking discussions, inspiring stories, and expert insights from every corner of the world. Hover over any video to preview and click to listen to the full episode. </p> <div className="stats"> <div className="stat-item"> <span className="stat-number">500+</span> <span className="stat-label">Episodes</span> </div> <div className="stat-item"> <span className="stat-number">2M+</span> <span className="stat-label">Listeners</span> </div> <div className="stat-item"> <span className="stat-number">50+</span> <span className="stat-label">Countries</span> </div> </div> </div>
 
+        {/* Content above the laptop mockup */}
+        <div className="content">
+          <div className="badge">
+            <i className="fas fa-headphones"></i> Trending Worldwide
+          </div>
+
+          <h1>From The <span className="circle-sketch-highlight">World</span> To Your Ears</h1>
+
+          <p className="description">
+            Discover the most compelling conversations from around the globe. 
+            Our podcast highlights bring you thought-provoking discussions, inspiring stories, 
+            and expert insights from every corner of the world. Hover over any video to preview 
+            and click to listen to the full episode.
+          </p>
+
+          {/* Stats section */}
+          <div className="stats">
+            <div className="stat-item">
+              <span className="stat-number">500+</span>
+              <span className="stat-label">Episodes</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-number">2M+</span>
+              <span className="stat-label">Listeners</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-number">50+</span>
+              <span className="stat-label">Countries</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Laptop mockup container for videos */}
         <div className="laptop-container">
           <div className="laptop">
             <div className="laptop__screen">
@@ -72,10 +109,11 @@ const handleHoverStop = (index) => {
                   <div
                     key={podcast.id}
                     className="podcast-item"
-                    onMouseEnter={() => handleHoverPlay(index)}
-                    onMouseLeave={() => handleHoverStop(index)}
+                    onMouseEnter={() => handleHoverPlay(index)} // hover to play
+                    onMouseLeave={() => handleHoverStop(index)} // hover out to stop
                   >
                     <div className="video-container">
+                      {/* Video element with ref for control */}
                       <video
                         ref={(el) => (videoRefs.current[index] = el)}
                         muted
@@ -86,28 +124,33 @@ const handleHoverStop = (index) => {
                         <source src={podcast.videoSrc} type="video/mp4" />
                       </video>
 
+                      {/* Duration overlay */}
                       <div className="duration">{podcast.duration}</div>
 
+                      {/* Play icon overlay */}
                       <div className="play-icon">
                         <i className="fas fa-play-circle"></i>
                       </div>
 
+                      {/* Title overlay */}
                       <div className="video-overlay">
                         <h3 className="podcast-title">{podcast.title}</h3>
                       </div>
                     </div>
 
+                    {/* Button to go to full podcast source */}
                     <button
                       className="podcast-source-btn"
                       onClick={(e) => handlePodcastClick(e, podcast.sourceUrl)}
                     >
-                    <i className="fas fa-external-link-alt"></i>
+                      <i className="fas fa-external-link-alt"></i>
                     </button>
                   </div>
                 ))}
               </div>
             </div>
 
+            {/* Laptop base and shadow for visual effect */}
             <div className="laptop__bottom">
               <div className="laptop__under"></div>
             </div>

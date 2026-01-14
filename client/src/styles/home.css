@@ -1,53 +1,43 @@
-/* Apply styles to the root element */
+/* Root element styling with full viewport height and border-box sizing */
 #root {
   min-height: 100vh;
-  /* padding: 2rem; */
-  /* background: linear-gradient(
-    318deg,
-    rgba(121, 130, 224, 1) 0%,
-    rgba(158, 174, 218, 1) 50%,
-    rgba(211, 147, 189, 1) 100%
-  ); */
-  box-sizing: border-box; /* ensures padding doesn't break layout */
+  box-sizing: border-box; 
 }
 
-
+/* Navbar container styling */
 .navbar-section {
   width: 100%;
   background: transparent;
   margin-bottom: 1rem;
 }
 
+/* Main content section with flex layout and spacing */
 .content-section {
   display: flex;
   gap: 2rem;
-  /* background-color: #d7b5f7; */
   margin-top: -3rem;
 }
 
+/* Home page container with background, padding, and rounded corners */
 .home-container {
   display: flex;
   flex-direction: column;
-  gap: .5rem;
-  padding: 2rem;
+  gap: 0.5rem;
+  padding: 2rem 2rem 2rem 2rem;
   padding-top: 1rem;
-  /* padding-bottom: 0px; */
-  /* From https://css.glass */
-/* From https://css.glass */
-background: #ffffffc2;
-border-radius: 16px;
-
+  background: #ffffffc2;
+  border-radius: 16px;
   margin-top: -1.2rem;
 }
 
-/* Left Section */
+/* Left section containing welcome and podcast cards */
 .left-section {
   flex: 1;
   display: flex;
   flex-direction: column;
-  /* gap: .01rem; */
 }
 
+/* Welcome card styling */
 .welcome-card {
   background: white;
   padding: 1.5rem;
@@ -68,8 +58,9 @@ border-radius: 16px;
   line-height: 1.4;
 }
 
+/* Read more button styling */
 .read-more-btn {
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   background: black;
   color: white;
   border: none;
@@ -83,40 +74,34 @@ border-radius: 16px;
   background: #333;
 }
 
-.home-podcast-card{
+/* Podcast card container with flex layout */
+.home-podcast-card {
   display: flex;
-  /* align-items: center; */
   background: white;
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  /* padding: .5rem; */
   margin-top: 5%;
 }
 
+/* Podcast left section for image */
 .podcast-left {
-  flex: .8;
+  flex: 0.8;
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background: #d7b5f7; */
-  /* padding: 1rem; */
-  /* border-top-left-radius: 16px; */
-  /* border-bottom-left-radius: 16px; */
 }
 
+/* Podcast image styling with rounded left corners */
 .podcast-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
--webkit-border-top-left-radius: 15px;
--webkit-border-bottom-left-radius: 15px;
--moz-border-radius-topleft: 15px;
--moz-border-radius-bottomleft: 15px;
-border-top-left-radius: 15px;
-border-bottom-left-radius: 15px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
 }
 
+/* Podcast right section for text */
 .podcast-right {
   padding: 1.5rem;
   flex: 1.4;
@@ -125,17 +110,17 @@ border-bottom-left-radius: 15px;
 
 .podcast-right p {
   color: #444;
-  font-size: .9rem;
+  font-size: 0.9rem;
   margin-bottom: 0.5rem;
 }
 
-/* Right Section */
-/* Right Section */
+/* Right section containing video card */
 .right-section {
   display: flex;
   position: relative;
 }
 
+/* Video card container with fixed dimensions and rounded corners */
 .video-card {
   position: relative;
   width: 555px;
@@ -144,6 +129,7 @@ border-bottom-left-radius: 15px;
   overflow: hidden;
 }
 
+/* Video background styling */
 .video-bg {
   width: 100%;
   height: 100%;
@@ -151,14 +137,14 @@ border-bottom-left-radius: 15px;
   z-index: 1;
 }
 
-/* Full-width overlay at bottom */
+/* Overlay container at bottom of video with semi-transparent background */
 .video-overlay-home {
   position: absolute;
-  bottom: 0;          /* stick to bottom */
+  bottom: 0;          
   left: 0;
   width: 100%;
   height: 30%;
-  background: rgba(76, 75, 75, 0.37); /* slightly transparent */
+  background: rgba(76, 75, 75, 0.37);
   color: #fff;
   padding: 20px 30px;
   z-index: 2;
@@ -170,39 +156,29 @@ border-bottom-left-radius: 15px;
   gap: 1rem;
 }
 
-/* 
-.video-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  top: 0;
-  left: 0;
-} */
-
 .video-overlay-home h2 {
   font-size: 1.8rem;
-  /* margin-bottom: 10px; */
   text-align: left;
 }
 
 .video-overlay-home p {
-  font-size: .9rem;
+  font-size: 0.9rem;
   margin-bottom: 20px;
   line-height: 1.4;
 }
 
+/* Video overlay button styling */
 .video-btn {
   background: #ffffff;
   border: 2px solid #ffffff;
-  /* padding: 6px 10px; */
-  border-radius: 15px; /* slightly rounded */
+  border-radius: 15px;
   height: 60px;
   width: 30%;
   color: #000;
   font-weight: 600;
   cursor: pointer;
   transition: 0.3s ease;
-  font-size: .9rem; /* slightly smaller text */
+  font-size: 0.9rem;
   margin-top: 4%;
 }
 
@@ -211,8 +187,7 @@ border-bottom-left-radius: 15px;
   color: #000;
 }
 
-
-/* Mobile: ≤ 767px */
+/* Mobile styles for screens ≤ 767px */
 @media (max-width: 767px) {
   .content-section {
     flex-direction: column;
@@ -247,7 +222,7 @@ border-bottom-left-radius: 15px;
   }
 
   .video-bg {
-    height: 250px; /* scale down for mobile */
+    height: 250px;
   }
 
   .video-overlay-home {
@@ -274,7 +249,7 @@ border-bottom-left-radius: 15px;
   }
 }
 
-/* Tablet: 768px – 1023px */
+/* Tablet styles for screens 768px – 1023px */
 @media (min-width: 768px) and (max-width: 1023px) {
   .content-section {
     flex-direction: row;

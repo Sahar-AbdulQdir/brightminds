@@ -1,140 +1,129 @@
-import React, { useState } from "react";
-import "../AuthPage/AuthForm.css";
-import { FaFacebookF, FaGooglePlusG, FaLinkedinIn, FaHeart } from "react-icons/fa";
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useState } from "react"; 
+import "../AuthPage/AuthForm.css"; 
+import { FaFacebookF, FaGooglePlusG, FaLinkedinIn, FaHeart } from "react-icons/fa"; 
+import { useLocation, useNavigate } from "react-router-dom"; 
+import "../../styles/colors.css" 
 
 const AuthForm = () => {
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
-  const defaultForm = searchParams.get("form") || "signIn";
-  const [isRightPanelActive, setIsRightPanelActive] = useState(defaultForm === "signUp");
+  const location = useLocation(); // Get current URL location
+  const searchParams = new URLSearchParams(location.search); // Parse URL query parameters
+  const defaultForm = searchParams.get("form") || "signIn"; 
+  const [isRightPanelActive, setIsRightPanelActive] = useState(defaultForm === "signUp"); // State to toggle panel
   const navigate = useNavigate();
 
-  // Sign Up
+  // Function to handle user sign up
   const handleSignUp = async (e) => {
+     // Prevent default form submission
     e.preventDefault();
+     // Get user inputs
     const name = e.target.name.value;
-    const email = e.target.email.value;
-    const password = e.target.password.value;
+    const email = e.target.email.value; 
+    const password = e.target.password.value; 
 
     try {
-      const res = await fetch("https://lexiaminds-private-test.onrender.com/api/signup", {
+      const res = await fetch("https://lexiaminds-private-test.onrender.com/api/signup", { // Call signup API
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password }),
+        body: JSON.stringify({ name, email, password }), // Send user data
       });
 
-      const data = await res.json();
+      const data = await res.json(); // Parse response
 
-      if (res.ok) {
-        alert(data.message);
+      if (res.ok) { // If signup successful
+        alert(data.message); // Show success message
+        // Save user info
         localStorage.setItem("userName", name);
-        localStorage.setItem("userEmail", email);
-        navigate("/home"); // Redirect to home
+        localStorage.setItem("userEmail", email); 
+        // Redirect to home page
+        navigate("/home"); 
       } else {
-        alert(data.message);
+        alert(data.message); // Show error message from server
       }
     } catch (err) {
       console.error(err); 
-      alert("Something went wrong during sign up");
+      alert("Something went wrong during sign up"); // Handle network errors
     }
   };
 
-  // Sign In
+  // Function to handle user sign in
   const handleSignIn = async (e) => {
-    e.preventDefault();
-    const email = e.target.email.value;
-    const password = e.target.password.value;
+    e.preventDefault(); // Prevent default form submission
+      // Get user inputs
+    const email = e.target.email.value; 
+    const password = e.target.password.value; 
 
     try {
-      const res = await fetch("https://lexiaminds-private-test.onrender.com/api/signin", {
+      const res = await fetch("https://lexiaminds-private-test.onrender.com/api/signin", { // Call signin API
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password }), // Send user credentials
       });
 
-      const data = await res.json();
+      const data = await res.json(); // Parse response
 
-      if (res.ok) {
-        alert(`Welcome back, ${data.user.name}!`);
-        localStorage.setItem("userName", data.user.name);
-        localStorage.setItem("userEmail", data.user.email);
-        navigate("/home"); // Redirect to home
+      if (res.ok) { // If signin successful
+        alert(`Welcome back, ${data.user.name}!`); 
+        // Save user info
+        localStorage.setItem("userName", data.user.name); 
+        localStorage.setItem("userEmail", data.user.email); 
+        navigate("/home"); 
       } else {
-        alert(data.message);
+        alert(data.message); 
       }
     } catch (err) {
       console.error(err);
-      alert("Something went wrong during sign in");
+      alert("Something went wrong during sign in"); // Handle network errors
     }
   };
 
   return (
- <div className="auth-page">
-    <div className="floating-element"></div>
-    <div className="floating-element"></div>
-    <div className="floating-element"></div>
+    <div className="auth-page">
+      <div className="floating-element"></div> {/* Decorative floating elements */}
+      <div className="floating-element"></div>
+      <div className="floating-element"></div>
 
-    <div className={`container ${isRightPanelActive ? "right-panel-active" : ""}`}>
+      <div className={`container ${isRightPanelActive ? "right-panel-active" : ""}`}> {/* Toggle class for overlay effect */}
 
-      {/* Sign Up Form */}
-      <div className="form-container sign-up-container">
-        <form onSubmit={handleSignUp}>
-          <h1>Create Account</h1>
-          {/* <div className="social-container">
-            <a href="#" className="social"><FaFacebookF /></a>
-            <a href="#" className="social"><FaGooglePlusG /></a>
-            <a href="#" className="social"><FaLinkedinIn /></a>
-          </div> */}
-          {/* <span>use your email for registration</span> */}
-          <input type="text" placeholder="Name" name="name" required />
-          <input type="email" placeholder="Email" name="email" required />
-          <input type="password" placeholder="Password" name="password" required />
-          <button type="submit">Sign Up</button>
-        </form>
-      </div>
+        {/* Sign Up Form */}
+        <div className="form-container sign-up-container">
+          <form onSubmit={handleSignUp}>
+            <h1>Create Account</h1>
+            <input type="text" placeholder="Name" name="name" required />
+            <input type="email" placeholder="Email" name="email" required />
+            <input type="password" placeholder="Password" name="password" required />
+            <button type="submit">Sign Up</button>
+          </form>
+        </div>
 
-      {/* Sign In Form */}
-      <div className="form-container sign-in-container">
-        <form onSubmit={handleSignIn}>
-          <h1>Sign in</h1>
-          {/* <div className="social-container">
-            <a href="#" className="social"><FaFacebookF /></a>
-            <a href="#" className="social"><FaGooglePlusG /></a>
-            <a href="#" className="social"><FaLinkedinIn /></a>
-          </div> */}
-          {/* <span>use your account</span> */}
-          <input type="email" placeholder="Email" name="email" required />
-          <input type="password" placeholder="Password" name="password" required />
-          {/* <a href="#">Forgot your password?</a> */}
-          <button type="submit">Sign In</button>
-        </form>
-      </div>
+        {/* Sign In Form */}
+        <div className="form-container sign-in-container">
+          <form onSubmit={handleSignIn}>
+            <h1>Sign in</h1>
+            <input type="email" placeholder="Email" name="email" required />
+            <input type="password" placeholder="Password" name="password" required />
+            <button type="submit">Sign In</button>
+          </form>
+        </div>
 
-      {/* Overlay Panels */}
-      <div className="overlay-container">
-        <div className="overlay">
-          <div className="overlay-panel overlay-left">
-            <h1>Welcome Back!</h1>
-            <p>To keep connected with us please login with your personal info</p>
-            <button className="ghost" onClick={() => setIsRightPanelActive(false)}>Sign In</button>
-          </div>
+        {/* Overlay Panels */}
+        <div className="overlay-container">
+          <div className="overlay">
+            <div className="overlay-panel overlay-left">
+              <h1>Welcome Back!</h1>
+              <p>To keep connected with us please login with your personal info</p>
+              <button className="ghost" onClick={() => setIsRightPanelActive(false)}>Sign In</button>
+            </div>
 
-          <div className="overlay-panel overlay-right">
-            <h1>Hello, Friend!</h1>
-            <p>Enter your personal details and start journey with us</p>
-            <button className="ghost" onClick={() => setIsRightPanelActive(true)}>Sign Up</button>
+            <div className="overlay-panel overlay-right">
+              <h1>Hello, Friend!</h1>
+              <p>Enter your personal details and start journey with us</p>
+              <button className="ghost" onClick={() => setIsRightPanelActive(true)}>Sign Up</button>
+            </div>
           </div>
         </div>
       </div>
-
-      {/* Footer */}
-      {/* <footer>
-        <p>Created with  <FaHeart color="black" />  by sahaxar</p>
-      </footer> */}
     </div>
-     </div>
   );
 };
 
-export default AuthForm;
+export default AuthForm; // Export component

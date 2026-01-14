@@ -1,50 +1,51 @@
+/* Suggestion Section Wrapper */
 .suggestion-section {
   padding: 1.5rem;
   text-align: center;
 }
 
+/* Section title styling */
 .suggestion-section h2 {
   font-size: clamp(1.8rem, 4vw, 3rem);
   font-weight: bold;
   margin-bottom: 1.5rem;
 }
 
-/* Highlight circle */
+/* Highlight circle effect around text */
 .circle-sketch-highlight {
   position: relative;
   display: inline-block;
   padding: 0.15em 0.45em;
 }
-
 .circle-sketch-highlight::before,
 .circle-sketch-highlight::after {
   content: "";
   position: absolute;
   inset: 0;
-  border: 4px solid rgb(225, 69, 239);
+  border: 4px solid var(--p11);
   border-radius: 50%;
   opacity: 0.7;
   pointer-events: none;
   height: 4rem;
 }
-
 .circle-sketch-highlight::before {
   transform: rotate(2deg);
   border-right-color: transparent;
 }
-
 .circle-sketch-highlight::after {
   transform: rotate(-2deg);
   border-left-color: transparent;
   border-top-color: transparent;
 }
 
+/* Section description text */
 .suggestion-section p {
-  color: #383737;
+  color: var(--g3);
   margin-bottom: 1rem;
   font-size: clamp(0.9rem, 2vw, 1.3rem);
 }
 
+/* Name and ranking container */
 .suggestion_name {
   display: flex;
   align-items: center;
@@ -52,18 +53,17 @@
   gap: 0.2rem;
   font-size: clamp(1rem, 2vw, 1.3rem);
 }
-
 .suggestion_name .rank_icon {
-  color: #000000;
+  color: var(--d1);
   margin-top: -0.2rem;
   font-size: clamp(1.2rem, 2.5vw, 1.7rem);
 }
-
 .suggestion_name span {
   font-size: clamp(1rem, 2vw, 1.3rem);
-  color: #a31010;
+  color: var(--r1);
 }
 
+/* Suggestion cards container */
 .suggestion-content {
   display: flex;
   flex-direction: column;
@@ -72,8 +72,9 @@
   margin-top: 2rem;
 }
 
+/* Individual suggestion card styling */
 .suggestion-card {
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px var(--l4);
   max-width: 90%;
   width: 300px;
   padding: 1rem;
@@ -90,24 +91,24 @@
   margin-top: 5% !important;
 }
 
+/* Text inside suggestion cards */
 .card-text p {
   margin: 0.3rem 0 0;
   font-size: clamp(0.8rem, 1.8vw, 0.9rem);
-  color: #1b1b1b;
+  color: var(--g2);
 }
-
 .card-text p span {
   font-weight: 800;
-  color: #9f71ca;
+  color: var(--p1);
   font-size: .8rem;
 }
-
 .card-text hr {
   border: none;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid var(--g3);
   margin: 0.3rem 0;
 }
 
+/* Suggestion image styling */
 .suggestion-img {
   width: 90%;
   max-width: 30rem;
@@ -117,6 +118,7 @@
   transform: rotate(7deg);
 }
 
+/* Responsive layout for tablets and up */
 @media (min-width: 768px) {
   .suggestion-content {
     flex-direction: row;

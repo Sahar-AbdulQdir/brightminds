@@ -1,23 +1,33 @@
-// src/components/MyNavbar.jsx
+/*
+  - Top navigation bar for the app including links, quick icons and an
+  - Accessibility panel (font, spacing, and text-to-speech toggle).
+  - `AccessibilityPanel` provides small UI controls and applies styles to <body>
+  - `MyNavbar` manages the responsive navigation and global TTS behavior
+ */
+
 import React, { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaBars, FaTimes, FaSearch, FaUserCircle } from "react-icons/fa";
 import { FaWandMagicSparkles } from "react-icons/fa6";
 import { MdEditSquare } from "react-icons/md";
 import "../styles/nav.css";
-import "../styles/GeneralFixesStyles/accessibilityPanel.css";
+import "../styles/accessibilityPanel.css";
 import { RiSave3Line } from "react-icons/ri";
-
-
-// ⬅️ Import your SVG logo
+import "../styles/colors.css"
 import Logo from "../assets/icons/Logo.svg";
 
+// AccessibilityPanel: small UI for accessibility controls
+// Props:
+//  - ttsEnabled (bool): whether hover-to-read is enabled
+//  - setTtsEnabled (fn): toggles the TTS feature
+// Local state controls font, lineHeight and letterSpacing applied to <body>
 function AccessibilityPanel({ ttsEnabled, setTtsEnabled }) {
   const [font, setFont] = useState("Verdana");
   const [lineHeight, setLineHeight] = useState("1.5");
   const [letterSpacing, setLetterSpacing] = useState("0");
 
-  // Apply styles
+  // Apply selected accessibility styles directly to the document <body>
+  // (simple approach: in a larger app consider using CSS classes instead)
   useEffect(() => {
     document.body.style.fontFamily = font;
     document.body.style.lineHeight = lineHeight;
@@ -65,7 +75,7 @@ function AccessibilityPanel({ ttsEnabled, setTtsEnabled }) {
         />
       </div>
 
-      {/* Toggle for hover-to-read */}
+      {/* Toggle for hover-to-read: flips global ttsEnabled state handled by MyNavbar */}
 <div className="setting">
   <label className="switch-label">
     Enable Text-to-Speech on Hover
@@ -86,13 +96,19 @@ function AccessibilityPanel({ ttsEnabled, setTtsEnabled }) {
 
 
 function MyNavbar() {
+  // navRef refers to the <nav> element so we can toggle a responsive class
   const navRef = useRef();
   const [showAccessibility, setShowAccessibility] = useState(false);
   const [ttsEnabled, setTtsEnabled] = useState(false);
 
+  // Toggle mobile/compact nav visibility by adding/removing a CSS class
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
   };
+// If TTS is enabled, attach global mouseover/mouseout listeners that
+// read text content of simple elements (P, SPAN, headers, LI, BUTTON, A).
+// Note: This is a lightweight approach and may read undesired content; in
+// production prefer scoping listeners or using ARIA/live regions for accessibility.
 useEffect(() => {
   if (!ttsEnabled) return;
 
@@ -125,6 +141,7 @@ useEffect(() => {
   document.addEventListener("mouseover", handleMouseOver);
   document.addEventListener("mouseout", handleMouseOut);
 
+  // Cleanup listeners and cancel any ongoing speech when toggled off / on unmount
   return () => {
     document.removeEventListener("mouseover", handleMouseOver);
     document.removeEventListener("mouseout", handleMouseOut);
@@ -134,11 +151,13 @@ useEffect(() => {
 
   return (
     <>
+      {/* Main header: logo, nav links, quick icons, and mobile menu button */}
       <header>
         <h3>
           <img src={Logo} alt="Cognify Minds Logo" className="nav-logo" />
         </h3>
 
+        {/* Navigation links; ref used for responsive toggle */}
         <nav ref={navRef}>
           <Link to="/">Home</Link>
           <Link to="/AudioBooks">Audio Books</Link>
@@ -150,6 +169,7 @@ useEffect(() => {
           </button>
         </nav>
 
+        {/* Icon buttons (tools, accessibility panel, saved) */}
         <div className="nav-icons">
           <Link to="/tools" className="icon-btn">
             <FaWandMagicSparkles />
@@ -167,11 +187,13 @@ useEffect(() => {
           </Link>
         </div>
 
+        {/* Mobile menu toggle */}
         <button className="nav-btn" onClick={showNavbar}>
           <FaBars />
         </button>
       </header>
 
+      {/* Conditionally render the accessibility control panel */}
       {showAccessibility && (
         <AccessibilityPanel ttsEnabled={ttsEnabled} setTtsEnabled={setTtsEnabled} />
       )}
