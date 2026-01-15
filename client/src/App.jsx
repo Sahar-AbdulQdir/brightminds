@@ -11,6 +11,7 @@ import ToolsResources from "./components/ToolsPage/tools.jsx";
 import Layout from "./components/GenerealFixes/layout.jsx";
 import AuthPage from "./pages/AuthPage.jsx";
 import SavedPage from "./components/GenerealFixes/saved_db.jsx";
+import "./styles/colors.css";
 
 // Main App component that handles routing
 function App() {
