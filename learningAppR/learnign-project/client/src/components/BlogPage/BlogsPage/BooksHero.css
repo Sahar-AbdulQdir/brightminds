@@ -1,0 +1,314 @@
+/* 
+ - Hero section for the Books page: contains title, subtitle, CTA, and decorative
+ - floating quote cards. Designed to be visually prominent and responsive.
+ */
+
+/* Container */
+.bhero-section {
+  position: relative;
+  background: linear-gradient(135deg, var(--sh1) 0%, var(--l1) 50%, var(--sh4) 100%);
+  border-radius: 16px;
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin-top: -3rem;
+}
+
+/* Inner content wrapper: centers content and constrains width for readability */
+.bhero-inner {
+  max-width: 920px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+/* Main headings: strong typographic hierarchy for title and subtitle */
+.bhero-title {
+  font-weight: 900;
+  font-size: 3rem;
+  margin-bottom: 8px;
+  color: var(--g1);
+  user-select: none;
+}
+
+.bhero-subtitle {
+  font-weight: 900;
+  font-size: 2rem;
+}
+
+.bhero-subtitle-muted {
+  font-weight: 900;
+  font-size: 2rem;
+  color: var(--g5);
+  margin-bottom: 30px;
+  user-select: none;
+} 
+
+/* Intro paragraph: constrained width for comfortable reading */
+.bhero-text {
+  font-size: 1rem;
+  line-height: 1.5;
+  max-width: 480px;
+  margin: 0 auto 36px;
+  color: var(--g4);
+  user-select: none;
+} 
+
+/* Call-to-action button: prominent pill-shaped CTA */
+.bhero-button {
+  background: var(--g1);
+  border-radius: 32px;
+  padding: 10px 28px;
+  font-weight: 600;
+  border: none;
+  color: var(--l1);
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 0 12px var(--p1);
+}
+
+.bhero-button span {
+  transform: rotate(90deg);
+  font-size: 1rem;
+  font-weight: 900;
+} 
+
+/* Floating card base: translucent cards positioned around the hero for visual interest.
+   Uses backdrop-filter for frosted glass effect and will-change to hint at transforms. */
+.floating-card {
+  position: absolute;
+  border-radius: 16px;
+  padding: 20px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 25px var(--l4), 0 0 15px var(--l2);
+  border: 1px solid var(--l3);
+  will-change: transform;
+  background: var(--l1);
+} 
+
+
+/* Floating card variant (left-top): positioned slightly off-canvas for layered look */
+.floating-left-top {
+  top: 60px;
+  left: -70px;
+  width: 260px;
+  padding: 10px;
+  border-radius: 25px;
+    border-top-left-radius: 0;
+  .quote-card-content .name{
+    font-size: 1rem;
+  } 
+     .quote-card-content .role{
+        font-size: .7rem;
+  }  
+  .quote-card-content  p{
+    font-size: .8rem;
+  }
+
+    .quote-card-content img{
+        width: 35px;
+        height: 35px;
+    }
+} 
+
+
+/* Floating card variant (left-black): dark background variant for contrast */
+.floating-left-black {
+  top: 300px;
+  left: -30px;
+  width: 280px;
+  color: var(--l1);
+  background: var(--d1);
+  border-radius: 25px;
+  font-size: .8rem;
+  font-weight: 700;
+  border-top-left-radius: 0;
+  padding: 9px;
+  .quote-card-content .name{
+    margin-top: -25%;
+    color: var(--l1);
+  }
+  .quote-card-content p{
+    margin-top: -15%;
+    color: var(--l1);
+        font-size: .8rem;
+    margin-left: 15%;
+    text-align: left;
+  }
+  .quote-card-content img{
+    width: 35px;
+    height: 35px;
+  }
+} 
+
+/* Floating card variant (right-purple): warm-colored card on the right side */
+.floating-right-purple {
+  top: 225px;
+  right: -35px;
+  width: 260px;
+  background: var(--p1);
+  border: 1px solid #00000000;
+  font-size: .8rem;
+  font-weight: 700;
+  border-top-right-radius: 0;
+  padding: 9px;
+  
+  .quote-card-content .name{
+    margin-top: -20%;
+    color: var(--l1);
+  }
+  .quote-card-content p{
+    margin-top: -15%;
+    color: var(--l1);
+    font-size: .8rem;
+    margin-left: 15%;
+  }
+  .quote-card-content img{
+    width: 35px;
+    height: 35px;
+  }
+} 
+
+/* Floating card variant (right-light): light-toned card for balance */
+.floating-right-light {
+  top: -20px;
+  right: -90px;
+  width: 260px;
+  background: var(--l5);
+  border: 1px solid #8769ff00;
+  border-radius: 25px;
+  border-top-right-radius: 0;
+    .quote-card-content .name{
+    font-size: 1rem;
+  } 
+     .quote-card-content .role{
+        font-size: .7rem;
+  }  
+  .quote-card-content  p{
+    font-size: .8rem;
+  }
+
+    .quote-card-content img{
+        width: 35px;
+        height: 35px;
+    }
+  transform:scale(.9);
+} 
+
+/* Quote card content: avatar, name, role and quote text */
+.quote-card-content img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.quote-card-content .name p{
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.quote-card-content .role {
+  font-size: 12px;
+  color: var(--g3);
+}
+
+.quote-card-content p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--g2);
+  margin: 0;
+}
+
+.quote-card-content p.highlight {
+  font-weight: 600;
+} 
+
+
+/* Mobile: ≤ 767px — stack and simplify floating cards for narrow viewports */
+@media (max-width: 767px) {
+  .bhero-section {
+    padding: 40px 15px;
+  }
+
+  .bhero-title {
+    font-size: 2rem;
+  }
+
+  .bhero-subtitle,
+  .bhero-subtitle-muted {
+    font-size: 1.3rem;
+  }
+
+  .bhero-text {
+    font-size: 0.9rem;
+    max-width: 90%;
+  }
+
+  .bhero-button {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+  }
+
+  /* Floating cards stacked for mobile */
+  .floating-left-top,
+  .floating-left-black,
+  .floating-right-light,
+  .floating-right-purple {
+    position: static;
+    transform: none !important;
+    width: 90%;
+    margin: 15px auto;
+    scale: 1 !important;
+  }
+
+  .quote-card-content img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .quote-card-content .name {
+    font-size: 0.95rem;
+  }
+
+  .quote-card-content .role {
+    font-size: 0.75rem;
+  }
+
+  .quote-card-content p {
+    font-size: 0.85rem;
+  }
+} 
+
+/* Tablet: 768px – 1023px — adjust spacing and floating card positions */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .bhero-section {
+    padding: 50px 20px;
+  }
+
+  .bhero-title {
+    font-size: 2.5rem;
+  }
+
+  .bhero-subtitle,
+  .bhero-subtitle-muted {
+    font-size: 1.7rem;
+  }
+
+  .bhero-text {
+    font-size: 0.95rem;
+    max-width: 480px;
+  }
+
+  /* Slightly adjust floating card positions for tablets */
+  .floating-left-top { top: 40px; left: -40px; }
+  .floating-left-black { top: 250px; left: -20px; }
+  .floating-right-light { top: 0; right: -50px; transform: scale(0.95); }
+  .floating-right-purple { top: 180px; right: -20px; }
+}
+

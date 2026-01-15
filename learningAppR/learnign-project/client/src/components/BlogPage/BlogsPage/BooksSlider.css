@@ -1,0 +1,113 @@
+.books-slider-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 40px 0 80px; /* extra bottom space for image overflow */
+  margin-top: 5%;
+}
+
+.books-slider-container .section-title {
+  color: var(--p3);
+  font-size: 4rem;
+  font-weight: 800;
+  /* margin-left: 5%; */
+}
+.books-slider {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px;
+  overflow-y: hidden;
+  padding-bottom: 70px;
+}
+
+.books-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.book-card {
+ width: 40%;
+ height: 250px;
+  display: flex;
+  gap: 20px;
+  padding: 24px;
+  position: relative;
+  flex-shrink: 0;
+  border-radius: 12px;
+}
+
+/*  IMAGE OVERFLOW MAGIC */
+.book-cover {
+  width: 170px;
+  height: 270px;
+  object-fit: cover;
+  position: absolute;
+  bottom: -60px; /* half outside */
+  left: 24px;
+   border-radius: 15px;
+ box-shadow: -1px 2px 9px 1px var(--g3);
+ transition: .3s ease;
+ flex-shrink: 0;
+}
+
+/* push text right to avoid overlap */
+.book-info {
+  margin-left: 220px;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-title {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: var(--l1);
+}
+
+.book-author {
+  font-size: 0.85rem;
+  color: var(--l1);
+  font-weight: 700;
+  opacity: 0.9;
+}
+
+.book-rating {
+  display: flex;
+  margin: 6px 0;
+}
+
+.book-description {
+  font-size: 0.9rem;
+  color: var(--l1);
+  opacity: 0.95;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+
+/* Arrows OUTSIDE cards */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--l1)fff;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--p7);
+  width: 5px;
+  height: 5px;
+  border-radius: 30%;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow.left {
+  left: 10px;
+}
+
+.arrow.right {
+  right: 10px;
+}
