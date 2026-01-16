@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "../AuthPage/AuthForm.css"; 
 import { FaFacebookF, FaGooglePlusG, FaLinkedinIn, FaHeart } from "react-icons/fa"; 
 import { useLocation, useNavigate } from "react-router-dom"; 
-import "../../styles/colors.css" 
+import "../../styles/colors.css";
 
 const AuthForm = () => {
   const location = useLocation(); // Get current URL location
@@ -11,59 +11,56 @@ const AuthForm = () => {
   const [isRightPanelActive, setIsRightPanelActive] = useState(defaultForm === "signUp"); // State to toggle panel
   const navigate = useNavigate();
 
+  // Get backend API URL from environment variable
+  const API_URL = import.meta.env.VITE_API_URL;
+
   // Function to handle user sign up
   const handleSignUp = async (e) => {
-     // Prevent default form submission
     e.preventDefault();
-     // Get user inputs
     const name = e.target.name.value;
     const email = e.target.email.value; 
     const password = e.target.password.value; 
 
     try {
-      const res = await fetch("https://lexiaminds-private-test.onrender.com/api/signup", { // Call signup API
+      const res = await fetch(`${API_URL}/api/signup`, { // Use env variable
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, password }), // Send user data
+        body: JSON.stringify({ name, email, password }),
       });
 
-      const data = await res.json(); // Parse response
+      const data = await res.json();
 
-      if (res.ok) { // If signup successful
-        alert(data.message); // Show success message
-        // Save user info
+      if (res.ok) {
+        alert(data.message);
         localStorage.setItem("userName", name);
         localStorage.setItem("userEmail", email); 
-        // Redirect to home page
         navigate("/home"); 
       } else {
-        alert(data.message); // Show error message from server
+        alert(data.message);
       }
     } catch (err) {
       console.error(err); 
-      alert("Something went wrong during sign up"); // Handle network errors
+      alert("Something went wrong during sign up");
     }
   };
 
   // Function to handle user sign in
   const handleSignIn = async (e) => {
-    e.preventDefault(); // Prevent default form submission
-      // Get user inputs
+    e.preventDefault();
     const email = e.target.email.value; 
     const password = e.target.password.value; 
 
     try {
-      const res = await fetch("https://lexiaminds-private-test.onrender.com/api/signin", { // Call signin API
+      const res = await fetch(`${API_URL}/api/signin`, { // Use env variable
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }), // Send user credentials
+        body: JSON.stringify({ email, password }),
       });
 
-      const data = await res.json(); // Parse response
+      const data = await res.json();
 
-      if (res.ok) { // If signin successful
-        alert(`Welcome back, ${data.user.name}!`); 
-        // Save user info
+      if (res.ok) {
+        alert(`Welcome back, ${data.user.name}!`);
         localStorage.setItem("userName", data.user.name); 
         localStorage.setItem("userEmail", data.user.email); 
         navigate("/home"); 
@@ -72,18 +69,17 @@ const AuthForm = () => {
       }
     } catch (err) {
       console.error(err);
-      alert("Something went wrong during sign in"); // Handle network errors
+      alert("Something went wrong during sign in");
     }
   };
 
   return (
     <div className="auth-page">
-      <div className="floating-element"></div> {/* Decorative floating elements */}
+      <div className="floating-element"></div>
       <div className="floating-element"></div>
       <div className="floating-element"></div>
 
-      <div className={`container ${isRightPanelActive ? "right-panel-active" : ""}`}> {/* Toggle class for overlay effect */}
-
+      <div className={`container ${isRightPanelActive ? "right-panel-active" : ""}`}>
         {/* Sign Up Form */}
         <div className="form-container sign-up-container">
           <form onSubmit={handleSignUp}>
@@ -116,7 +112,7 @@ const AuthForm = () => {
 
             <div className="overlay-panel overlay-right">
               <h1>Hello, Friend!</h1>
-              <p>Enter your personal details and start journey with us</p>
+              <p>Enter your personal details and start your journey with us</p>
               <button className="ghost" onClick={() => setIsRightPanelActive(true)}>Sign Up</button>
             </div>
           </div>
@@ -126,4 +122,4 @@ const AuthForm = () => {
   );
 };
 
-export default AuthForm; // Export component
+export default AuthForm;
