@@ -76,20 +76,19 @@ function AccessibilityPanel({ ttsEnabled, setTtsEnabled }) {
       </div>
 
       {/* Toggle for hover-to-read: flips global ttsEnabled state handled by MyNavbar */}
-<div className="setting">
-  <label className="switch-label">
-    Enable Text-to-Speech on Hover
-    <div className="switch">
-      <input
-        type="checkbox"
-        checked={ttsEnabled}
-        onChange={() => setTtsEnabled(!ttsEnabled)}
-      />
-      <span className="slider"></span>
-    </div>
-  </label>
-</div>
-
+      <div className="setting">
+        <label className="switch-label">
+          Enable Text-to-Speech on Hover
+          <div className="switch">
+            <input
+              type="checkbox"
+              checked={ttsEnabled}
+              onChange={() => setTtsEnabled(!ttsEnabled)}
+            />
+            <span className="slider"></span>
+          </div>
+        </label>
+      </div>
     </div>
   );
 }
@@ -100,54 +99,75 @@ function MyNavbar() {
   const navRef = useRef();
   const [showAccessibility, setShowAccessibility] = useState(false);
   const [ttsEnabled, setTtsEnabled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Check if mobile on mount and resize
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 1024);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Toggle mobile/compact nav visibility by adding/removing a CSS class
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
   };
-// If TTS is enabled, attach global mouseover/mouseout listeners that
-// read text content of simple elements (P, SPAN, headers, LI, BUTTON, A).
-// Note: This is a lightweight approach and may read undesired content; in
-// production prefer scoping listeners or using ARIA/live regions for accessibility.
-useEffect(() => {
-  if (!ttsEnabled) return;
 
-  let utterance = null;
+  // Close mobile nav when clicking a link
+  const handleNavClick = () => {
+    if (isMobile) {
+      showNavbar();
+    }
+  };
 
-  const handleMouseOver = (e) => {
-    if (
-      e.target &&
-      ["P","SPAN","H1","H2","H3","H4","H5","H6","LI","BUTTON","A"].includes(e.target.tagName)
-    ) {
-      // Only read direct text, not child elements
-      const text = e.target.childNodes.length === 1 && e.target.childNodes[0].nodeType === 3
-        ? e.target.innerText
-        : e.target.childNodes[0]?.nodeValue || e.target.innerText;
+  // If TTS is enabled, attach global mouseover/mouseout listeners that
+  // read text content of simple elements (P, SPAN, headers, LI, BUTTON, A).
+  // Note: This is a lightweight approach and may read undesired content; in
+  // production prefer scoping listeners or using ARIA/live regions for accessibility.
+  useEffect(() => {
+    if (!ttsEnabled) return;
 
-      if (text?.trim()) {
-        utterance = new SpeechSynthesisUtterance(text);
-        window.speechSynthesis.speak(utterance);
+    let utterance = null;
+
+    const handleMouseOver = (e) => {
+      if (
+        e.target &&
+        ["P","SPAN","H1","H2","H3","H4","H5","H6","LI","BUTTON","A"].includes(e.target.tagName)
+      ) {
+        // Only read direct text, not child elements
+        const text = e.target.childNodes.length === 1 && e.target.childNodes[0].nodeType === 3
+          ? e.target.innerText
+          : e.target.childNodes[0]?.nodeValue || e.target.innerText;
+
+        if (text?.trim()) {
+          utterance = new SpeechSynthesisUtterance(text);
+          window.speechSynthesis.speak(utterance);
+        }
       }
-    }
-  };
+    };
 
-  const handleMouseOut = () => {
-    if (utterance) {
+    const handleMouseOut = () => {
+      if (utterance) {
+        window.speechSynthesis.cancel();
+        utterance = null;
+      }
+    };
+
+    document.addEventListener("mouseover", handleMouseOver);
+    document.addEventListener("mouseout", handleMouseOut);
+
+    // Cleanup listeners and cancel any ongoing speech when toggled off / on unmount
+    return () => {
+      document.removeEventListener("mouseover", handleMouseOver);
+      document.removeEventListener("mouseout", handleMouseOut);
       window.speechSynthesis.cancel();
-      utterance = null;
-    }
-  };
-
-  document.addEventListener("mouseover", handleMouseOver);
-  document.addEventListener("mouseout", handleMouseOut);
-
-  // Cleanup listeners and cancel any ongoing speech when toggled off / on unmount
-  return () => {
-    document.removeEventListener("mouseover", handleMouseOver);
-    document.removeEventListener("mouseout", handleMouseOut);
-    window.speechSynthesis.cancel();
-  };
-}, [ttsEnabled]);
+    };
+  }, [ttsEnabled]);
 
   return (
     <>
@@ -159,33 +179,58 @@ useEffect(() => {
 
         {/* Navigation links; ref used for responsive toggle */}
         <nav ref={navRef}>
-          <Link to="/">Home</Link>
-          <Link to="/AudioBooks">Audio Books</Link>
-          {/* <Link to="/games">Games</Link> */}
-          <Link to="/podcasts">Podcasts</Link>
+          <Link to="/" onClick={handleNavClick}>Home</Link>
+          <Link to="/AudioBooks" onClick={handleNavClick}>Audio Books</Link>
+          {/* <Link to="/games" onClick={handleNavClick}>Games</Link> */}
+          <Link to="/podcasts" onClick={handleNavClick}>Podcasts</Link>
+
+          {/* Icons inside mobile nav - only shown on mobile */}
+          {isMobile && (
+            <div className="nav-icons-mobile">
+              <Link to="/tools" className="icon-btn" onClick={handleNavClick}>
+                <FaWandMagicSparkles />
+              </Link>
+
+              <button
+                className="icon-btn accessabilitySettings"
+                onClick={() => {
+                  setShowAccessibility(!showAccessibility);
+                  handleNavClick();
+                }}
+              >
+                <MdEditSquare />
+              </button>
+
+              <Link to="/SavedPage" className="icon-btn" onClick={handleNavClick}>
+                <RiSave3Line />
+              </Link>
+            </div>
+          )}
 
           <button className="nav-btn nav-close-btn" onClick={showNavbar}>
             <FaTimes />
           </button>
         </nav>
 
-        {/* Icon buttons (tools, accessibility panel, saved) */}
-        <div className="nav-icons">
-          <Link to="/tools" className="icon-btn">
-            <FaWandMagicSparkles />
-          </Link>
+        {/* Icon buttons (tools, accessibility panel, saved) - only shown on desktop */}
+        {!isMobile && (
+          <div className="nav-icons">
+            <Link to="/tools" className="icon-btn">
+              <FaWandMagicSparkles />
+            </Link>
 
-          <button
-            className="icon-btn accessabilitySettings"
-            onClick={() => setShowAccessibility(!showAccessibility)}
-          >
-            <MdEditSquare />
-          </button>
+            <button
+              className="icon-btn accessabilitySettings"
+              onClick={() => setShowAccessibility(!showAccessibility)}
+            >
+              <MdEditSquare />
+            </button>
 
-          <Link to="/SavedPage" className="icon-btn">
-            <RiSave3Line />
-          </Link>
-        </div>
+            <Link to="/SavedPage" className="icon-btn">
+              <RiSave3Line />
+            </Link>
+          </div>
+        )}
 
         {/* Mobile menu toggle */}
         <button className="nav-btn" onClick={showNavbar}>
@@ -200,6 +245,5 @@ useEffect(() => {
     </>
   );
 }
-
 
 export default MyNavbar;

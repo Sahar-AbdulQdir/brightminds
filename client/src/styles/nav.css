@@ -6,11 +6,13 @@ header {
   padding: 10px 20px;
   position: relative;
   z-index: 1000;
+  /* background: var(--p15) */
 }
 
 .nav-logo {
-  width: 150px; /* smaller on mobile */
+  width: 150px;
   height: auto;
+  flex-shrink: 0; /* Prevent logo from shrinking too much */
 }
 
 .nav-icons {
@@ -26,13 +28,16 @@ header {
   font-size: 1.4rem;
   color: var(--d1);
   transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 5px;
 }
 
 .icon-btn:hover {
   color: var(--l1);
   background: var(--p1);
-  border-radius: 5px;
-  padding: 2px 4px;
 }
 
 /* ---------------- Desktop Navbar ---------------- */
@@ -40,6 +45,8 @@ nav {
   display: flex;
   align-items: center;
   gap: 2rem;
+  flex: 1; /* Take available space */
+  justify-content: center; /* Center nav items */
 }
 
 nav a {
@@ -48,13 +55,14 @@ nav a {
   font-weight: 800;
   font-size: 1rem;
   transition: all 0.3s ease;
+  padding: 8px 12px;
+  border-radius: 5px;
+  white-space: nowrap; /* Prevent line breaks */
 }
 
 nav a:hover {
   color: var(--l1);
   background: var(--p1);
-  border-radius: 5px;
-  padding: 2px 4px;
 }
 
 /* ---------------- Hamburger Button ---------------- */
@@ -65,6 +73,8 @@ header .nav-btn {
   background: transparent;
   border: none;
   font-size: 1.8rem;
+  color: var(--d1);
+  z-index: 1001; /* Above the mobile nav */
 }
 
 /* Close button for mobile */
@@ -77,18 +87,26 @@ header .nav-btn {
   background: transparent;
   border: none;
   cursor: pointer;
+  z-index: 1002; /* Above everything */
 }
 
 /* ---------------- Mobile Styles ---------------- */
 @media (max-width: 1024px) {
+  header {
+    position: relative;
+    padding: 10px 15px;
+  }
+  
   .nav-icons {
-    /* display: none;  */
+    display: none; /* Hide icons on mobile */
   }
-
+  
+  /* Show hamburger button */
   header .nav-btn {
-    display: block; /* show hamburger */
+    display: block;
+    position: relative;
   }
-
+  
   nav {
     position: fixed;
     top: 0;
@@ -100,18 +118,39 @@ header .nav-btn {
     align-items: center;
     justify-content: flex-start;
     padding-top: 5rem;
-    gap: 2rem;
-    transform: translateY(-100%);
+    gap: 1.5rem;
+    transform: translateY(-100vh); /* Start off-screen */
     transition: transform 0.4s ease-in-out;
-    z-index: 999;
+    z-index: 1000;
+    overflow-y: auto;
   }
-
+  
   nav a {
     font-size: 1.5rem;
+    padding: 12px 20px;
+    width: 80%;
+    text-align: center;
   }
-
+  
+  /* When responsive_nav class is added */
   nav.responsive_nav {
     transform: translateY(0);
+  }
+  
+  /* Move icons inside mobile nav */
+  nav .nav-icons-mobile {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    width: 80%;
+    justify-content: center;
+  }
+  
+  nav .nav-icons-mobile .icon-btn {
+    font-size: 1.8rem;
+    padding: 10px;
   }
 }
 
@@ -120,14 +159,20 @@ header .nav-btn {
   .nav-logo {
     width: 120px;
   }
-
+  
   nav a {
     font-size: 1.2rem;
+    padding: 10px 15px;
+    width: 90%;
   }
-
+  
   .nav-close-btn {
     top: 1rem;
     right: 1rem;
     font-size: 1.8rem;
+  }
+  
+  nav .nav-icons-mobile {
+    gap: 1rem;
   }
 }
