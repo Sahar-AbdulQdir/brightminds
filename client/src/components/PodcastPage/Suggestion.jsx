@@ -1,3 +1,8 @@
+/*
+  Laptop illustration styles inspired/adapted from “Pure CSS laptop with image as screen” by
+  aldercass on CodePen – https://codepen.io/aldercass/pen/wdjGvL
+*/
+
 import React from "react";
 import sugPodImg from "../../assets/images/Pod_Suggestion.png";
 import "../../components/PodcastPage/PodcastPageStyles/PodSuggestion.css";

@@ -1,3 +1,8 @@
+/* 
+  Book effect styles adapted from “Book. HTML+CSS only” by 
+  sabanna on CodePen – https://codepen.io/sabanna/pen/ZxQXQv
+  (Used for layout/animation patterns)
+*/
 import React from "react";
 import "./LandingPageStyles/AboutDys.css";
 import bookimg from "../../assets/images/dys.png";
