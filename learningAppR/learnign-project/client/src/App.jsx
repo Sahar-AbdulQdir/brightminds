@@ -18,15 +18,22 @@ function App() {
   return (
     // Router wrapper for handling client-side navigation
     <Router>
-<Routes>
-  <Route path="/" element={<LandingPage />} />
-  <Route path="/Podcasts" element={<Layout><Podcasts /></Layout>} />
-  <Route path="/AudioBooks" element={<Layout><AudioBooks /></Layout>} />
-  <Route path="/landing" element={<LandingPage />} />
-  <Route path="/Tools" element={<Layout><ToolsResources /></Layout>} />
-  <Route path="/auth" element={<AuthPage />} />
-  <Route path="/SavedPage" element={<Layout><SavedPage /></Layout>} />
-</Routes>
+      <Routes>
+        {/* Home page wrapped in Layout */}
+        <Route path="/" element={<Layout><Home /></Layout>} />
+        {/* Podcasts page */}
+        <Route path="/Podcasts" element={<Layout><Podcasts /></Layout>} />
+        {/* AudioBooks page */}
+        <Route path="/AudioBooks" element={<Layout><AudioBooks /></Layout>} />
+        {/* Landing page without Layout */}
+        <Route path="/landing" element={<LandingPage />} /> 
+        {/* Tools page */}
+        <Route path="/Tools" element={<Layout><ToolsResources /></Layout>} />
+        {/* Authentication page */}
+        <Route path="/auth" element={<AuthPage />} />
+        {/* Saved items page */}
+        <Route path="/SavedPage" element={<Layout><SavedPage /></Layout>} />
+      </Routes>
     </Router>
   );
 }
