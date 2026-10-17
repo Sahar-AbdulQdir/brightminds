@@ -53,7 +53,7 @@ const AuthForm = () => {
     const password = e.target.password.value; 
 
     try {
-      const res = await fetch("https://lexiaminds-private-testing.onrender.com/api/signin", { // Call signin API
+      const res = await fetch("https://lexiaminds-private-test.onrender.com/api/signin", { // Call signin API
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }), // Send user credentials
