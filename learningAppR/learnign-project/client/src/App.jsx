@@ -20,13 +20,13 @@ function App() {
     <Router>
       <Routes>
         {/* Home page wrapped in Layout */}
-        <Route path="/" element={<Layout><Home /></Layout>} />
+        <Route path="/Home" element={<Layout><Home /></Layout>} />
         {/* Podcasts page */}
         <Route path="/Podcasts" element={<Layout><Podcasts /></Layout>} />
         {/* AudioBooks page */}
         <Route path="/AudioBooks" element={<Layout><AudioBooks /></Layout>} />
         {/* Landing page without Layout */}
-        <Route path="/landing" element={<LandingPage />} /> 
+        <Route path="/" element={<LandingPage />} /> 
         {/* Tools page */}
         <Route path="/Tools" element={<Layout><ToolsResources /></Layout>} />
         {/* Authentication page */}
