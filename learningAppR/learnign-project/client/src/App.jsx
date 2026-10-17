@@ -7,7 +7,7 @@ import LandingPage from "./pages/Landing.jsx";
 import Home from "./pages/Home.jsx";
 import Podcasts from "./pages/Podcasts.jsx";
 import AudioBooks from "./pages/BooksPage.jsx";
-import ToolsResources from "./components/ToolsPage/tools.jsx";
+import ToolsResources from "./components/Toolspage/tools.jsx";
 import Layout from "./components/GenerealFixes/layout.jsx";
 import AuthPage from "./pages/AuthPage.jsx";
 import SavedPage from "./components/GenerealFixes/saved_db.jsx";
