@@ -1,6 +1,6 @@
 // Importing React hooks and required CSS files for styling the VoiceToText component
 import React, { useEffect, useRef, useState } from "react";
-import "../../components/ToolsPage/ToolsStyles/speach_to_txt.css";
+import "../../components/Toolspage/ToolsStyles/speach_to_txt.css";
 import "../../styles/colors.css"
 
 // VoiceToText component definition

@@ -1,9 +1,9 @@
 // Importing React and required components for the Tools page
 import React from "react";
 import MyNavbar from "../Navbar.jsx"
-import VoiceToText from "../ToolsPage/speach_to_txt.jsx";
-import TextToSpeech from "../ToolsPage/txt_to_speach.jsx";
-import "../ToolsPage/ToolsStyles/tools.css";
+import VoiceToText from "../Toolspage/speach_to_txt.jsx";
+import TextToSpeech from "../Toolspage/txt_to_speach.jsx";
+import "../Toolspage/ToolsStyles/tools.css";
 
 // Tools page component definition
 const Tools = () => {
